@@ -19,12 +19,13 @@ func twoSum(nums []int, target int) []int {
 	m := make(map[int]int)
 	// 遍历数组
 	for i, num := range nums {
-		// 判断 map 中是否存在 target - num 的值
+		// 判断 map 中是否存在 key: (target-num) 的值
 		if j, ok := m[target-num]; ok {
-			// 如果存在，返回 map 中的索引 j 和当前的索引 i
+			// 如果map中存在 target-num 的值（即数组中的原始索引值）
+			// 则返回 map 中 target-num 的值的索引和当前值的索引
 			return []int{j, i}
 		}
-		// 如果不存在，将当前的 num 存入 map 中
+		// 如果不存在，将当前的 num 作为 key，i 作为 value 存入 map
 		m[num] = i
 	}
 	return nil
