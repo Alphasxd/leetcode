@@ -3,6 +3,14 @@
 // 给定一个长度为 n 的整数数组 height 。有 n 条垂线，第 i 条线的两个端点是 (i, 0) 和 (i, height[i]) 。
 // 找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。
 
+// 示例 1：
+// 输入：height = [1,8,6,2,5,4,8,3,7]
+// 输出：49 
+
+// 示例 2：
+// 输入 height = [1,1]
+// 输出 1
+
 package leetcode
 
 // S(i,j)=min(h[i],h[j])×(j−i)
@@ -24,9 +32,4 @@ func maxArea(height []int) int {
 	return ans
 }
 
-func max(a, b int) int {
-	if a > b {
-		return a
-	}
-	return b
-}
+func max(a, b int) int { if a > b { return a }; return b }
