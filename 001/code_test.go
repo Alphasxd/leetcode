@@ -19,8 +19,7 @@ func TestTwoSum(t *testing.T) {
 
 	// 表格驱动测试
 	for _, tt := range tests {
-		indices := twoSum(tt.nums, tt.target)
-		if reflect.DeepEqual(indices, tt.indices) == false {
+		if indices := twoSum(tt.nums, tt.target); reflect.DeepEqual(indices, tt.indices) == false {
 			t.Errorf("twoSum(%v, %v) return %v, want %v", tt.nums, tt.target, indices, tt.indices)
 		}
 	}
