@@ -27,9 +27,9 @@ type ListNode struct {
 
 func addTwoNumbers(l1, l2 *ListNode) *ListNode {
 	// 创建一个辅助节点，指向首元节点之前的节点，模拟头结点
-	head := new(ListNode)
+	dummy := new(ListNode)
 	// 创建一个游标
-	cur := head
+	cur := dummy
 
 	// 存放进位值
 	var carry int
@@ -60,5 +60,5 @@ func addTwoNumbers(l1, l2 *ListNode) *ListNode {
 		cur.Next = &ListNode{Val: carry}
 	}
 
-	return head.Next
+	return dummy.Next
 }
