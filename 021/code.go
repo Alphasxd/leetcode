@@ -25,9 +25,9 @@ type ListNode struct {
 func mergeTwoLists(l1, l2 *ListNode) *ListNode {
 
 	// 创建一个辅助节点，在合并后的链表前面，用于返回合并后的链表
-	head := new(ListNode)
+	dummy := new(ListNode)
 	// 创建一个游标
-	cur := head
+	cur := dummy
 	// 循环比较两个链表的值，将较小的值放入新链表中
 	for l1 != nil && l2 != nil {
 		if l1.Val <= l2.Val {
@@ -50,6 +50,6 @@ func mergeTwoLists(l1, l2 *ListNode) *ListNode {
 	}
 
 	// 返回辅助节点的下一个节点，即合并后的链表
-	return head.Next
+	return dummy.Next
 }
 
