@@ -22,20 +22,41 @@ type ListNode struct {
 }
 
 // 递归，时间复杂度O(n)，空间复杂度O(n)
+// func swapPairs(head *ListNode) *ListNode {
+// 	// 如果链表为空或者只有一个节点，直接返回
+// 	if head == nil || head.Next == nil {
+// 		return head
+// 	}
+
+// 	// 最后返回的新链表的头节点
+// 	newHead := head.Next
+
+// 	// 递归调用，传入的参数是下一次递归的头节点，head指向下一次递归的头节点
+// 	head.Next = swapPairs(newHead.Next)
+// 	// newHead指向head
+// 	newHead.Next = head
+
+// 	// 返回新链表的头节点
+// 	return newHead
+// }
+
+// 迭代，时间复杂度O(n)，空间复杂度O(1)
 func swapPairs(head *ListNode) *ListNode {
-	// 如果链表为空或者只有一个节点，直接返回
-	if head == nil || head.Next == nil {
-		return head
+	// 创建一个哑节点（虚拟头结点），指向 head
+	dummy := &ListNode{Next: head}
+	// 从哑节点开始迭代
+	temp := dummy
+	// 迭代条件：temp.Next 和 temp.Next.Next 都不为空
+	for temp.Next != nil && temp.Next.Next != nil {
+		first := temp.Next
+		second := temp.Next.Next
+		// 交换 first 和 second
+		temp.Next = second
+		first.Next = second.Next
+		second.Next = first
+		// first成为下一轮待交换的前置节点
+		temp = first
 	}
-
-	// 最后返回的新链表的头节点
-	newHead := head.Next
-
-	// 递归调用，传入的参数是下一次递归的头节点，head指向下一次递归的头节点
-	head.Next = swapPairs(newHead.Next)
-	// newHead指向head
-	newHead.Next = head
-
-	// 返回新链表的头节点
-	return newHead
+	// 返回哑节点的下一个节点
+	return dummy.Next
 }
