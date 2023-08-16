@@ -24,7 +24,7 @@ type ListNode struct {
 // 时间复杂度：O(n+m)，空间复杂度：O(1)
 func mergeTwoLists(l1, l2 *ListNode) *ListNode {
 
-	// 创建一个辅助节点，在合并后的链表前面，用于返回合并后的链表
+	// 创建一个虚拟头节点，在合并后的链表前面，用于返回合并后的链表
 	dummy := new(ListNode)
 	// 创建一个游标
 	cur := dummy
