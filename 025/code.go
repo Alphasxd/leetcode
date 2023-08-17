@@ -15,12 +15,12 @@
 package leetcode
 
 type ListNode struct {
-	Val int
+	Val  int
 	Next *ListNode
 }
 
 func reverseKGroup(head *ListNode, k int) *ListNode {
-	
+
 	// 先求出链表长度
 	var len int
 	for curr := head; curr != nil; curr = curr.Next {
@@ -47,12 +47,12 @@ func reverseKGroup(head *ListNode, k int) *ListNode {
 		start := pre.Next // 翻转链表的头节点
 		next := end.Next  // 翻转链表的尾节点的下一个节点
 
-		end.Next = nil // 断开链表
+		end.Next = nil                // 断开链表
 		pre.Next = reverseList(start) // 翻转链表
-		
-		start.Next = next
-		pre = start
-		end = pre
+
+		start.Next = next // start 变成翻转链表的尾节点，连接下一个要翻转的链表的头节点
+		pre = start       // pre 指向下一个要翻转的链表之前的节点
+		end = pre         // end 和 pre 指向同一个节点
 	}
 
 	return dummy.Next
@@ -60,13 +60,13 @@ func reverseKGroup(head *ListNode, k int) *ListNode {
 }
 
 func reverseList(head *ListNode) *ListNode {
-    var prev *ListNode
+	var prev *ListNode
 	for head != nil {
 		next := head.Next // next 指向 curr 的下一个节点
 		head.Next = prev  // 反转 curr 的指针
 		prev = head       // prev 指向 curr
 		head = next       // curr 指向 next
 	}
-    // prev 指向反转后的链表的头节点
-    return prev
+	// prev 指向反转后的链表的头节点
+	return prev
 }
