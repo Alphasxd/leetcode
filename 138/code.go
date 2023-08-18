@@ -17,7 +17,30 @@ type Node struct {
 	Random *Node
 }
 
+// 利用 map 存储原链表的节点和新链表的节点，然后再遍历一次，将新链表的 next 和 random 指针指向正确的节点
+// 时间复杂度：O(n)，空间复杂度：O(n)
 func copyRandomList(head *Node) *Node {
-	
-	return nil
+	// 链表为空，直接返回
+	if head == nil {
+		return head
+	}
+	curr := head
+	// 用map存储原链表的节点和新链表的节点
+	m := make(map[*Node]*Node)
+
+	for curr != nil {
+		node := &Node{Val: curr.Val}
+		m[curr] = node
+		curr = curr.Next
+	}
+
+	curr = head
+	for curr != nil {
+		node := m[curr]
+		// 将新链表的 next 和 random 指针指向正确的节点
+		node.Next = m[curr.Next]
+		node.Random = m[curr.Random]
+		curr = curr.Next
+	}
+	return m[head]
 }
