@@ -52,4 +52,3 @@ func mergeTwoLists(l1, l2 *ListNode) *ListNode {
 	// 返回辅助节点的下一个节点，即合并后的链表
 	return dummy.Next
 }
-
