@@ -7,8 +7,8 @@ import (
 
 func TestGroupAnagrams(t *testing.T) {
 	var tests = []struct {
-		strs      []string
-		anagrams  [][]string
+		strs     []string
+		anagrams [][]string
 	}{
 		{[]string{"eat", "tea", "tan", "ate", "nat", "bat"}, [][]string{{"bat"}, {"tan", "nat"}, {"eat", "tea", "ate"}}},
 		{[]string{""}, [][]string{{""}}},

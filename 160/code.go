@@ -18,8 +18,8 @@ package leetcode
 
 // Definition for singly-linked list.
 type ListNode struct {
-    Val int
-    Next *ListNode
+	Val  int
+	Next *ListNode
 }
 
 // Map 时间复杂度O(m+n) 空间复杂度O(m)或O(n)

@@ -13,7 +13,7 @@
 
 package leetcode
 
-func moveZeroes(nums []int)  {
+func moveZeroes(nums []int) {
 	i, j := 0, 0
 	for ; i < len(nums); i++ {
 		// 如果当前元素不为0，就把当前元素放到j位置，然后j++

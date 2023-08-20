@@ -5,7 +5,7 @@
 
 // 示例 1：
 // 输入：height = [1,8,6,2,5,4,8,3,7]
-// 输出：49 
+// 输出：49
 
 // 示例 2：
 // 输入 height = [1,1]
@@ -32,4 +32,9 @@ func maxArea(height []int) int {
 	return ans
 }
 
-func max(a, b int) int { if a > b { return a }; return b }
+func max(a, b int) int {
+	if a > b {
+		return a
+	}
+	return b
+}

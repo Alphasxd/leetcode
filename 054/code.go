@@ -13,7 +13,7 @@
 package leetcode
 
 func spiralOrder(matrix [][]int) []int {
-	
+
 	res := []int{}
 
 	if len(matrix) == 0 {

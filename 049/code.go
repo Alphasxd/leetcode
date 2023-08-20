@@ -29,7 +29,7 @@ func groupAnagrams(strs []string) [][]string {
 	}
 
 	// 将 map 中的值转换为二维切片，因为 map 是无序的，所以需要遍历 map
-	// 使用 make 创建一个二维切片，指定长度和容量，长度为 0，容量为 map 的长度 
+	// 使用 make 创建一个二维切片，指定长度和容量，长度为 0，容量为 map 的长度
 	ans := make([][]string, 0, len(mp))
 	for _, v := range mp {
 		ans = append(ans, v)
@@ -38,6 +38,6 @@ func groupAnagrams(strs []string) [][]string {
 	sort.Slice(ans, func(i, j int) bool {
 		return len(ans[i]) < len(ans[j])
 	})
-	
+
 	return ans
 }

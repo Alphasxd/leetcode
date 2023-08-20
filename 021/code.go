@@ -1,6 +1,6 @@
 // 21. 合并两个有序链表 https://leetcode-cn.com/problems/merge-two-sorted-lists/
 
-// 将两个升序链表合并为一个新的 升序 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 
+// 将两个升序链表合并为一个新的 升序 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。
 
 // 示例 1：
 // 输入：l1 = [1,2,4], l2 = [1,3,4]
@@ -17,8 +17,8 @@
 package leetcode
 
 type ListNode struct {
-    Val int
-    Next *ListNode
+	Val  int
+	Next *ListNode
 }
 
 // 时间复杂度：O(n+m)，空间复杂度：O(1)
@@ -43,10 +43,10 @@ func mergeTwoLists(l1, l2 *ListNode) *ListNode {
 
 	// 有一个链表为空时，将另一个链表剩余的值放入新链表中
 	switch {
-		case l1 != nil:
-			cur.Next = l1
-		case l2 != nil:
-			cur.Next = l2
+	case l1 != nil:
+		cur.Next = l1
+	case l2 != nil:
+		cur.Next = l2
 	}
 
 	// 返回辅助节点的下一个节点，即合并后的链表

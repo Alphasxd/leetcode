@@ -42,7 +42,7 @@ func mergeKLists(lists []*ListNode) *ListNode {
 	curr := dummy
 	for hp.Len() > 0 {
 		// 取出堆顶元素（最小值）
-		min := heap.Pop(&hp).(*ListNode)		
+		min := heap.Pop(&hp).(*ListNode)
 		// 如果最小值存在后继节点，则将后继节点添加到堆中
 		if min.Next != nil {
 			heap.Push(&hp, min.Next)
@@ -51,7 +51,7 @@ func mergeKLists(lists []*ListNode) *ListNode {
 		// 将最小值添加到合并后的链表中
 		curr.Next = min
 		curr = curr.Next
-		
+
 	}
 
 	return dummy.Next

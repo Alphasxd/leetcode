@@ -22,7 +22,7 @@ func merge(intervals [][]int) [][]int {
 	})
 	res := [][]int{}
 	prev := intervals[0]
-	
+
 	// 遍历区间，从第二个区间开始
 	for i := 1; i < len(intervals); i++ {
 		// 区间不重叠，直接将区间添加到结果集
@@ -30,10 +30,12 @@ func merge(intervals [][]int) [][]int {
 			res = append(res, prev)
 			prev = cur
 		} else { // 两个区间存在重叠，合并区间，新区间右端点取两个区间右端点的最大值
-			prev[1] = func (a, b int) int {
-				if a > b { return a}
+			prev[1] = func(a, b int) int {
+				if a > b {
+					return a
+				}
 				return b
-			} (prev[1], cur[1])
+			}(prev[1], cur[1])
 		}
 	}
 	// 将最后一个区间添加到结果集

@@ -72,10 +72,10 @@ func mergeTwoLists(l1, l2 *ListNode) *ListNode {
 
 	// 有一个链表为空时，将另一个链表剩余的值放入新链表中
 	switch {
-		case l1 != nil:
-			cur.Next = l1
-		case l2 != nil:
-			cur.Next = l2
+	case l1 != nil:
+		cur.Next = l1
+	case l2 != nil:
+		cur.Next = l2
 	}
 
 	// 返回辅助节点的下一个节点，即合并后的链表
