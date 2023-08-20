@@ -3,6 +3,18 @@
 // 给你一个链表数组，每个链表都已经按升序排列。
 // 请你将所有链表合并到一个升序链表中，返回合并后的链表。
 
+// 示例 1：
+// 输入：lists = [[1,4,5],[1,3,4],[2,6]]
+// 输出：[1,1,2,3,4,4,5,6]
+
+// 示例 2：
+// 输入：lists = []
+// 输出：[]
+
+// 示例 3：
+// 输入：lists = [[]]
+// 输出：[]
+
 package leetcode
 
 import "container/heap"
@@ -30,12 +42,10 @@ func mergeKLists(lists []*ListNode) *ListNode {
 	curr := dummy
 	for hp.Len() > 0 {
 		// 取出堆顶元素（最小值）
-		min := heap.Pop(&hp).(*ListNode)
-		// min := hp.Pop().(*ListNode)
+		min := heap.Pop(&hp).(*ListNode)		
 		// 如果最小值存在后继节点，则将后继节点添加到堆中
 		if min.Next != nil {
-			// heap.Push(&hp, min.Next)
-			hp.Push(min.Next)
+			heap.Push(&hp, min.Next)
 		}
 
 		// 将最小值添加到合并后的链表中
