@@ -38,9 +38,8 @@ func levelOrder(root *TreeNode) [][]int {
 	// 遍历队列
 	for len(queue) > 0 {
 		var level []int
-		length := len(queue)
 		// 遍历当前层的节点
-		for i := 0; i < length; i++ {
+		for range queue  {
 			// 队首出队
 			node := queue[0]
 			queue = queue[1:]
