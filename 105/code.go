@@ -19,21 +19,26 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
+// 递归, 时间复杂度O(n), 空间复杂度O(n)
 func buildTree(preorder, inorder []int) *TreeNode {
-	// pre和in的长度相同，若为0则返回nil
+	// 如果前序遍历为空, 则返回nil
 	if len(preorder) == 0 {
 		return nil
 	}
-	root := &TreeNode{ Val: preorder[0] }
-	// 找到root在inorder中的位置
-	i := 0
-	for ; i < len(inorder); i++ {
-		if inorder[i] == preorder[0] {
-			break
+
+	// 从中序遍历中找到根节点的索引，根节点即为前序遍历的第一个元素
+	i := func(order []int, v int) int {
+		var index int
+		for order[index] != v {
+			index++
 		}
+		return index
+	}(inorder, preorder[0])
+
+	// 递归构造左右子树
+	return &TreeNode{
+		Val: preorder[0],
+		Left: buildTree(preorder[1:i+1], inorder[:i]),
+		Right: buildTree(preorder[i+1:], inorder[i+1:]),
 	}
-	// 递归构建左右子树
-	root.Left = buildTree(preorder[1:len(inorder[:i])+1], inorder[:i])
-	root.Right = buildTree(preorder[len(inorder[:i])+1:], inorder[i+1:])
-	return root
 }
