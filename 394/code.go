@@ -17,7 +17,6 @@ package leetcode
 
 import "strings"
 
-// TODO: 未完成
 // 思路：
 // 1.使用两个栈，一个用于保存重复次数，一个用于保存当前处理的字符串
 // 2.遍历字符串：
