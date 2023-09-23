@@ -31,11 +31,3 @@ func trap(height []int) int {
 	}
 	return ans
 }
-
-// 使用函数字面量的方式定义 max 函数
-func max(a, b int) int {
-	if a > b {
-		return a
-	}
-	return b
-}
