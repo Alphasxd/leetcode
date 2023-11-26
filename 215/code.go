@@ -18,6 +18,7 @@ func findKthLargest(nums []int, k int) int {
 	for lo < hi {
 		mid := partition(nums, lo, hi)
 		switch {
+		// k-1 是下标，mid 是下标，所以 k-1 == mid 时，找到了第 k 个最大元素
 		case k-1 < mid:
 			hi = mid - 1
 		case k-1 > mid:
@@ -30,7 +31,8 @@ func findKthLargest(nums []int, k int) int {
 	return nums[lo]
 }
 
-// 一次快排，返回枢轴元素的下标
+// 一次划分，返回枢轴元素的下标，枢轴的位置是确定的，后续不再变化
+// 枢轴左边的元素都大于枢轴，右边的元素都小于枢轴，不需要考虑枢轴两侧元素的顺序
 func partition(nums []int, lo, hi int) int {
 	pivot := nums[lo]
 	i, j := lo, hi
