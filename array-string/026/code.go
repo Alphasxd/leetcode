@@ -13,20 +13,22 @@
 package leetcode
 
 func removeDuplicates(nums []int) int {
+
+	n := len(nums)
+
 	// 数组长度为0，直接返回0
-	if len(nums) == 0 {
+	if n == 0 {
 		return 0
 	}
 
-	// 定义两个指针，一个指针i用于遍历数组，另一个指针j用于记录不重复元素的位置
-	var j int
-	for i := 1; i < len(nums); i++ {
-		if nums[j] != nums[i] {
-			// 如果nums[j] != nums[i]，说明nums[i]是不重复的元素，将nums[i]赋值给nums[j+1]
-			j++
-			nums[j] = nums[i]
+	// 定义双指针，都从下标1开始，即指向第二个元素
+	slow := 1
+	for fast := 1; fast < n; fast++ {
+		if nums[slow-1] != nums[fast] {
+			nums[slow] = nums[fast]
+			slow++
 		}
 	}
-	// 下标j从0开始，所以返回j+1
-	return j + 1
+	// 返回slow即可
+	return slow
 }
