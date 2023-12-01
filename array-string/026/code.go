@@ -16,9 +16,9 @@ func removeDuplicates(nums []int) int {
 
 	n := len(nums)
 
-	// 数组长度为0，直接返回0
-	if n == 0 {
-		return 0
+	// 数组长度为0或1时，直接返回
+	if n <= 1 {
+		return n
 	}
 
 	// 定义双指针，都从下标1开始，即指向第二个元素
