@@ -13,6 +13,7 @@
 package leetcode
 
 func rotate(nums []int, k int) {
+	// 对 k 取余，避免 k 大于数组长度时多余的反转
 	k %= len(nums)
 	// 先反转整个数组，再反转前 k 个，再反转后面的
 	reverse(nums)
@@ -23,7 +24,7 @@ func rotate(nums []int, k int) {
 // reverse 反转数组
 func reverse(nums []int) {
 	// 只需要反转一半的数组，j-i-1 是为了避免奇数数组时中间的数被反转两次
-	for i, j := 0, len(nums); i < j/2; i++ {
-		nums[i], nums[j-i-1] = nums[j-i-1], nums[i]
+	for i, n := 0, len(nums); i < n/2; i++ {
+		nums[i], nums[n-i-1] = nums[n-i-1], nums[i]
 	}
 }
