@@ -16,15 +16,14 @@ package leetcode
 
 // 贪心算法
 func maxProfit(prices []int) int {
-	// 如果数组长度小于2，直接返回0
+	// 如果数组长度小于2，直接返回0，因为没有卖出的机会
 	if len(prices) < 2 {
 		return 0
 	}
 
-	maxPro := 0
-	minPrice := prices[0]
+    maxPro, minPrice := 0, prices[0]
 
-	// 遍历数组，记录最小值和最大利润
+    // 遍历数组，记录股票价格最低点和卖出所得最大利润
 	for _, price := range prices {
 		// 如果当前值小于最小值，更新最小值
 		minPrice = min(minPrice, price)
