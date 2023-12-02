@@ -14,6 +14,7 @@
 
 package leetcode
 
+// 贪心算法
 func maxProfit(prices []int) int {
 	// 如果数组长度小于2，直接返回0
 	if len(prices) < 2 {
@@ -23,8 +24,11 @@ func maxProfit(prices []int) int {
 	maxPro := 0
 	minPrice := prices[0]
 
+	// 遍历数组，记录最小值和最大利润
 	for _, price := range prices {
+		// 如果当前值小于最小值，更新最小值
 		minPrice = min(minPrice, price)
+		// 如果当前值减去最小值大于最大利润，更新最大利润
 		maxPro = max(maxPro, price-minPrice)
 	}
 	return maxPro
