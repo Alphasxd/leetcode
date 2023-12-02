@@ -16,6 +16,8 @@ func rotate(nums []int, k int) {
 	// 对 k 取余，避免 k 大于数组长度时多余的反转
 	k %= len(nums)
 	// 先反转整个数组，再反转前 k 个，再反转后面的
+	// 向右轮转 k 个位置，等价于先反转整个数组，再反转前 k 个，再反转后面的
+	// 向左轮转 k 个位置，等价于先分别反转前 k 个和后面的，再反转整个数组
 	reverse(nums)
 	reverse(nums[:k])
 	reverse(nums[k:])
