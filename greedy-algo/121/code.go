@@ -15,20 +15,35 @@
 package leetcode
 
 // 贪心算法
+// func maxProfit(prices []int) int {
+// 	// 如果数组长度小于2，直接返回0，因为没有卖出的机会
+// 	if len(prices) < 2 {
+// 		return 0
+// 	}
+
+//     maxPro, minPrice := 0, prices[0]
+
+//     // 遍历数组，记录股票价格最低点和卖出所得最大利润
+// 	for _, price := range prices {
+// 		// 如果当前值小于最小值，更新最小值
+// 		minPrice = min(minPrice, price)
+// 		// 如果当前值减去最小值大于最大利润，更新最大利润
+// 		maxPro = max(maxPro, price-minPrice)
+// 	}
+// 	return maxPro
+// }
+
 func maxProfit(prices []int) int {
-	// 如果数组长度小于2，直接返回0，因为没有卖出的机会
-	if len(prices) < 2 {
-		return 0
+	var minPriceIndex, max int
+	for i, price := range prices {
+		// 首先列出 profit 的计算公式，当前价格减去最小价格
+		profit := price - prices[minPriceIndex]
+		if profit > max {
+			max = profit
+		} else if profit < 0 { // 当前 profit < 0，也就是当前价格小于最小价格
+			// 更新最小价格的索引
+			minPriceIndex = i
+		}
 	}
-
-    maxPro, minPrice := 0, prices[0]
-
-    // 遍历数组，记录股票价格最低点和卖出所得最大利润
-	for _, price := range prices {
-		// 如果当前值小于最小值，更新最小值
-		minPrice = min(minPrice, price)
-		// 如果当前值减去最小值大于最大利润，更新最大利润
-		maxPro = max(maxPro, price-minPrice)
-	}
-	return maxPro
+	return max
 }
