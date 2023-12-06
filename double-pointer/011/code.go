@@ -17,8 +17,8 @@ package leetcode
 // 容纳的水量取决于两个因素：两根指针指向的数字中较小值与指针之间的距离
 func maxArea(height []int) int {
 	ans := 0
-	// 双指针，从两边向中间移动，每次移动较小的那个指针
-	// 如果移动较大的那个指针，那么容器的容量一定会减小
+	// 双指针，从两边向中间移动，每次移动较小的那个指针，结果可能会变大
+	// 如果移动较大的那个指针，不会有任何意义，因为木桶原理，容器的容量只会有变得更小的可能
 	i, j := 0, len(height)-1
 	for i < j {
 		if height[i] < height[j] {
@@ -30,11 +30,4 @@ func maxArea(height []int) int {
 		}
 	}
 	return ans
-}
-
-func max(a, b int) int {
-	if a > b {
-		return a
-	}
-	return b
 }
