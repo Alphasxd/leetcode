@@ -20,17 +20,18 @@ package leetcode
 import "sort"
 
 func threeSum(nums []int) [][]int {
-	// 将 nums 排序
+	// 排序之后，可以使用双指针
 	sort.Ints(nums)
 
 	//var solution [][]int
 	solution := make([][]int, 0)
 
 	for i := 0; i < len(nums)-2; i++ {
-		// 去重
+		// 去重，如果当前元素和上一个元素相同，跳过，从第二个元素开始（index为1）
 		if i > 0 && nums[i] == nums[i-1] {
 			continue
 		}
+		// 双指针，lo 从每次循环的下一个元素开始，hi 从数组末尾开始
 		lo, hi := i+1, len(nums)-1
 		for lo < hi {
 			sum := nums[i] + nums[lo] + nums[hi]
@@ -46,7 +47,7 @@ func threeSum(nums []int) [][]int {
 				solution = append(solution, []int{nums[i], nums[lo], nums[hi]})
 				lo++
 				hi--
-				// 去重
+				// 去重，题目要求不能有重复的三元组，所以需要跳过重复的元素
 				for lo < hi && nums[lo] == nums[lo-1] {
 					lo++
 				}
