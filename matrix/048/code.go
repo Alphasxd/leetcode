@@ -13,6 +13,9 @@
 
 package leetcode
 
+// 总结：
+// 顺时针旋转90度 == 转置 + 水平翻转
+// 逆时针旋转90度 == 转置 + 垂直翻转
 func rotate(matrix [][]int) {
 	n := len(matrix)
 
