@@ -12,14 +12,15 @@
 
 package leetcode
 
+// 思路：按照顺时针顺序遍历矩阵，每次遍历完一圈，收缩边界，继续遍历下一圈，直到遍历完所有元素
 func spiralOrder(matrix [][]int) []int {
-
+	// 结果数组
 	res := []int{}
 
 	if len(matrix) == 0 {
 		return res
 	}
-
+	// 上下左右边界
 	left, right, top, bottom := 0, len(matrix[0])-1, 0, len(matrix)-1
 
 	for top <= bottom && left <= right {
