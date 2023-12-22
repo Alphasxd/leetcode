@@ -10,8 +10,8 @@
 package leetcode
 
 func convert(s string, numRows int) string {
-	// 如果只有一行，直接返回
-	if numRows == 1 {
+	// 如果只有一行，或者行数大于等于字符串长度，直接返回
+	if numRows == 1 || numRows >= len(s){
 		return s
 	}
 
