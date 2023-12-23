@@ -18,7 +18,7 @@
 
 package leetcode
 
-// 只需要 magazine中的每个字符的出现次数都大于等于ransomNote中的字符出现次数即可
+// 只需要 magazine中的每个字符的出现次数都大于等于ransomNote中的字符出现次数即可，和242题有效的字母异位词类似
 func canConstruct(ransomNote string, magazine string) bool {
 	// 如果ransomNote的长度大于magazine，直接返回false
 	if len(ransomNote) > len(magazine) {
