@@ -35,9 +35,5 @@ func groupAnagrams(strs []string) [][]string {
 		ans = append(ans, v)
 	}
 
-	sort.Slice(ans, func(i, j int) bool {
-		return len(ans[i]) < len(ans[j])
-	})
-
 	return ans
 }
