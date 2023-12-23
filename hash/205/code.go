@@ -14,6 +14,7 @@
 
 package leetcode
 
+// 双向映射，与290题单词规律类似
 func isIsomorphic(s string, t string) bool {
 	// 如果两个字符串长度不相等，直接返回 false
 	if len(s) != len(t) {
