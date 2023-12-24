@@ -16,9 +16,9 @@ package leetcode
 
 func longestConsecutive(nums []int) int {
 
-	// 创建一个 map，key 为 nums 中的元素，value 为 true
+	// 创建一个 map，key 为 nums 中的元素
 	m := make(map[int]bool)
-
+	// 将 nums 中存在的元素全部存入 map，value 为 true
 	for _, num := range nums {
 		m[num] = true
 	}
@@ -27,7 +27,8 @@ func longestConsecutive(nums []int) int {
 
 	// 遍历 map
 	for num := range m {
-		// 如果 num-1 存在，说明 num-1 已经被遍历过了，跳过
+		// num不应该存在前驱数，如果存在则跳过本次循环
+		// 确保 num 是连续序列的第一个数
 		if m[num-1] {
 			continue // 跳过本次循环
 		}
