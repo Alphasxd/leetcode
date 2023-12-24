@@ -13,7 +13,7 @@
 
 package leetcode
 
-import "sort"
+// import "sort"
 
 // 只需要 s 和 t 中每个字符出现的次数都相同即可，和383题赎金信类似
 // func isAnagram(s string, t string) bool {
