@@ -33,22 +33,37 @@ package leetcode
 // 	return true
 // }
 
-func getNext(n int) int {
-	var next int
-	for n > 0 {
-		t := n % 10
-		next += t * t
-		n /= 10
-	}
-	return next
-}
+// func getNext(n int) int {
+// 	var next int
+// 	for n > 0 {
+// 		t := n % 10
+// 		next += t * t
+// 		n /= 10
+// 	}
+// 	return next
+// }
 
-// 双指针，记录快慢指针的值，如果相等，说明不是快乐数
+// // 双指针，记录快慢指针的值，如果相等，说明不是快乐数
+// func isHappy(n int) bool {
+// 	slow, fast := n, getNext(n)
+// 	for fast != 1 && slow != fast {
+// 		slow = getNext(slow)
+// 		fast = getNext(getNext(fast))
+// 	}
+// 	return fast == 1
+// }
+
+// 数学套路，如果不是快乐数，最终会进入 4 -> 16 -> 37 -> 58 -> 89 -> 145 -> 42 -> 20 -> 4 的循环
 func isHappy(n int) bool {
-	slow, fast := n, getNext(n)
-	for fast != 1 && slow != fast {
-		slow = getNext(slow)
-		fast = getNext(getNext(fast))
+	squares := []int{0, 1, 4, 9, 16, 25, 36, 49, 64, 81}
+	for n != 1 && n != 4 {
+		var next int
+		for n > 0 {
+			t := n % 10
+			next += squares[t]
+			n /= 10
+		}
+		n = next
 	}
-	return fast == 1
+	return n == 1
 }
