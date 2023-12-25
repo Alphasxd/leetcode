@@ -31,8 +31,9 @@ func merge(intervals [][]int) [][]int {
 		if cur := intervals[i]; prev[1] < cur[0] {
 			res = append(res, prev)
 			prev = cur
-		} else { // 两个区间存在重叠，合并区间，新区间右端点取两个区间右端点的最大值
-			prev[1] = max(prev[1], cur[1])
+		} else if prev[1] < cur[1] { 
+			// 两个区间存在重叠，合并区间，新区间右端点取两个区间右端点的最大值
+			prev[1] = cur[1]
 		}
 	}
 	// 将最后一个区间添加到结果集
