@@ -36,7 +36,7 @@ func addTwoNumbers(l1, l2 *ListNode) *ListNode {
 
 	// 遍历两个链表，有一个不为空就继续遍历
 	for l1 != nil || l2 != nil {
-		// 创建新节点用于存放相加后的值
+		// 创建新节点用于存放相加后的值，因为返回一个新链表，所以每次都要创建一个新节点
 		cur.Next = new(ListNode)
 		cur = cur.Next
 
@@ -55,7 +55,7 @@ func addTwoNumbers(l1, l2 *ListNode) *ListNode {
 		carry /= 10
 	}
 
-	// 如果最后还有进位值，就创建一个新节点
+	// 如果最后还有进位值，就再创建一个新节点，此时carry不需要再除以10
 	if carry > 0 {
 		cur.Next = &ListNode{Val: carry}
 	}
