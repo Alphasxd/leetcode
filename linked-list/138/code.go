@@ -24,10 +24,11 @@ func copyRandomList(head *Node) *Node {
 	if head == nil {
 		return head
 	}
-	curr := head
 	// 用map存储原链表的节点和新链表的节点
 	m := make(map[*Node]*Node)
 
+	curr := head
+	// 遍历原链表，将原链表的节点和新链表的节点存储到map中，此时新链表的 next 和 random 指针都为空
 	for curr != nil {
 		node := &Node{Val: curr.Val}
 		m[curr] = node
@@ -35,6 +36,7 @@ func copyRandomList(head *Node) *Node {
 	}
 
 	curr = head
+	// 再次遍历原链表，将新链表的 next 和 random 指针指向正确的节点
 	for curr != nil {
 		node := m[curr]
 		// 将新链表的 next 和 random 指针指向正确的节点
@@ -42,5 +44,6 @@ func copyRandomList(head *Node) *Node {
 		node.Random = m[curr.Random]
 		curr = curr.Next
 	}
+	// 最后直接返回map中的头节点，对应的值就是新链表的头节点
 	return m[head]
 }
