@@ -20,15 +20,18 @@ type TreeNode struct {
 
 // 递归 时间复杂度O(n) 空间复杂度O(n)
 func isSymmetric(root *TreeNode) bool {
-	var check func(*TreeNode, *TreeNode) bool
-	check = func(left, right *TreeNode) bool {
-		if left == nil && right == nil {
-			return true
-		}
-		if left == nil || right == nil || left.Val != right.Val {
-			return false
-		}
-		return check(left.Left, right.Right) && check(left.Right, right.Left)
+	if root == nil {
+		return true
 	}
-	return check(root, root)
+	return symmetric(root.Left, root.Right)
+}
+
+func symmetric(p, q *TreeNode) bool {
+	switch {
+	case p == nil || q == nil:
+		return p == q
+	case p.Val != q.Val:
+		return false
+	}
+	return symmetric(p.Left, q.Right) && symmetric(p.Right, q.Left)
 }
