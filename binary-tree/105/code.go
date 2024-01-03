@@ -36,6 +36,10 @@ func buildTree(preorder, inorder []int) *TreeNode {
 	}(inorder, preorder[0])
 
 	// 递归构造左右子树
+	// 根节点为 preorder[0], 中序遍历的根节点索引为 i
+	// 左右子树的节点个数对应相等即可，因此可以得出 preorder在左右子树的划分
+	// 前序遍历的左子树为 preorder[1:i+1], 中序遍历的左子树为 inorder[:i]
+	// 前序遍历的右子树为 preorder[i+1:], 中序遍历的右子树为 inorder[i+1:]
 	return &TreeNode{
 		Val: preorder[0],
 		Left: buildTree(preorder[1:i+1], inorder[:i]),
