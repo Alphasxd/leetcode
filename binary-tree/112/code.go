@@ -5,13 +5,13 @@
 
 package leetcode
 
-type TreenNode struct {
+type TreeNode struct {
 	Val   int
-	Left  *TreenNode
-	Right *TreenNode
+	Left  *TreeNode
+	Right *TreeNode
 }
 
-func hasPathSum(root *TreenNode, sum int) bool {
+func hasPathSum(root *TreeNode, sum int) bool {
 	// 空树，直接返回false
 	if root == nil {
 		return false
