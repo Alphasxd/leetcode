@@ -12,17 +12,13 @@ type TreeNode struct {
 
 // 递归
 // func preorderTraversal(root *TreeNode) []int {
-// 	var res []int
-// 	var preorder func(*TreeNode)
-// 	preorder = func(node *TreeNode)  {
-// 		if node == nil {
-// 			return
-// 		}
-// 		res = append(res, node.Val)
-// 		preorder(node.Left)
-// 		preorder(node.Right)
+// 	if root == nil {
+// 		return nil
 // 	}
-// 	preorder(root)
+// 	var res []int
+// 	res = append(res, root.Val)
+// 	res = append(res, preorderTraversal(root.Left)...)
+// 	res = append(res, preorderTraversal(root.Right)...)
 // 	return res
 // }
 
@@ -30,19 +26,14 @@ type TreeNode struct {
 func preorderTraversal(root *TreeNode) []int {
 	var res []int
 	var stack []*TreeNode
-	for root != nil || len(stack) > 0 {
-		for root != nil {
-			// 访问根节点，并将其入栈
-			res = append(res, root.Val)
-			stack = append(stack, root)
-			// 访问左子树
-			root = root.Left
+	for curr := root; curr != nil || len(stack) > 0; {
+		for curr != nil {
+			res = append(res, curr.Val)
+			stack = append(stack, curr)
+			curr = curr.Left
 		}
-		if len(stack) > 0 {
-			// 弹出栈顶元素，并将其右子树置为当前节点
-			root = stack[len(stack)-1].Right
-			stack = stack[:len(stack)-1]
-		}
+		curr = stack[len(stack)-1].Right
+		stack = stack[:len(stack)-1]
 	}
 	return res
 }
