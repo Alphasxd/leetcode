@@ -54,6 +54,7 @@ func inorderTraversal(root *TreeNode) []int {
 		curr = stack[len(stack)-1]
 		stack = stack[:len(stack)-1]
 		res = append(res, curr.Val)
+		// 访问右子树
 		curr = curr.Right
 	}
 

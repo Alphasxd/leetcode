@@ -27,11 +27,14 @@ func preorderTraversal(root *TreeNode) []int {
 	var res []int
 	var stack []*TreeNode
 	for curr := root; curr != nil || len(stack) > 0; {
+		// 沿着左子树一直往下走，直到走到叶子节点
 		for curr != nil {
+			// 前序遍历，先访问根节点
 			res = append(res, curr.Val)
 			stack = append(stack, curr)
 			curr = curr.Left
 		}
+		// 栈顶元素出栈，并访问该节点，由于已经访问过左子树，所以直接访问右子树
 		curr = stack[len(stack)-1].Right
 		stack = stack[:len(stack)-1]
 	}
