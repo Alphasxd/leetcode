@@ -17,20 +17,6 @@
 
 package leetcode
 
-// 动态规划
-// func maxSubArray(nums []int) int {
-// 	max := nums[0]
-// 	for i := 1; i < len(nums); i++ {
-// 		if nums[i-1] + nums[i] > nums[i] {
-// 			nums[i] += nums[i-1]
-// 		}
-// 		if nums[i] > max {
-// 			max = nums[i]
-// 		}
-// 	}
-// 	return max
-// }
-
 // 贪心算法
 func maxSubArray(nums []int) int {
 	var max, sum int
@@ -42,6 +28,7 @@ func maxSubArray(nums []int) int {
 			max = sum
 		}
 		// 如果 sum 小于 0，将 sum 置为 0，因为 0 > 负数
+		// 舍弃过去，从新开始，贪心的思想
 		if sum < 0 {
 			sum = 0
 		}
