@@ -34,11 +34,11 @@ func mergeKLists(lists []*ListNode) *ListNode {
 			hp = append(hp, head)
 		}
 	}
-	// 将 hp 初始化为堆
+	// 将 hp 初始化为堆，因为 hp 实现了 heap.Interface 接口，所以可以直接调用 heap.Init(hp)
 	heap.Init(&hp)
 
 	// 创建哑节点，用于返回合并后的链表
-	dummy := &ListNode{}
+	dummy := new(ListNode)
 	curr := dummy
 	for hp.Len() > 0 {
 		// 取出堆顶元素（最小值）
@@ -58,13 +58,29 @@ func mergeKLists(lists []*ListNode) *ListNode {
 
 }
 
-// 实现最小堆
+// 实现 heap.Interface 接口
+// type Interface interface {
+// 	sort.Interface
+// Len() int
+// Less(i, j int) bool
+// Swap(i, j int)
+// 	Push(x interface{}) // add x as element Len()
+// 	Pop() interface{}   // remove and return element Len() - 1.
+// }
+func (h ListNodeHeap) Len() int {
+	return len(h)
+}
+
 func (h ListNodeHeap) Less(i, j int) bool {
 	return h[i].Val < h[j].Val
 }
 
-func (h ListNodeHeap) Len() int {
-	return len(h)
+func (h ListNodeHeap) Swap(i, j int) {
+	h[i], h[j] = h[j], h[i]
+}
+
+func (h *ListNodeHeap) Push(x any) {
+	*h = append(*h, x.(*ListNode))
 }
 
 func (h *ListNodeHeap) Pop() any {
@@ -73,12 +89,4 @@ func (h *ListNodeHeap) Pop() any {
 	x := old[n-1]
 	*h = old[:n-1]
 	return x
-}
-
-func (h *ListNodeHeap) Push(x any) {
-	*h = append(*h, x.(*ListNode))
-}
-
-func (h ListNodeHeap) Swap(i, j int) {
-	h[i], h[j] = h[j], h[i]
 }
