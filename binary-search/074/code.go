@@ -7,22 +7,35 @@
 
 package leetcode
 
+import "sort"
+
 // 从右上角开始搜索，如果当前值比 target 小，则向下搜索，如果当前值比 target 大，则向左搜索
 // 时间复杂度：O(m+n)，空间复杂度：O(1)
+// func searchMatrix(matrix [][]int, target int) bool {
+// 	m, n := len(matrix), len(matrix[0])
+// 	i, j := 0, n-1
+// 	for {
+// 		if matrix[i][j] == target {
+// 			return true
+// 		}
+// 		if matrix[i][j] < target {
+// 			i++
+// 		} else {
+// 			j--
+// 		}
+// 		if i >= m || j < 0 {
+// 			break
+// 		}
+// 	}
+// 	return false
+// }
+
+// 二分查找
 func searchMatrix(matrix [][]int, target int) bool {
-	m, n := len(matrix), len(matrix[0])
-	i, j := 0, n-1
-	for {
-		if matrix[i][j] == target {
+	for _, row := range matrix {
+		i := sort.SearchInts(row, target)
+		if i < len(row) && row[i] == target {
 			return true
-		}
-		if matrix[i][j] < target {
-			i++
-		} else {
-			j--
-		}
-		if i >= m || j < 0 {
-			break
 		}
 	}
 	return false
