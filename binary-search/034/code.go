@@ -27,6 +27,7 @@ func searchRange(nums []int, target int) []int {
 	if left == len(nums) || nums[left] != target {
 		return []int{-1, -1}
 	}
+	// 按照题目意思，因为存在左索引了，所以不需要再对右索引进行判断是否越界和是否等于 target
 	// 找到 target+1 的索引，再往前移动一个位置, 即为 target 的最右索引
 	right := sort.SearchInts(nums, target+1) - 1
 	return []int{left, right}
