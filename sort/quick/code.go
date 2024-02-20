@@ -8,7 +8,6 @@ func quickSort(nums []int, lo, hi int) {
 	}
 }
 
-
 // 一次划分，枢轴的位置是确定的，后续不再变化
 // 枢轴左边的元素都小于枢轴，右边的元素都大于枢轴，但左右两边的元素不一定有序
 func partition(nums []int, lo, hi int) int {
