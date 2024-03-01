@@ -43,6 +43,7 @@ func sortList(head *ListNode) *ListNode {
 
 }
 
+// 快慢指针找中间节点
 func findMiddle(head *ListNode) *ListNode {
 	slow, fast := head, head.Next
 	for fast != nil && fast.Next != nil {
@@ -56,16 +57,16 @@ func mergeTwoLists(l1, l2 *ListNode) *ListNode {
 	// 创建一个虚拟头节点，在合并后的链表前面，用于返回合并后的链表
 	dummy := new(ListNode)
 	// 创建一个游标
-	cur := dummy
+	curr := dummy
 	// 循环比较两个链表的值，将较小的值放入新链表中
 	for l1 != nil && l2 != nil {
 		if l1.Val <= l2.Val {
-			cur.Next = l1
-			cur = cur.Next
+			curr.Next = l1
+			curr = curr.Next
 			l1 = l1.Next
 		} else {
-			cur.Next = l2
-			cur = cur.Next
+			curr.Next = l2
+			curr = curr.Next
 			l2 = l2.Next
 		}
 	}
@@ -73,9 +74,9 @@ func mergeTwoLists(l1, l2 *ListNode) *ListNode {
 	// 有一个链表为空时，将另一个链表剩余的值放入新链表中
 	switch {
 	case l1 != nil:
-		cur.Next = l1
+		curr.Next = l1
 	case l2 != nil:
-		cur.Next = l2
+		curr.Next = l2
 	}
 
 	// 返回辅助节点的下一个节点，即合并后的链表

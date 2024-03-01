@@ -37,7 +37,7 @@ func search(nums []int, target int) int {
 				lo = mid + 1
 			}
 		} else {
-			if nums[mid] < target && target < nums[len(nums)] {
+			if nums[mid] < target && target <= nums[len(nums)-1] {
 				lo = mid + 1
 			} else {
 				hi = mid

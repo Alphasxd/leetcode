@@ -29,6 +29,7 @@ func invertTree(root *TreeNode) *TreeNode {
 		return nil
 	}
 
+	// 递归翻转左右子树
 	root.Left, root.Right = invertTree(root.Right), invertTree(root.Left)
 
 	return root

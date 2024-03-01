@@ -29,10 +29,10 @@ type TreeNode struct {
 
 // BFS 队列实现 时间复杂度O(n) 空间复杂度O(n)
 func levelOrder(root *TreeNode) [][]int {
-	var res [][]int
 	if root == nil {
-		return res
+		return nil
 	}
+	var res [][]int
 	// 用切片模拟队列
 	queue := []*TreeNode{root}
 	// 遍历队列

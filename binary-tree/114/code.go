@@ -22,19 +22,21 @@ type TreeNode struct {
 }
 
 func flatten(root *TreeNode) {
-	// 从根节点开始，将左子树插入到右子树的地方
-	for ; root != nil; root = root.Right {
-		// 记录右子树
-		right := root.Right
-		// 将左子树插入到右子树的地方，原来的左子树置空
-		root.Left, root.Right = nil, root.Left
-
-		// 从root的右子树开始，找到最右边的节点
-		prev := root
+	curr := root
+	// 通过右指针遍历
+	for curr != nil {
+		// 提前记录当前节点的右子树
+		right := curr.Right
+		// 将当前节点的左子树插入到右子树的地方
+		curr.Left, curr.Right = nil, curr.Left
+		// 将原来的右子树接到当前右子树的最右边节点
+		prev := curr
 		for prev.Right != nil {
 			prev = prev.Right
 		}
 		// 将原来的右子树接到当前右子树的最右边节点
 		prev.Right = right
+		// 考虑下一个节点
+		curr = curr.Right
 	}
 }

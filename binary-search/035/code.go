@@ -31,6 +31,6 @@ func searchInsert(nums []int, target int) int {
 			return mid
 		}
 	}
-	// 未找到，返回插入位置，即 lo
+	// 未找到，返回插入位置，即 lo，lo总是指向第一个大于等于 target 的元素
 	return lo
 }

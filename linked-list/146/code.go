@@ -20,7 +20,7 @@ type pair struct {
 // LRU 缓存，使用双向链表和哈希表实现
 type LRUCache struct {
 	capacity int
-	list     *list.List
+	list     *list.List // 双向链表
 	cache    map[int]*list.Element
 }
 
