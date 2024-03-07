@@ -28,13 +28,13 @@ func letterCombinations(digits string) []string {
 
 	var dfs func(int)
 	dfs = func(i int) {
-		// 如果已经遍历到最后一位，就把结果加入到结果集中
+		// 如果已经遍历完最后一位，此时i+1=digits，把结果加入到结果集中
 		if i == len(digits) {
 			results = append(results, string(temp))
 			return
 		}
 
-		// 获取当前数字对应字母的 byte 数组
+		// 获取当前数字对应字母的 byte 数组，因为数字9键的字母是从2开始的，所以要减去2
 		letters := buttons[digits[i]-'2']
 
 		// 遍历字母数组，把每个字母加入到临时数组中
