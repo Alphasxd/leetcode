@@ -19,9 +19,9 @@ type pair struct {
 
 // LRU 缓存，使用双向链表和哈希表实现
 type LRUCache struct {
-	capacity int
-	list     *list.List // 双向链表
-	cache    map[int]*list.Element
+	capacity int                   // 容量
+	list     *list.List            // 双向链表
+	cache    map[int]*list.Element // 哈希表
 }
 
 func Constructor(capacity int) LRUCache {
@@ -58,10 +58,3 @@ func (c *LRUCache) Put(key int, value int) {
 	// 在链表头部插入新节点，并在哈希表中添加 key 和节点的映射
 	c.cache[key] = c.list.PushFront(pair{key, value})
 }
-
-/**
- * Your LRUCache object will be instantiated and called as such:
- * obj := Constructor(capacity);
- * param_1 := obj.Get(key);
- * obj.Put(key,value);
- */
