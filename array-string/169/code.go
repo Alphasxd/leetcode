@@ -24,7 +24,7 @@ func majorityElement(nums []int) int {
 		}
 		// 如果当前num等于major则计数加一，否则减一
 		if num == major {
-			cnt ++
+			cnt++
 		} else {
 			cnt--
 		}
