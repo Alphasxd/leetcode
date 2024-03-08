@@ -51,6 +51,7 @@ func (c *LRUCache) Put(key int, value int) {
 		return
 	}
 	// 如果 cache 已满，移除链表尾部节点，并删除哈希表中对应的项以及双向链表中的节点
+	// 删除链表尾部节点就符合了 LRU 的要求，因为尾部节点是最久未使用的，每次插入新节点或者更新节点都是在链表头部
 	if c.list.Len() == c.capacity {
 		delete(c.cache, c.list.Back().Value.(pair).key)
 		c.list.Remove(c.list.Back())
