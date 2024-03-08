@@ -37,11 +37,14 @@ func (t *Trie) SearchPrefix(prefix string) *Trie {
 	node := t
 	for _, ch := range prefix {
 		ch -= 'a'
+		// 如果不存在，说明前缀 prefix 不存在
 		if node.child[ch] == nil {
 			return nil
 		}
+		// 指向子节点，继续遍历
 		node = node.child[ch]
 	}
+	// 返回最后一个节点，即前缀的最后一个字符
 	return node
 }
 
