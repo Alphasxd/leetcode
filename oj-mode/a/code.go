@@ -1,4 +1,4 @@
-// 计算a+b https://ac.nowcoder.com/acm/contest/5657/A
+// 计算a+b https://ac.nowcoder.com/acm/problem/18204
 
 // 输入描述：
 // 输入包括两个正整数 a, b (1 <= a, b <= 10^9)，输入数据包括多组
