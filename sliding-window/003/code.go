@@ -50,8 +50,10 @@ func lengthOfLongestSubstring(s string) int {
     for right, c := range s {
 		// 判断字符是否出现过，更新子串起始位置
         if _, ok := m[c]; ok && m[c] >= left {
+            // 字符已经出现过，更新left的值
             left = m[c] + 1
         }
+        // 更新字符最后出现的位置
         m[c] = right
         if right-left+1 > length {
             length = right - left + 1
