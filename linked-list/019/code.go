@@ -28,7 +28,7 @@ func removeNthFromEnd(head *ListNode, n int) *ListNode {
 	dummy := &ListNode{Next: head}
 
 	// 将 head 指针移动到第 n 个节点
-	for i := 0; i < n; i++ {
+	for range n {
 		head = head.Next
 	}
 
