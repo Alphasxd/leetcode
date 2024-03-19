@@ -21,7 +21,7 @@ func searchInsert(nums []int, target int) int {
 	lo, hi := 0, len(nums)
 	// 二分查找
 	for lo < hi {
-		mid := lo + (hi-lo)/2
+		mid := int(uint(lo+hi) >> 1)
 		switch {
 		case nums[mid] < target:
 			lo = mid + 1
