@@ -39,21 +39,14 @@ type ListNode struct {
 
 // 快慢指针，时间复杂度 O(n)，空间复杂度 O(1)
 func hasCycle(head *ListNode) bool {
-	// 如果链表为空或者只有一个节点，那么肯定没有环
-	if head == nil || head.Next == nil {
-		return false
-	}
+	slow, fast := head, head
 
-	// 快慢指针，从 head 之前的虚拟节点开始
-	slow, fast := head, head.Next
-
-	for slow != fast {
-		// 如果快指针到达了链表尾部，那么肯定没有环
-		if fast == nil || fast.Next == nil {
-			return false
-		}
+	for fast != nil && fast.Next != nil {
 		slow = slow.Next
 		fast = fast.Next.Next
+		if slow == fast {
+			return true
+		}
 	}
-	return true
+	return false
 }
