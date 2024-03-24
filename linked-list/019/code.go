@@ -23,7 +23,6 @@ type ListNode struct {
 
 // 时间复杂度：O(n)，空间复杂度：O(1)
 func removeNthFromEnd(head *ListNode, n int) *ListNode {
-
 	// 创建一个虚拟头节点，指向首元节点的前一个节点
 	dummy := &ListNode{Next: head}
 
@@ -33,16 +32,16 @@ func removeNthFromEnd(head *ListNode, n int) *ListNode {
 	}
 
 	// 创建一个前驱节点
-	prev := dummy
+	curr := dummy
 
 	// 遍历链表，直到 head 指针指向 nil，此时 prev 指针指向倒数第 n 个节点的前一个节点
 	for head != nil {
 		head = head.Next
-		prev = prev.Next
+		curr = curr.Next
 	}
 
 	// 删除倒数第 n 个节点
-	prev.Next = prev.Next.Next
+	curr.Next = curr.Next.Next
 
 	return dummy.Next
 }
