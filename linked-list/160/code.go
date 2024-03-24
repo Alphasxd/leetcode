@@ -41,10 +41,6 @@ type ListNode struct {
 
 // 双指针 时间复杂度O(m+n) 空间复杂度O(1)
 func getIntersectionNode(headA, headB *ListNode) *ListNode {
-	// 如果有一个链表为空，直接返回
-	if headA == nil || headB == nil {
-		return nil
-	}
 
 	// 两个指针分别指向两个链表的头节点
 	pA, pB := headA, headB
