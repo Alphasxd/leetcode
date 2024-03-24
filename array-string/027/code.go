@@ -15,20 +15,6 @@
 package leetcode
 
 // 双指针
-// func removeElement(nums []int, val int) int {
-// 	// 当作 index 和 返回值
-// 	var i int
-// 	// 遍历数组，如果元素不等于 val，就把该元素放到数组的 i 位置
-// 	for _, num := range nums {
-// 		if num != val {
-// 			nums[i] = num
-// 			i++
-// 		}
-// 	}
-// 	return i
-// }
-
-// 双指针
 func removeElement(nums []int, val int) int {
 	slow, fast := 0, 0 // 快慢指针
 	for fast < len(nums) {
@@ -39,6 +25,6 @@ func removeElement(nums []int, val int) int {
 		}
 		fast++
 	}
-	// 38 行 slow已经自增了，所以直接返回 slow 即可
+	// 26 行 slow已经自增了，所以直接返回 slow 即可
 	return slow
 }
