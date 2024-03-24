@@ -61,9 +61,9 @@ func mergeKLists(lists []*ListNode) *ListNode {
 // 实现 heap.Interface 接口
 // type Interface interface {
 // 	sort.Interface
-// Len() int
-// Less(i, j int) bool
-// Swap(i, j int)
+// 	Len() int
+// 	Less(i, j int) bool
+// 	Swap(i, j int)
 // 	Push(x interface{}) // add x as element Len()
 // 	Pop() interface{}   // remove and return element Len() - 1.
 // }
