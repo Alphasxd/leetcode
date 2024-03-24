@@ -52,8 +52,11 @@ func detectCycle(head *ListNode) *ListNode {
 			return nil
 		}
 		fast = fast.Next.Next
+		// 快慢指针相遇
 		if slow == fast {
+			// 从 head 和相遇点同时出发
 			p := head
+			// 再次相遇即为环的入口
 			for p != slow {
 				p = p.Next
 				slow = slow.Next
