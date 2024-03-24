@@ -28,19 +28,17 @@ package leetcode
 // 	return i
 // }
 
-// 双指针优化
+// 双指针
 func removeElement(nums []int, val int) int {
-	// 双指针分别指向数组的头和尾
-	left, right := 0, len(nums)
-	for left < right {
-		// 如果左指针指向的元素等于 val，就把右指针指向的元素放到左指针指向的位置
-		// 如果移动过后，左指针指向的元素还是等于 val，就继续将右指针指向的元素放到左指针指向的位置，直到左指针指向的元素不等于 val
-		if nums[left] == val {
-			nums[left] = nums[right-1]
-			right--
-		} else {
-			left++
+	slow, fast := 0, 0 // 快慢指针
+	for fast < len(nums) {
+		// 只将不等于 val 的元素放到数组的 slow 位置
+		if nums[fast] != val {
+			nums[slow] = nums[fast]
+			slow++
 		}
+		fast++
 	}
-	return left
+	// 38 行 slow已经自增了，所以直接返回 slow 即可
+	return slow
 }
