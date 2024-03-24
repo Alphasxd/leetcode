@@ -24,69 +24,56 @@ type ListNode struct {
 	Next *ListNode
 }
 
-type ListNodeHeap []*ListNode
-
 func mergeKLists(lists []*ListNode) *ListNode {
-	hp := ListNodeHeap{}
-	// 将每个待合并的链表的首元节点添加到小顶堆中
+	pq := make(PriorityQueue, 0)
+	// 初始化堆
+	heap.Init(&pq)
+	// 将所有链表的头结点加入堆
 	for _, head := range lists {
 		if head != nil {
-			hp = append(hp, head)
+			heap.Push(&pq, head)
 		}
 	}
-	// 将 hp 初始化为堆，因为 hp 实现了 heap.Interface 接口，所以可以直接调用 heap.Init(hp)
-	heap.Init(&hp)
-
-	// 创建哑节点，用于返回合并后的链表
 	dummy := new(ListNode)
 	curr := dummy
-	for hp.Len() > 0 {
-		// 取出堆顶元素（最小值）
-		min := heap.Pop(&hp).(*ListNode)
-		// 如果最小值存在后继节点，则将后继节点添加到堆中
+	// 从堆中取出最小的节点，加入到合并链表中
+	for pq.Len() > 0 {
+		// 取出最小的节点
+		min := heap.Pop(&pq).(*ListNode)
+		// 将最小节点的下一个节点加入堆
 		if min.Next != nil {
-			heap.Push(&hp, min.Next)
+			heap.Push(&pq, min.Next)
 		}
-
-		// 将最小值添加到合并后的链表中
+		// 将最小节点加入到合并链表中
 		curr.Next = min
 		curr = curr.Next
-
 	}
-
 	return dummy.Next
-
 }
 
-// 实现 heap.Interface 接口
-// type Interface interface {
-// 	sort.Interface
-// 	Len() int
-// 	Less(i, j int) bool
-// 	Swap(i, j int)
-// 	Push(x interface{}) // add x as element Len()
-// 	Pop() interface{}   // remove and return element Len() - 1.
-// }
-func (h ListNodeHeap) Len() int {
-	return len(h)
+// 实现一个最小堆
+type PriorityQueue []*ListNode
+
+func (pq PriorityQueue) Len() int {
+	return len(pq)
 }
 
-func (h ListNodeHeap) Less(i, j int) bool {
-	return h[i].Val < h[j].Val
+func (pq PriorityQueue) Less(i, j int) bool {
+	return pq[i].Val < pq[j].Val
 }
 
-func (h ListNodeHeap) Swap(i, j int) {
-	h[i], h[j] = h[j], h[i]
+func (pq PriorityQueue) Swap(i, j int) {
+	pq[i], pq[j] = pq[j], pq[i]
 }
 
-func (h *ListNodeHeap) Push(x any) {
-	*h = append(*h, x.(*ListNode))
+func (pq *PriorityQueue) Push(x any) {
+	*pq = append(*pq, x.(*ListNode))
 }
 
-func (h *ListNodeHeap) Pop() any {
-	old := *h
+func (pq *PriorityQueue) Pop() any {
+	old := *pq
 	n := len(old)
 	x := old[n-1]
-	*h = old[:n-1]
+	*pq = old[:n-1]
 	return x
 }
