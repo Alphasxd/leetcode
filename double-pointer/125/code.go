@@ -5,12 +5,16 @@
 
 package leetcode
 
-import "unicode"
+import (
+	"strings"
+	"unicode"
+)
 
 func isPalindrome(s string) bool {
+	s = strings.ToLower(s)
 	// 双指针
 	i, j := 0, len(s)-1
-	
+
 	for i < j {
 		// 非字母数字，跳过
 		if !isAlphanumeric(rune(s[i])) {
@@ -22,7 +26,7 @@ func isPalindrome(s string) bool {
 			continue
 		}
 		// 不相等，返回 false
-		if toLower(s[i]) != toLower(s[j]) {
+		if s[i] != s[j] {
 			return false
 		}
 		i++
@@ -33,11 +37,4 @@ func isPalindrome(s string) bool {
 
 func isAlphanumeric(c rune) bool {
 	return unicode.IsLetter(c) || unicode.IsDigit(c)
-}
-
-func toLower(c byte) byte {
-	if c >= 'A' && c <= 'Z' {
-		return c + 32
-	}
-	return c
 }
