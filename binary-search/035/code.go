@@ -18,19 +18,19 @@
 package leetcode
 
 func searchInsert(nums []int, target int) int {
-	lo, hi := 0, len(nums)
+	i, j := 0, len(nums)
 	// 二分查找
-	for lo < hi {
-		mid := int(uint(lo+hi) >> 1)
+	for i < j {
+		mid := int(uint(i+j) >> 1)
 		switch {
 		case nums[mid] < target:
-			lo = mid + 1
+			i = mid + 1
 		case nums[mid] > target:
-			hi = mid
+			j = mid
 		default:
 			return mid
 		}
 	}
-	// 未找到，返回插入位置，即 lo，lo总是指向第一个大于等于 target 的元素
-	return lo
+	// 未找到，返回插入位置，即 i，是指向第一个大于等于 target 的元素
+	return i
 }
