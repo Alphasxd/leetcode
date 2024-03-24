@@ -32,16 +32,16 @@ func removeNthFromEnd(head *ListNode, n int) *ListNode {
 	}
 
 	// 创建一个前驱节点
-	curr := dummy
+	prev := dummy
 
 	// 遍历链表，直到 head 指针指向 nil，此时 prev 指针指向倒数第 n 个节点的前一个节点
 	for head != nil {
 		head = head.Next
-		curr = curr.Next
+		prev = prev.Next
 	}
 
-	// 删除倒数第 n 个节点
-	curr.Next = curr.Next.Next
+	//  prev.Next 指向 prev.Next.Next即可删除节点
+	prev.Next = prev.Next.Next
 
 	return dummy.Next
 }
