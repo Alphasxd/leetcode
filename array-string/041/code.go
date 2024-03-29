@@ -17,22 +17,21 @@
 
 package leetcode
 
-// 哈希表，时间复杂度：O(n)，空间复杂度：O(n)
-// func firstMissingPositive(nums []int) int {
-// 	m := make(map[int]bool, len(nums))
-// 	for _, num := range nums {
-// 		if num > 0 {
-// 			m[num] = true
-// 		}
-// 	}
-// 	for i := 1; i <= len(nums); i++ {
-// 		if !m[i] {
-// 			return i
-// 		}
-// 	}
-// 	// 如果 [1, len(nums)] 都出现了，那么答案就是 len(nums)+1
-// 	return len(nums) + 1
-// }
+// 字典，时间复杂度：O(n)，空间复杂度：O(n)
+func firstMissingPositive1(nums []int) int {
+	dict := make(map[int]struct{}, len(nums))
+	for _, v := range nums {
+		if v > 0 {
+			dict[v] = struct{}{}
+		}
+	}
+	for i := 1; i <= len(nums); i++ {
+		if _, ok := dict[i]; !ok {
+			return i
+		}
+	}
+	return len(nums) + 1
+}
 
 // 原地哈希，时间复杂度：O(n)，空间复杂度：O(1)
 // 思路是自定义哈希函数，将值为i的数放到下标为i-1的位置上
