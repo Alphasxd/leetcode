@@ -45,10 +45,9 @@ func firstMissingPositive(nums []int) int {
 		}
 	}
 
-	// 查找第一个不符合 nums[i](v) = i+1 的数，返回 i+1
-	for i, v := range nums {
-		if v != i+1 {
-			return i + 1
+	for i := 1; i <= len(nums); i++ {
+		if nums[i-1] != i {
+			return i
 		}
 	}
 
