@@ -24,18 +24,18 @@ type ListNode struct {
 	Next *ListNode
 }
 
-// 哈希表，时间复杂度 O(n)，空间复杂度 O(n)
-// func hasCycle(head *ListNode) bool {
-// 	seen := map[*ListNode]bool{}
-// 	for head != nil {
-// 		if seen[head] {
-// 			return true
-// 		}
-// 		seen[head] = true
-// 		head = head.Next
-// 	}
-// 	return false
-// }
+// 字典，时间复杂度 O(n)，空间复杂度 O(n)
+func hasCycle1(head *ListNode) bool {
+	dict := make(map[*ListNode]struct{})
+	for head != nil {
+		if _, ok := dict[head]; ok {
+			return true
+		}
+		dict[head] = struct{}{}
+		head = head.Next
+	}
+	return false
+}
 
 // 快慢指针，时间复杂度 O(n)，空间复杂度 O(1)
 func hasCycle(head *ListNode) bool {
