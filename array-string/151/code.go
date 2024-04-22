@@ -17,7 +17,7 @@ package leetcode
 import "strings"
 
 func reverseWords(s string) string {
-	// 将 s 分割成字符串数组
+	// 将 s 分割成字符串数组, 以空格分割
 	ans := strings.Fields(s)
 	// 将字符串数组反转
 	for i := 0; i < len(ans)/2; i++ {
