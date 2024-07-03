@@ -16,7 +16,7 @@ package leetcode
 import "sort"
 
 func groupAnagrams(strs []string) [][]string {
-	mp := map[string][]string{}
+	m := map[string][]string{}
 	for _, str := range strs {
 		// 将字符串转换为字节切片，因为字符串是不可变的，而字节切片是可变的
 		// 字符串是一个只读的 byte 类型切片
@@ -26,12 +26,12 @@ func groupAnagrams(strs []string) [][]string {
 			return s[i] < s[j]
 		})
 		sortedStr := string(s)
-		mp[sortedStr] = append(mp[sortedStr], str)
+		m[sortedStr] = append(m[sortedStr], str)
 	}
 
 	// 将 map 中的值转换为二维切片，因为 map 是无序的，所以需要遍历 map
-	ans := make([][]string, 0, len(mp))
-	for _, v := range mp {
+	ans := make([][]string, 0, len(m))
+	for _, v := range m {
 		ans = append(ans, v)
 	}
 
