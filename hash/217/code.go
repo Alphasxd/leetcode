@@ -14,12 +14,12 @@
 package leetcode
 
 func containsDuplicate(nums []int) bool {
-	m := make(map[int]bool)
+	dict := make(map[int]struct{}, len(nums))
 	for _, num := range nums {
-		if _, ok := m[num]; ok {
+		if _, ok := dict[num]; ok {
 			return true
 		}
-		m[num] = true
+		dict[num] = struct{}{}
 	}
 	return false
 }
