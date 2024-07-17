@@ -29,7 +29,7 @@ func groupAnagrams(strs []string) [][]string {
 		m[sortedStr] = append(m[sortedStr], str)
 	}
 
-	// 将 map 中的值转换为二维切片，因为 map 是无序的，所以需要遍历 map
+	// 将 map 中的值转换为二维切片
 	ans := make([][]string, 0, len(m))
 	for _, v := range m {
 		ans = append(ans, v)
