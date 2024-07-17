@@ -19,39 +19,46 @@
 package leetcode
 
 // 哈希表，记录每次计算的结果，如果出现重复的结果，说明不是快乐数
-// func isHappy(n int) bool {
-// 	m := map[int]bool{}
-// 	for n != 1 {
-// 		// 如果出现循环，说明不是快乐数
-// 		// 譬如 4 -> 16 -> 37 -> 58 -> 89 -> 145 -> 42 -> 20 -> 4
-// 		if m[n] {
-// 			return false
-// 		}
-// 		m[n] = true
-// 		n = getNext(n)
-// 	}
-// 	return true
-// }
+func isHappy0(n int) bool {
+	m := map[int]bool{}
+	for n != 1 {
+		// 如果出现循环，说明不是快乐数
+		// 譬如 4 -> 16 -> 37 -> 58 -> 89 -> 145 -> 42 -> 20 -> 4
+		if m[n] {
+			return false
+		}
+		m[n] = true
+		n = func(n int) int {
+			var next int
+			for n > 0 {
+				t := n % 10
+				next += t * t
+				n /= 10
+			}
+			return next
+		}(n)
+	}
+	return true
+}
 
-// func getNext(n int) int {
-// 	var next int
-// 	for n > 0 {
-// 		t := n % 10
-// 		next += t * t
-// 		n /= 10
-// 	}
-// 	return next
-// }
-
-// // 双指针，记录快慢指针的值，如果相等，说明不是快乐数
-// func isHappy(n int) bool {
-// 	slow, fast := n, getNext(n)
-// 	for fast != 1 && slow != fast {
-// 		slow = getNext(slow)
-// 		fast = getNext(getNext(fast))
-// 	}
-// 	return fast == 1
-// }
+func getNext(n int) int {
+	var next int
+	for n > 0 {
+		t := n % 10
+		next += t * t
+		n /= 10
+	}
+	return next
+}
+// 双指针，记录快慢指针的值，如果相等，说明不是快乐数
+func isHappy1(n int) bool {
+	slow, fast := n, getNext(n)
+	for fast != 1 && slow != fast {
+		slow = getNext(slow)
+		fast = getNext(getNext(fast))
+	}
+	return fast == 1
+}
 
 // 数学套路，如果不是快乐数，最终会进入 4 -> 16 -> 37 -> 58 -> 89 -> 145 -> 42 -> 20 -> 4 的循环
 func isHappy(n int) bool {
