@@ -25,6 +25,6 @@ func removeElement(nums []int, val int) int {
 		}
 		fast++
 	}
-	// 26 行 slow已经自增了，所以直接返回 slow 即可
+	// slow已经自增了，所以直接返回 slow 即可
 	return slow
 }
