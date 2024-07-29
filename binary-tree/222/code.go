@@ -1,12 +1,12 @@
-// 222. 完全二叉树的节点个数 https://leetcode-cn.com/problems/count-complete-tree-nodes/
+// 222. 完全二叉树的节点个数 https://leetcode.cn/problems/count-complete-tree-nodes/
 
 // 给你一棵 完全二叉树 的根节点 root ，求出该树的节点个数。
 
 package leetcode
 
 type TreeNode struct {
-	Val int
-	Left *TreeNode
+	Val   int
+	Left  *TreeNode
 	Right *TreeNode
 }
 

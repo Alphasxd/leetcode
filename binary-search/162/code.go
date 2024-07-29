@@ -1,4 +1,4 @@
-// 162. 寻找峰值 https://leetcode-cn.com/problems/find-peak-element/
+// 162. 寻找峰值 https://leetcode.cn/problems/find-peak-element/
 
 // 峰值元素是指其值大于左右相邻值的元素。返回数组中的任何一个峰值即可
 

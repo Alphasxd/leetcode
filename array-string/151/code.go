@@ -1,4 +1,4 @@
-// 151. 反转字符串中单词 https://leetcode-cn.com/problems/reverse-words-in-a-string/
+// 151. 反转字符串中单词 https://leetcode.cn/problems/reverse-words-in-a-string/
 
 // 给定一个字符串s，逐个翻转字符串中的每个单词的顺序
 // 单词是由非空字符组成的字符串. s中使用至少一个空格将字符串中的单词分隔开

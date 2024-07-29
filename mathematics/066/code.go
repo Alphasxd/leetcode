@@ -1,4 +1,4 @@
-// 69. 加一 https://leetcode-cn.com/problems/plus-one/
+// 69. 加一 https://leetcode.cn/problems/plus-one/
 
 // 给定一个由整数组成的非空数组所表示的非负整数，在该数的基础上加一。
 // 最高位数字存放在数组的首位， 数组中每个元素只存储单个数字。
@@ -7,7 +7,7 @@
 package leetcode
 
 func plusOne(digits []int) []int {
-	for i := len(digits)-1; i >=0; i-- {
+	for i := len(digits) - 1; i >= 0; i-- {
 		if digits[i] == 9 {
 			digits[i] = 0
 		} else {

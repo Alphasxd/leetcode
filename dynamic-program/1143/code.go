@@ -1,4 +1,4 @@
-// 1143. 最长公共子序列 https://leetcode-cn.com/problems/longest-common-subsequence/
+// 1143. 最长公共子序列 https://leetcode.cn/problems/longest-common-subsequence/
 
 // 给定两个字符串 text1 和 text2，返回这两个字符串的最长公共子序列的长度。如果不存在公共子序列，返回 0 。
 // 子序列: 是由原字符串删除一些(或不删除)字符而不改变剩余字符相对位置形成的新字符串

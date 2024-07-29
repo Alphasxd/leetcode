@@ -1,4 +1,4 @@
-// 31. 下一个排列 https://leetcode-cn.com/problems/next-permutation
+// 31. 下一个排列 https://leetcode.cn/problems/next-permutation
 
 // 实现获取下一个排列的函数，算法需要将给定数字序列重新排列成字典序中下一个更大的排列。原地修改，只使用额外常数空间。
 
@@ -24,7 +24,7 @@ func nextPermutation(nums []int) {
 		i--
 		j--
 	}
-	if i  >= 0 {
+	if i >= 0 {
 		// 找到 i < k
 		for nums[i] >= nums[k] {
 			k--

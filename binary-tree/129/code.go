@@ -1,4 +1,4 @@
-// 129. 求根到叶子节点数字之和 https://leetcode-cn.com/problems/sum-root-to-leaf-numbers/
+// 129. 求根到叶子节点数字之和 https://leetcode.cn/problems/sum-root-to-leaf-numbers/
 
 // 给你一个二叉树的根节点 root， 树中每个节点都存放有一个 0 到 9 之间的数字。
 // 每条从根节点到叶节点的路径都代表一个数字：
@@ -22,7 +22,7 @@ func dfs(root *TreeNode, prevNum int) int {
 	if root == nil {
 		return 0
 	}
-	sum := prevNum * 10 + root.Val
+	sum := prevNum*10 + root.Val
 	// 如果当前节点是叶子节点，直接返回sum
 	if root.Left == nil && root.Right == nil {
 		return sum

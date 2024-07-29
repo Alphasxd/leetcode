@@ -1,4 +1,4 @@
-// 6. N字形变换 https://leetcode-cn.com/problems/zigzag-conversion/
+// 6. N字形变换 https://leetcode.cn/problems/zigzag-conversion/
 
 // 将一个给定字符串s根据给定的行数numRows，以从上往下、从左到右进行Z字形排列。
 // 比如输入字符串为"PAYPALISHIRING"行数为3时，排列如下：
@@ -11,7 +11,7 @@ package leetcode
 
 func convert(s string, numRows int) string {
 	// 如果只有一行，或者行数大于等于字符串长度，直接返回
-	if numRows == 1 || numRows >= len(s){
+	if numRows == 1 || numRows >= len(s) {
 		return s
 	}
 
@@ -40,5 +40,5 @@ func convert(s string, numRows int) string {
 		res = append(res, row...)
 	}
 	// 将切片转换为字符串
-	return string(res)	
+	return string(res)
 }

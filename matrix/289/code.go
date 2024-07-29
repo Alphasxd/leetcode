@@ -1,4 +1,4 @@
-// 289. 生命游戏 https://leetcode-cn.com/problems/game-of-life/
+// 289. 生命游戏 https://leetcode.cn/problems/game-of-life/
 
 // 给定一个包含 m × n 个格子的面板，每一个格子都可以看成是一个细胞。每个细胞都具有一个初始状态：
 // 1 即为活细胞（live），或 0 即为死细胞（dead）。每个细胞与其八个相邻位置（水平，垂直，对角线）的细胞都

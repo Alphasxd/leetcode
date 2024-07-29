@@ -1,4 +1,4 @@
-// 14. 最长公共前缀 https://leetcode-cn.com/problems/longest-common-prefix/
+// 14. 最长公共前缀 https://leetcode.cn/problems/longest-common-prefix/
 
 // 编写一个函数来查找字符串数组中的最长公共前缀。如果不存在公共前缀，则返回空字符串 ""。
 

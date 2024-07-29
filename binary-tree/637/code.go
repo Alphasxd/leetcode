@@ -1,4 +1,4 @@
-// 637. 二叉树的层平均值 https://leetcode-cn.com/problems/average-of-levels-in-binary-tree/
+// 637. 二叉树的层平均值 https://leetcode.cn/problems/average-of-levels-in-binary-tree/
 
 // 给定一个非空二叉树, 返回一个由每层节点平均值组成的数组。
 

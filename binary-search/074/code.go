@@ -1,4 +1,4 @@
-// 74. 搜索二维矩阵 https://leetcode-cn.com/problems/search-a-2d-matrix/
+// 74. 搜索二维矩阵 https://leetcode.cn/problems/search-a-2d-matrix/
 
 // 给你一个满足下述两条属性的 m x n 整数矩阵：
 // 每行中的整数从左到右按非递减顺序排列。

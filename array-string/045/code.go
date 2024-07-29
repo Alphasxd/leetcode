@@ -1,4 +1,4 @@
-// 45. 跳跃游戏Ⅱ https://leetcode-cn.com/problems/jump-game-ii/
+// 45. 跳跃游戏Ⅱ https://leetcode.cn/problems/jump-game-ii/
 
 // 给定一个长度为 n 的 0 索引整数数组 nums。初始位置为 nums[0]。
 // 每个元素 nums[i] 表示从索引 i 能够跳到的最大长度。换句话说，如果你在 nums[i] 你可以跳 j ∈ [1, nums[i]] 步到达的位置。

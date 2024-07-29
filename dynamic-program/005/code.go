@@ -1,4 +1,4 @@
-// 5. 最长回文子串 https://leetcode-cn.com/problems/longest-palindromic-substring/
+// 5. 最长回文子串 https://leetcode.cn/problems/longest-palindromic-substring/
 
 // 给你一个字符串 s，找到 s 中最长的回文子串。如果一个字符串从左向右写和从右向左写是一样的，这样的字符串就是回文串。
 

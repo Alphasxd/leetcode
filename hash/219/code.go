@@ -1,4 +1,4 @@
-// 219. 存在重复元素 II https://leetcode-cn.com/problems/contains-duplicate-ii/
+// 219. 存在重复元素 II https://leetcode.cn/problems/contains-duplicate-ii/
 
 // 判断数组中是否存在两个不同的索引 i 和 j，使得 nums[i] = nums[j]，并且 i 和 j 的差的绝对值最大为 k
 

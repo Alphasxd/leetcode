@@ -1,4 +1,4 @@
-// 56. 合并区间 https://leetcode-cn.com/problems/merge-intervals/
+// 56. 合并区间 https://leetcode.cn/problems/merge-intervals/
 
 // 以数组 intervals 表示若干个区间的集合，其中单个区间为 intervals[i] = [starti, endi] 。
 // 请你合并所有重叠的区间，并返回 一个不重叠的区间数组，该数组需恰好覆盖输入中的所有区间 。
@@ -31,7 +31,7 @@ func merge(intervals [][]int) [][]int {
 		if cur := intervals[i]; prev[1] < cur[0] {
 			res = append(res, prev)
 			prev = cur
-		} else if prev[1] < cur[1] { 
+		} else if prev[1] < cur[1] {
 			// 两个区间存在重叠，合并区间，新区间右端点取两个区间右端点的最大值
 			prev[1] = cur[1]
 		}

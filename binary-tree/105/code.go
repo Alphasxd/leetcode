@@ -1,4 +1,4 @@
-// 从前序与中序遍历序列构造二叉树 https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/
+// 从前序与中序遍历序列构造二叉树 https://leetcode.cn/problems/construct-binary-tree-from-preorder-and-inorder-traversal/
 
 // 给定两个整数数组 preorder 和 inorder ，其中 preorder 是二叉树的先序遍历， inorder 是同一棵树的中序遍历，请构造二叉树并返回其根节点。
 
@@ -41,8 +41,8 @@ func buildTree(preorder, inorder []int) *TreeNode {
 	// 前序遍历的左子树为 preorder[1:i+1], 中序遍历的左子树为 inorder[:i]
 	// 前序遍历的右子树为 preorder[i+1:], 中序遍历的右子树为 inorder[i+1:]
 	return &TreeNode{
-		Val: preorder[0],
-		Left: buildTree(preorder[1:i+1], inorder[:i]),
+		Val:   preorder[0],
+		Left:  buildTree(preorder[1:i+1], inorder[:i]),
 		Right: buildTree(preorder[i+1:], inorder[i+1:]),
 	}
 }

@@ -1,4 +1,4 @@
-// 139. 单词拆分 https://leetcode-cn.com/problems/word-break/
+// 139. 单词拆分 https://leetcode.cn/problems/word-break/
 
 // 给你一个字符串 s 和一个字符串列表 wordDict ，s 的所有字符都是小写英文字母。
 // 如果可以利用 wordDict 中的单词拼接 s ，则返回 true ；否则，返回 false 。

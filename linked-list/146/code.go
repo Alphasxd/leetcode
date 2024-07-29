@@ -1,4 +1,4 @@
-// 146. LRU Cache https://leetcode-cn.com/problems/lru-cache/
+// 146. LRU Cache https://leetcode.cn/problems/lru-cache/
 
 // 请你设计并实现一个满足 LRU 缓存约束的数据结构
 // 实现 LRUCache 类：

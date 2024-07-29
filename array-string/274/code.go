@@ -1,4 +1,4 @@
-// 274. H指数 https://leetcode-cn.com/problems/h-index/
+// 274. H指数 https://leetcode.cn/problems/h-index/
 
 // 给你一个整数数组 citations，其中 citations[i] 表示研究者的第 i 篇论文的引用次数，计算并返回该研究者的 h 指数。
 // 一名科研人员的 h 指数 是指他（她）至少发表了 h 篇至少 被引用 h 次的论文。

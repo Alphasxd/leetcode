@@ -1,4 +1,4 @@
-// 121. 买卖股票的最佳时机 https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/
+// 121. 买卖股票的最佳时机 https://leetcode.cn/problems/best-time-to-buy-and-sell-stock/
 
 // 给定一个数组 prices ，其中 prices[i] 是一支给定股票第 i 天的价格。
 // 你只能选择 某一天 买入这只股票，并选择在 未来的某一个不同的日子 卖出该股票。

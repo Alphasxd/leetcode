@@ -1,4 +1,4 @@
-// 36.有效的数独 https://leetcode-cn.com/problems/valid-sudoku/
+// 36.有效的数独 https://leetcode.cn/problems/valid-sudoku/
 
 // 请你判断一个 9 x 9 的数独是否有效。
 // 数字 1-9 在每一个大的 3x3 的格子里只能出现一次。

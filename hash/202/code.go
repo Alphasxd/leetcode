@@ -1,4 +1,4 @@
-// 202. 快乐数 https://leetcode-cn.com/problems/happy-number/
+// 202. 快乐数 https://leetcode.cn/problems/happy-number/
 
 // 判断给定的数是否为快乐数。
 // 快乐数的定义为：
@@ -50,6 +50,7 @@ func getNext(n int) int {
 	}
 	return next
 }
+
 // 双指针，记录快慢指针的值，如果相等，说明不是快乐数
 func isHappy1(n int) bool {
 	slow, fast := n, getNext(n)

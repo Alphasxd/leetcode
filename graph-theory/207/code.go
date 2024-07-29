@@ -1,4 +1,4 @@
-// 207. 课程表 https://leetcode-cn.com/problems/course-schedule/
+// 207. 课程表 https://leetcode.cn/problems/course-schedule/
 
 // 你这个学期必须选修 numCourses 门课程，记为 0 到 numCourses - 1 。
 // 在选修某些课程之前需要一些先修课程。先修课程按数组 prerequisites 给出，

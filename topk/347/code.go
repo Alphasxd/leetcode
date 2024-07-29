@@ -1,4 +1,4 @@
-// 347. 前 K 个高频元素 https://leetcode-cn.com/problems/top-k-frequent-elements/
+// 347. 前 K 个高频元素 https://leetcode.cn/problems/top-k-frequent-elements/
 
 // 给你一个整数数组 nums 和一个整数 k ，请你返回其中出现`频率`前 k 高的元素。可以按 任意顺序 返回答案。
 

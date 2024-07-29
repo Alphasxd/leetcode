@@ -1,4 +1,4 @@
-// 131. 分割回文串 https://leetcode-cn.com/problems/palindrome-partitioning/
+// 131. 分割回文串 https://leetcode.cn/problems/palindrome-partitioning/
 
 // 给你一个字符串 s, 请你将 s 分割成一些子串, 使每个子串都是回文串. 返回 s 所有可能的分割方案.
 
@@ -24,7 +24,7 @@ func partition(s string) [][]string {
 		// 选 index 和 index+1 之间的逗号, 把 s[index] 作为子串的最后一个字符
 		if isPalindrome(s, start, index) {
 			path = append(path, s[start:index+1])
-			dfs(index+1, index+1) // 下一个子串的起始位置是 index+1
+			dfs(index+1, index+1)     // 下一个子串的起始位置是 index+1
 			path = path[:len(path)-1] // 恢复 path
 		}
 	}

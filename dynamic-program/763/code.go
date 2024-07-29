@@ -1,4 +1,4 @@
-// 763. 划分字母区间 https://leetcode-cn.com/problems/partition-labels/
+// 763. 划分字母区间 https://leetcode.cn/problems/partition-labels/
 
 // 给你一个字符串 s，请你对 s 的子串进行划分，并返回子串的个数。
 // 划分要尽可能多的子串，并且每个字母只能出现在一个子串中。将划分结果按顺序连接，得到的字符串应当与原字符串完全相同。

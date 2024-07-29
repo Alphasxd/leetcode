@@ -1,4 +1,4 @@
-// 136. 只出现一次的数字 https://leetcode-cn.com/problems/single-number/
+// 136. 只出现一次的数字 https://leetcode.cn/problems/single-number/
 
 // 给你一个非空数组，这个数组中有一个数字只出现了一次，其他的数字都出现了两次。找出这个只出现一次的数字。
 

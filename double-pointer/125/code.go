@@ -1,4 +1,4 @@
-// 125. 验证回文串 https://leetcode-cn.com/problems/valid-palindrome/
+// 125. 验证回文串 https://leetcode.cn/problems/valid-palindrome/
 
 // 给你一个字符串 s ，验证 s 是否是 回文串 ，只考虑字母和数字字符，可以忽略字母的大小写。
 // 是返回 true ，否则返回 false 。

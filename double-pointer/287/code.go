@@ -1,4 +1,4 @@
-// 287. 寻找重复数 https://leetcode-cn.com/problems/find-the-duplicate-number/
+// 287. 寻找重复数 https://leetcode.cn/problems/find-the-duplicate-number/
 
 // 给定一个包含 n + 1 个整数的数组 nums，其数字都在 [1, n] 范围内，可知至少存在一个重复的整数。
 // 假设 nums 只有一个重复的整数，找出这个重复的数。不得修改原数组（假设数组是只读的）。且只能使用额外的 O(1) 的空间。

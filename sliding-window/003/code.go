@@ -1,4 +1,4 @@
-// 3. 无重复字符的最长子串 https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/
+// 3. 无重复字符的最长子串 https://leetcode.cn/problems/longest-substring-without-repeating-characters/
 
 // 给定一个字符串 s ，请你找出其中不含有重复字符的 最长子串 的长度。
 
@@ -44,20 +44,20 @@ package leetcode
 // 当遇到重复字符时，更新left的值，left的值为重复字符的下一个位置
 func lengthOfLongestSubstring(s string) int {
 	// map[rune]int 用于存储字符最后出现的位置
-    m := make(map[rune]int)
-    length, left := 0, 0
+	m := make(map[rune]int)
+	length, left := 0, 0
 	// range s 会将字符串转换为rune数组
-    for right, c := range s {
+	for right, c := range s {
 		// 判断字符是否出现过，更新子串起始位置
-        if _, ok := m[c]; ok && m[c] >= left {
-            // 字符已经出现过，更新left的值
-            left = m[c] + 1
-        }
-        // 更新字符最后出现的位置
-        m[c] = right
-        if right-left+1 > length {
-            length = right - left + 1
-        }
-    }
-    return length
+		if _, ok := m[c]; ok && m[c] >= left {
+			// 字符已经出现过，更新left的值
+			left = m[c] + 1
+		}
+		// 更新字符最后出现的位置
+		m[c] = right
+		if right-left+1 > length {
+			length = right - left + 1
+		}
+	}
+	return length
 }

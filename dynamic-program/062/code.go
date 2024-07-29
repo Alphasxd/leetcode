@@ -1,4 +1,4 @@
-// 62. 不同路径 https://leetcode-cn.com/problems/unique-paths/
+// 62. 不同路径 https://leetcode.cn/problems/unique-paths/
 
 // 一个机器人位于一个 m x n 网格的左上角 （起始点在下图中标记为 “Start” ）。
 // 机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为 “Finish” ）。
@@ -14,7 +14,7 @@ import "math/big"
 
 // 动态规划
 // 我们只需要一个长度为 n 的一维数组 dp，其中 dp[j] 存储的是到达当前行第 j 列的路径数量。
-// 然后通过更新 dp[j] 的值来实现动态规划, 
+// 然后通过更新 dp[j] 的值来实现动态规划,
 // dp[j] 的新值等于 dp[j]（上边的路径数量, 同一列）和 dp[j-1]（左边列的路径数量）的和。
 func uniquePaths(m, n int) int {
 	dp := make([]int, n)

@@ -1,4 +1,4 @@
-// 392. 判断子序列 https://leetcode-cn.com/problems/is-subsequence/
+// 392. 判断子序列 https://leetcode.cn/problems/is-subsequence/
 
 // 给定字符串 s 和 t ，判断 s 是否为 t 的子序列。
 
