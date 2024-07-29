@@ -8,8 +8,7 @@ package leetcode
 
 func maxProfit(prices []int) int {
 	var ans int
-	length := len(prices)
-	for i := 1; i < length; i++ {
+	for i := 1; i < len(prices); i++ {
 		profit := prices[i] - prices[i-1]
 		// 只要今天的价格比昨天高，就卖出
 		if profit > 0 {
