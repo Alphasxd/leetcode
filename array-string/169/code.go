@@ -41,5 +41,5 @@ func majorityElement1(nums []int) int {
 			return num
 		}
 	}
-	return 0
+	return -1
 }
