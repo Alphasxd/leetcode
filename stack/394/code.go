@@ -26,29 +26,29 @@ import "strings"
 // - 当遇到右括号`]`，说明当前的编码字符串结束，需要将当前的字符串重复指定的次数，然后与上一个字符串合并
 // 3.遍历结束后，返回字符串栈中的字符串
 func decodeString(s string) string {
-	// 数字栈和字符串栈
-	cntStack, strStack := []int{}, []string{}
-	// 当前的重复次数和字符串
-	currNum, currStr := 0, ""
+    // 数字栈和字符串栈
+    cntStack, strStack := []int{}, []string{}
+    // 当前的重复次数和字符串
+    currNum, currStr := 0, ""
 
-	// 遍历字符串
-	for _, v := range s {
-		switch {
-		case v >= '0' && v <= '9':
-			currNum = currNum*10 + int(v-'0')
-		case v == '[':
-			cntStack = append(cntStack, currNum) // 将当前的重复次数压入数字栈
-			strStack = append(strStack, currStr) // 将当前的字符串压入字符串栈
-			currNum, currStr = 0, ""             // 重置当前的重复次数和字符串
-		case v == ']':
-			// 从数字栈中弹出一个重复次数，从字符串栈中弹出一个字符串
-			num, str := cntStack[len(cntStack)-1], strStack[len(strStack)-1]
-			cntStack, strStack = cntStack[:len(cntStack)-1], strStack[:len(strStack)-1]
-			// 将当前的字符串重复指定的次数，然后与上一个字符串合并
-			currStr = str + strings.Repeat(currStr, num)
-		default:
-			currStr += string(v)
-		}
-	}
-	return currStr
+    // 遍历字符串
+    for _, v := range s {
+        switch {
+        case v >= '0' && v <= '9':
+            currNum = currNum*10 + int(v-'0')
+        case v == '[':
+            cntStack = append(cntStack, currNum) // 将当前的重复次数压入数字栈
+            strStack = append(strStack, currStr) // 将当前的字符串压入字符串栈
+            currNum, currStr = 0, ""             // 重置当前的重复次数和字符串
+        case v == ']':
+            // 从数字栈中弹出一个重复次数，从字符串栈中弹出一个字符串
+            num, str := cntStack[len(cntStack)-1], strStack[len(strStack)-1]
+            cntStack, strStack = cntStack[:len(cntStack)-1], strStack[:len(strStack)-1]
+            // 将当前的字符串重复指定的次数，然后与上一个字符串合并
+            currStr = str + strings.Repeat(currStr, num)
+        default:
+            currStr += string(v)
+        }
+    }
+    return currStr
 }

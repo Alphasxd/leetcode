@@ -5,29 +5,29 @@
 package leetcode
 
 type ListNode struct {
-	Val  int
-	Next *ListNode
+    Val  int
+    Next *ListNode
 }
 
 func middleNode(head *ListNode) *ListNode {
-	slow, fast := head, head
-	for fast != nil && fast.Next != nil {
-		slow = slow.Next
-		fast = fast.Next.Next
-	}
-	return slow
+    slow, fast := head, head
+    for fast != nil && fast.Next != nil {
+        slow = slow.Next
+        fast = fast.Next.Next
+    }
+    return slow
 }
 
 // 判断链表是否有环，仅需在上面的基础上判断 slow == fast 即可
 // func hasCycle(head *ListNode) bool {
-// 	slow, fast := head, head
+//     slow, fast := head, head
 
-// 	for fast != nil && fast.Next != nil {
-// 		slow = slow.Next
-// 		fast = fast.Next.Next
-// 		if slow == fast {
-// 			return true
-// 		}
-// 	}
-// 	return false
+//     for fast != nil && fast.Next != nil {
+//         slow = slow.Next
+//         fast = fast.Next.Next
+//         if slow == fast {
+//             return true
+//         }
+//     }
+//     return false
 // }

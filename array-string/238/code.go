@@ -15,24 +15,24 @@
 package leetcode
 
 func productExceptSelf(nums []int) []int {
-	length := len(nums)
+    length := len(nums)
 
-	ans := make([]int, length)
+    ans := make([]int, length)
 
-	product := 1
-	for i := range ans {
-		ans[i] = product
-		// 将 ans[i] 设为左侧所有元素的乘积
-		product *= nums[i]
-	}
+    product := 1
+    for i := range ans {
+        ans[i] = product
+        // 将 ans[i] 设为左侧所有元素的乘积
+        product *= nums[i]
+    }
 
-	product = 1
-	for i := length - 1; i >= 0; i-- {
-		// 将上一步的结果乘以右侧所有元素的乘积即为答案
-		ans[i] *= product
-		// 将 ans[i] 设为 ans[i] * 右侧所有元素的乘积
-		product *= nums[i]
-	}
+    product = 1
+    for i := length - 1; i >= 0; i-- {
+        // 将上一步的结果乘以右侧所有元素的乘积即为答案
+        ans[i] *= product
+        // 将 ans[i] 设为 ans[i] * 右侧所有元素的乘积
+        product *= nums[i]
+    }
 
-	return ans
+    return ans
 }

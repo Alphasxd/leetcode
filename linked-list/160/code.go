@@ -18,52 +18,52 @@ package leetcode
 
 // Definition for singly-linked list.
 type ListNode struct {
-	Val  int
-	Next *ListNode
+    Val  int
+    Next *ListNode
 }
 
 // Map 时间复杂度O(m+n) 空间复杂度O(m)或O(n)
 // func getIntersectionNode(headA, headB *ListNode) *ListNode {
 //     vis := map[*ListNode]bool{}
-// 	for i := headA; i != nil; i = i.Next {
-// 		vis[i] = true
-// 	}
+//     for i := headA; i != nil; i = i.Next {
+//         vis[i] = true
+//     }
 
-// 	for j := headB; j != nil; j = j.Next {
-// 		// 如果存在相同节点，直接返回，此题不存在有相交节点后面不相交的情况
-// 		if vis[j] {
-// 			return j
-// 		}
-// 	}
+//     for j := headB; j != nil; j = j.Next {
+//         // 如果存在相同节点，直接返回，此题不存在有相交节点后面不相交的情况
+//         if vis[j] {
+//             return j
+//         }
+//     }
 
-// 	return nil
+//     return nil
 // }
 
 // 双指针 时间复杂度O(m+n) 空间复杂度O(1)
 func getIntersectionNode(headA, headB *ListNode) *ListNode {
 
-	// 两个指针分别指向两个链表的头节点
-	pA, pB := headA, headB
+    // 两个指针分别指向两个链表的头节点
+    pA, pB := headA, headB
 
-	// 如果两个指针不相等，继续循环
-	for pA != pB {
-		if pA == nil {
-			// 如果pA为空，将pA指向headB
-			pA = headB
-		} else {
-			// 否则，将pA指向pA的下一个节点
-			pA = pA.Next
-		}
+    // 如果两个指针不相等，继续循环
+    for pA != pB {
+        if pA == nil {
+            // 如果pA为空，将pA指向headB
+            pA = headB
+        } else {
+            // 否则，将pA指向pA的下一个节点
+            pA = pA.Next
+        }
 
-		if pB == nil {
-			// 如果pB为空，将pB指向headA
-			pB = headA
-		} else {
-			// 否则，将pB指向pB的下一个节点
-			pB = pB.Next
-		}
-	}
+        if pB == nil {
+            // 如果pB为空，将pB指向headA
+            pB = headA
+        } else {
+            // 否则，将pB指向pB的下一个节点
+            pB = pB.Next
+        }
+    }
 
-	// pA和pB相等时，跳出循环，返回pA或pB
-	return pA
+    // pA和pB相等时，跳出循环，返回pA或pB
+    return pA
 }

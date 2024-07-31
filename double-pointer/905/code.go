@@ -15,16 +15,16 @@ package leetcode
 
 // 双指针
 func sortArrayByParity(nums []int) []int {
-	i, j := 0, len(nums)-1
-	// 偶数在前，奇数在后
-	for i < j {
-		switch nums[i] & 1 {
-		case 0: // 偶数
-			i++
-		case 1: // 奇数
-			nums[i], nums[j] = nums[j], nums[i]
-			j--
-		}
-	}
-	return nums
+    i, j := 0, len(nums)-1
+    // 偶数在前，奇数在后
+    for i < j {
+        switch nums[i] & 1 {
+        case 0: // 偶数
+            i++
+        case 1: // 奇数
+            nums[i], nums[j] = nums[j], nums[i]
+            j--
+        }
+    }
+    return nums
 }

@@ -16,15 +16,15 @@ package leetcode
 
 // 双指针
 func removeElement(nums []int, val int) int {
-	slow, fast := 0, 0 // 快慢指针
-	for fast < len(nums) {
-		// 只将不等于 val 的元素放到数组的 slow 位置
-		if nums[fast] != val {
-			nums[slow] = nums[fast]
-			slow++
-		}
-		fast++
-	}
-	// slow已经自增了，所以直接返回 slow 即可
-	return slow
+    slow, fast := 0, 0 // 快慢指针
+    for fast < len(nums) {
+        // 只将不等于 val 的元素放到数组的 slow 位置
+        if nums[fast] != val {
+            nums[slow] = nums[fast]
+            slow++
+        }
+        fast++
+    }
+    // slow已经自增了，所以直接返回 slow 即可
+    return slow
 }

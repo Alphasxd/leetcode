@@ -6,21 +6,21 @@
 package leetcode
 
 type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
+    Val   int
+    Left  *TreeNode
+    Right *TreeNode
 }
 
 func hasPathSum(root *TreeNode, sum int) bool {
-	// 空树，直接返回false
-	if root == nil {
-		return false
-	}
-	// 只存在根节点，判断根节点的值是否等于sum
-	if root.Left == nil && root.Right == nil {
-		return sum == root.Val
-	}
-	// 递归判断左右子树
-	sum -= root.Val
-	return hasPathSum(root.Left, sum) || hasPathSum(root.Right, sum)
+    // 空树，直接返回false
+    if root == nil {
+        return false
+    }
+    // 只存在根节点，判断根节点的值是否等于sum
+    if root.Left == nil && root.Right == nil {
+        return sum == root.Val
+    }
+    // 递归判断左右子树
+    sum -= root.Val
+    return hasPathSum(root.Left, sum) || hasPathSum(root.Right, sum)
 }

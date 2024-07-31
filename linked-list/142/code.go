@@ -21,21 +21,21 @@
 package leetcode
 
 type ListNode struct {
-	Val  int
-	Next *ListNode
+    Val  int
+    Next *ListNode
 }
 
 // 哈希表，时间复杂度 O(n)，空间复杂度 O(n)
 // func detectCycle(head *ListNode) *ListNode {
-// 	seen := map[*ListNode]bool{}
-// 	for head != nil {
-// 		if seen[head] {
-// 			return head
-// 		}
-// 		seen[head] = true
-// 		head = head.Next
-// 	}
-// 	return nil
+//     seen := map[*ListNode]bool{}
+//     for head != nil {
+//         if seen[head] {
+//             return head
+//         }
+//         seen[head] = true
+//         head = head.Next
+//     }
+//     return nil
 // }
 
 // 快慢指针，时间复杂度 O(n)，空间复杂度 O(1)
@@ -45,24 +45,24 @@ type ListNode struct {
 // 从 head 出发走的距离为 a，从相遇点 slow 出发走的距离为 nr - x
 
 func detectCycle(head *ListNode) *ListNode {
-	slow, fast := head, head
-	for fast != nil {
-		slow = slow.Next
-		if fast.Next == nil {
-			return nil
-		}
-		fast = fast.Next.Next
-		// 快慢指针相遇
-		if slow == fast {
-			// 从 head 和相遇点同时出发
-			p := head
-			// 再次相遇即为环的入口
-			for p != slow {
-				p = p.Next
-				slow = slow.Next
-			}
-			return p
-		}
-	}
-	return nil
+    slow, fast := head, head
+    for fast != nil {
+        slow = slow.Next
+        if fast.Next == nil {
+            return nil
+        }
+        fast = fast.Next.Next
+        // 快慢指针相遇
+        if slow == fast {
+            // 从 head 和相遇点同时出发
+            p := head
+            // 再次相遇即为环的入口
+            for p != slow {
+                p = p.Next
+                slow = slow.Next
+            }
+            return p
+        }
+    }
+    return nil
 }

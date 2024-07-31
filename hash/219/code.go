@@ -18,17 +18,17 @@ package leetcode
 
 // 哈希表 + 滑动窗口 和 217 题类似, 只是在判断是否存在重复元素时，需要维护一个大小为 k 的滑动窗口
 func containsNearbyDuplicate(nums []int, k int) bool {
-	dict := make(map[int]struct{})
-	for i, num := range nums {
-		// 首先维护滑动窗口，保证哈希表中的元素个数始终小于等于 k 个
-		if i > k {
-			delete(dict, nums[i-k-1])
-		}
-		// 此时在大小为k的滑动窗口中，如果存在相同的数值，则直接返回true
-		if _, ok := dict[num]; ok {
-			return true
-		}
-		dict[num] = struct{}{}
-	}
-	return false
+    dict := make(map[int]struct{})
+    for i, num := range nums {
+        // 首先维护滑动窗口，保证哈希表中的元素个数始终小于等于 k 个
+        if i > k {
+            delete(dict, nums[i-k-1])
+        }
+        // 此时在大小为k的滑动窗口中，如果存在相同的数值，则直接返回true
+        if _, ok := dict[num]; ok {
+            return true
+        }
+        dict[num] = struct{}{}
+    }
+    return false
 }

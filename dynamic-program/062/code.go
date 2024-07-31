@@ -17,25 +17,25 @@ import "math/big"
 // 然后通过更新 dp[j] 的值来实现动态规划,
 // dp[j] 的新值等于 dp[j]（上边的路径数量, 同一列）和 dp[j-1]（左边列的路径数量）的和。
 func uniquePaths(m, n int) int {
-	dp := make([]int, n)
-	// 到达第一行的任何位置只有一种走法, 所以初始化为 1
-	for i := range dp {
-		dp[i] = 1
-	}
-	// 从第二行开始，每个位置的走法等于左边(dp[j-1])和上边(dp[j])的走法之和
-	for i := 1; i < m; i++ {
-		for j := 1; j < n; j++ {
-			dp[j] += dp[j-1]
-		}
-	}
-	// 最后一个元素的值即为到达右下角的走法总数
-	return dp[n-1]
+    dp := make([]int, n)
+    // 到达第一行的任何位置只有一种走法, 所以初始化为 1
+    for i := range dp {
+        dp[i] = 1
+    }
+    // 从第二行开始，每个位置的走法等于左边(dp[j-1])和上边(dp[j])的走法之和
+    for i := 1; i < m; i++ {
+        for j := 1; j < n; j++ {
+            dp[j] += dp[j-1]
+        }
+    }
+    // 最后一个元素的值即为到达右下角的走法总数
+    return dp[n-1]
 }
 
 // 实际上和杨辉三角有关，可以用排列组合的方法解决
 func uniquePaths1(m, n int) int {
-	// 从左上角到右下角，一共需要向右走 m-1 步，向下走 n-1 步
-	// 一共需要走 m+n-2 步，其中 m-1 步向右，n-1 步向下
-	// 从 m+n-2 中选择 m-1 步向右，共有 C(m+n-2, m-1) 种走法
-	return int(new(big.Int).Binomial(int64(m+n-2), int64(m-1)).Int64())
+    // 从左上角到右下角，一共需要向右走 m-1 步，向下走 n-1 步
+    // 一共需要走 m+n-2 步，其中 m-1 步向右，n-1 步向下
+    // 从 m+n-2 中选择 m-1 步向右，共有 C(m+n-2, m-1) 种走法
+    return int(new(big.Int).Binomial(int64(m+n-2), int64(m-1)).Int64())
 }

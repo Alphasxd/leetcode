@@ -5,30 +5,30 @@
 package leetcode
 
 type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
+    Val   int
+    Left  *TreeNode
+    Right *TreeNode
 }
 
 func buildTree(inorder []int, postorder []int) *TreeNode {
-	length := len(postorder)
-	if length == 0 {
-		return nil
-	}
-	i := func(order []int, v int) int {
-		var index int
-		for order[index] != v {
-			index++
-		}
-		return index
-	}(inorder, postorder[length-1])
+    length := len(postorder)
+    if length == 0 {
+        return nil
+    }
+    i := func(order []int, v int) int {
+        var index int
+        for order[index] != v {
+            index++
+        }
+        return index
+    }(inorder, postorder[length-1])
 
-	// 中序遍历中的根节点索引为 i
-	// 后序遍历中的根节点索引为 length-1
-	// 在递归调用的时候注意去除根节点
-	return &TreeNode{
-		postorder[length-1],
-		buildTree(inorder[:i], postorder[:i]),
-		buildTree(inorder[i+1:], postorder[i:length-1]),
-	}
+    // 中序遍历中的根节点索引为 i
+    // 后序遍历中的根节点索引为 length-1
+    // 在递归调用的时候注意去除根节点
+    return &TreeNode{
+        postorder[length-1],
+        buildTree(inorder[:i], postorder[:i]),
+        buildTree(inorder[i+1:], postorder[i:length-1]),
+    }
 }

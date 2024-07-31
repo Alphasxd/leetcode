@@ -15,16 +15,16 @@
 package leetcode
 
 func maxProfit(prices []int) int {
-	var minIndex, bonus int
-	for i, p := range prices {
-		// 首先列出 profit 的计算公式，当前价格减去最小价格
-		profit := p - prices[minIndex]
-		if profit > bonus {
-			bonus = profit
-		} else if profit < 0 { // 当前 profit < 0，也就是当前价格小于最小价格
-			// 更新最小价格的索引
-			minIndex = i
-		}
-	}
-	return bonus
+    var minIndex, bonus int
+    for i, p := range prices {
+        // 首先列出 profit 的计算公式，当前价格减去最小价格
+        profit := p - prices[minIndex]
+        if profit > bonus {
+            bonus = profit
+        } else if profit < 0 { // 当前 profit < 0，也就是当前价格小于最小价格
+            // 更新最小价格的索引
+            minIndex = i
+        }
+    }
+    return bonus
 }

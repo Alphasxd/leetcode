@@ -13,18 +13,18 @@
 package leetcode
 
 func removeDuplicates(nums []int) int {
-	// nums 元素个数小于 2 时，直接返回原数组长度
-	if len(nums) < 2 {
-		return len(nums)
-	}
-	slow, fast := 0, 1 // 快慢指针
-	for fast < len(nums) {
-		if nums[slow] != nums[fast] {
-			slow++
-			nums[slow] = nums[fast]
-		}
-		fast++
-	}
-	// slow 为下标，长度为下标 + 1
-	return slow + 1
+    // nums 元素个数小于 2 时，直接返回原数组长度
+    if len(nums) < 2 {
+        return len(nums)
+    }
+    slow, fast := 0, 1 // 快慢指针
+    for fast < len(nums) {
+        if nums[slow] != nums[fast] {
+            slow++
+            nums[slow] = nums[fast]
+        }
+        fast++
+    }
+    // slow 为下标，长度为下标 + 1
+    return slow + 1
 }

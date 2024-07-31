@@ -8,27 +8,27 @@
 package leetcode
 
 func combinationSum(candidates []int, target int) [][]int {
-	var res [][]int
+    var res [][]int
 
-	var dfs func([]int, int, int)
-	dfs = func(comb []int, index, target int) {
-		// 如果 target 为 0，说明找到了一个组合，将它放入结果中，然后返回
-		if target == 0 {
-			res = append(res, append([]int{}, comb...))
-			return
-		}
+    var dfs func([]int, int, int)
+    dfs = func(comb []int, index, target int) {
+        // 如果 target 为 0，说明找到了一个组合，将它放入结果中，然后返回
+        if target == 0 {
+            res = append(res, append([]int{}, comb...))
+            return
+        }
 
-		// 从 index 开始遍历 candidates
-		for i, c := range candidates[index:] {
-			// 如果 c 小于等于 target，将 c 放入组合中，然后递归
-			if c <= target {
-				// 注意这里的 index+i，因为 candidates 中的数字可以重复使用，所以下一轮搜索的起点仍然是 index+i
-				// target - c 为下一轮搜索的目标
-				dfs(append(comb, c), index+i, target-c)
-			}
-		}
-	}
+        // 从 index 开始遍历 candidates
+        for i, c := range candidates[index:] {
+            // 如果 c 小于等于 target，将 c 放入组合中，然后递归
+            if c <= target {
+                // 注意这里的 index+i，因为 candidates 中的数字可以重复使用，所以下一轮搜索的起点仍然是 index+i
+                // target - c 为下一轮搜索的目标
+                dfs(append(comb, c), index+i, target-c)
+            }
+        }
+    }
 
-	dfs(nil, 0, target)
-	return res
+    dfs(nil, 0, target)
+    return res
 }

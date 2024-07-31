@@ -5,19 +5,19 @@
 package leetcode
 
 type ListNode struct {
-	Val  int
-	Next *ListNode
+    Val  int
+    Next *ListNode
 }
 
 func deleteDuplicates(head *ListNode) *ListNode {
-	for cur := head; cur != nil && cur.Next != nil; {
-		// 如果当前节点和下一个节点的值相等，那么就删除下一个节点
-		if cur.Val == cur.Next.Val {
-			cur.Next = cur.Next.Next
-		} else {
-			cur = cur.Next
-		}
-	}
+    for cur := head; cur != nil && cur.Next != nil; {
+        // 如果当前节点和下一个节点的值相等，那么就删除下一个节点
+        if cur.Val == cur.Next.Val {
+            cur.Next = cur.Next.Next
+        } else {
+            cur = cur.Next
+        }
+    }
 
-	return head
+    return head
 }

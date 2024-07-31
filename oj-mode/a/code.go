@@ -17,17 +17,17 @@
 package main
 
 import (
-	"fmt"
-	"io"
+    "fmt"
+    "io"
 )
 
 func main() {
-	var a, b int
-	for {
-		if _, err := fmt.Scan(&a, &b); err != io.EOF {
-			fmt.Println(a + b)
-		} else {
-			break
-		}
-	}
+    var a, b int
+    for {
+        if _, err := fmt.Scan(&a, &b); err != io.EOF {
+            fmt.Println(a + b)
+        } else {
+            break
+        }
+    }
 }

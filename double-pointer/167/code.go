@@ -7,18 +7,18 @@ package leetcode
 
 // 和 hash/001/code.go 中的 twoSum 函数相比，这里的数组是有序的，所以可以使用双指针法
 func twoSum(numbers []int, target int) []int {
-	l, r := 0, len(numbers)-1
-	for l < r {
-		sum := numbers[l] + numbers[r]
-		// switch 更优雅
-		switch {
-		case sum < target:
-			l++
-		case sum > target:
-			r--
-		default:
-			return []int{l + 1, r + 1}
-		}
-	}
-	return nil
+    l, r := 0, len(numbers)-1
+    for l < r {
+        sum := numbers[l] + numbers[r]
+        // switch 更优雅
+        switch {
+        case sum < target:
+            l++
+        case sum > target:
+            r--
+        default:
+            return []int{l + 1, r + 1}
+        }
+    }
+    return nil
 }

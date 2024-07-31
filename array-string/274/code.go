@@ -15,21 +15,21 @@ package leetcode
 
 // 计数排序
 func hIndex(citations []int) int {
-	// 定义一个变量n，表示数组的长度，papers[i]表示引用次数为i的论文数量
-	n := len(citations)
-	// 引用次数大于等于n的论文数量
-	papers := make([]int, n+1)
-	// 遍历数组，统计引用次数
-	for _, c := range citations {
-		// 取引用次数和n中较小的那个，因为引用次数大于n的论文数量对于h指数没有意义
-		papers[min(c, n)]++
-	}
-	// 定义一个变量k，表示当前的h指数，引用次数大于等于k的论文数量至少为k篇，初始化为n
-	k := n
-	// 遍历引用次数，从大到小累加引用次数，直到引用次数大于等于k
-	for s := papers[n]; k > s; s += papers[k] {
-		k--
-	}
-	// 返回h指数
-	return k
+    // 定义一个变量n，表示数组的长度，papers[i]表示引用次数为i的论文数量
+    n := len(citations)
+    // 引用次数大于等于n的论文数量
+    papers := make([]int, n+1)
+    // 遍历数组，统计引用次数
+    for _, c := range citations {
+        // 取引用次数和n中较小的那个，因为引用次数大于n的论文数量对于h指数没有意义
+        papers[min(c, n)]++
+    }
+    // 定义一个变量k，表示当前的h指数，引用次数大于等于k的论文数量至少为k篇，初始化为n
+    k := n
+    // 遍历引用次数，从大到小累加引用次数，直到引用次数大于等于k
+    for s := papers[n]; k > s; s += papers[k] {
+        k--
+    }
+    // 返回h指数
+    return k
 }

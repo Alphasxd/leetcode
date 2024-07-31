@@ -8,28 +8,28 @@ package leetcode
 import "math"
 
 type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
+    Val   int
+    Left  *TreeNode
+    Right *TreeNode
 }
 
 func getMinimumDifference(root *TreeNode) int {
-	min := math.MaxInt64
-	var prev *TreeNode
-	var f func(*TreeNode)
-	// 中序遍历，得到的是递增序列
-	f = func(root *TreeNode) {
-		if root == nil {
-			return
-		}
-		f(root.Left)
-		// 因为是递增序列，所以只需要计算当前节点和前一个节点的差值
-		if prev != nil && root.Val-prev.Val < min {
-			min = root.Val - prev.Val
-		}
-		prev = root
-		f(root.Right)
-	}
-	f(root)
-	return min
+    min := math.MaxInt64
+    var prev *TreeNode
+    var f func(*TreeNode)
+    // 中序遍历，得到的是递增序列
+    f = func(root *TreeNode) {
+        if root == nil {
+            return
+        }
+        f(root.Left)
+        // 因为是递增序列，所以只需要计算当前节点和前一个节点的差值
+        if prev != nil && root.Val-prev.Val < min {
+            min = root.Val - prev.Val
+        }
+        prev = root
+        f(root.Right)
+    }
+    f(root)
+    return min
 }

@@ -9,20 +9,20 @@
 package leetcode
 
 func canCompleteCircuit(gas []int, cost []int) int {
-	left := 0                   // 油箱剩余油量
-	start := 0                  // 起始加油站
-	totalGas, totalCost := 0, 0 // 总油量，总消耗
-	for i := 0; i < len(gas); i++ {
-		totalGas += gas[i]
-		totalCost += cost[i]
-		left += gas[i] - cost[i] // 累加每次剩余的油量
-		if left < 0 {            // 如果剩余油量小于0，说明从起始加油站到当前加油站都不能作为起始加油站
-			start = i + 1 // 从下一个加油站开始
-			left = 0      // 油箱剩余油量清零
-		}
-	}
-	if totalGas < totalCost { // 总油量小于总消耗，说明无法环绕一周
-		return -1
-	}
-	return start // 总油量大于总消耗，说明可以环绕一周，返回起始加油站
+    left := 0                   // 油箱剩余油量
+    start := 0                  // 起始加油站
+    totalGas, totalCost := 0, 0 // 总油量，总消耗
+    for i := 0; i < len(gas); i++ {
+        totalGas += gas[i]
+        totalCost += cost[i]
+        left += gas[i] - cost[i] // 累加每次剩余的油量
+        if left < 0 {            // 如果剩余油量小于0，说明从起始加油站到当前加油站都不能作为起始加油站
+            start = i + 1 // 从下一个加油站开始
+            left = 0      // 油箱剩余油量清零
+        }
+    }
+    if totalGas < totalCost { // 总油量小于总消耗，说明无法环绕一周
+        return -1
+    }
+    return start // 总油量大于总消耗，说明可以环绕一周，返回起始加油站
 }

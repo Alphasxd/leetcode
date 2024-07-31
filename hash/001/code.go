@@ -15,17 +15,17 @@
 package leetcode
 
 func twoSum(nums []int, target int) []int {
-	// 创建一个 map，key 为数组的值，value 为数组中的值对应的的索引
-	m := make(map[int]int, len(nums))
-	// 遍历数组
-	for i, num := range nums {
-		// 判断 map 中是否存在 key:(target-num)的value(索引)
-		if j, ok := m[target-num]; ok {
-			// target-num 的索引 j 和当前 num 的索引 i
-			return []int{j, i}
-		}
-		// 将当前的 num 作为 key，i 作为 value 存入 map
-		m[num] = i
-	}
-	return nil
+    // 创建一个 map，key 为数组的值，value 为数组中的值对应的的索引
+    m := make(map[int]int, len(nums))
+    // 遍历数组
+    for i, num := range nums {
+        // 判断 map 中是否存在 key:(target-num)的value(索引)
+        if j, ok := m[target-num]; ok {
+            // target-num 的索引 j 和当前 num 的索引 i
+            return []int{j, i}
+        }
+        // 将当前的 num 作为 key，i 作为 value 存入 map
+        m[num] = i
+    }
+    return nil
 }

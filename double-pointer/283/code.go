@@ -14,12 +14,12 @@
 package leetcode
 
 func moveZeroes(nums []int) {
-	// 因为要保持非零元素的相对顺序，所以i和j都从0开始
-	for i, j := 0, 0; j < len(nums); j++ {
-		// j指向非零元素时，交换i和j的值，保证i之前的元素都是非零的
-		if nums[j] != 0 {
-			nums[i], nums[j] = nums[j], nums[i]
-			i++
-		}
-	}
+    // 因为要保持非零元素的相对顺序，所以i和j都从0开始
+    for i, j := 0, 0; j < len(nums); j++ {
+        // j指向非零元素时，交换i和j的值，保证i之前的元素都是非零的
+        if nums[j] != 0 {
+            nums[i], nums[j] = nums[j], nums[i]
+            i++
+        }
+    }
 }

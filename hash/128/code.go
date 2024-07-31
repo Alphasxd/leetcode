@@ -16,32 +16,32 @@ package leetcode
 
 func longestConsecutive(nums []int) int {
 
-	// 创建一个 map，key 为 nums 中的元素
-	m := make(map[int]bool)
-	// 将 nums 中存在的元素全部存入 map，value 为 true
-	for _, num := range nums {
-		m[num] = true
-	}
+    // 创建一个 map，key 为 nums 中的元素
+    m := make(map[int]bool)
+    // 将 nums 中存在的元素全部存入 map，value 为 true
+    for _, num := range nums {
+        m[num] = true
+    }
 
-	longest := 0 // 最长连续序列的长度
+    longest := 0 // 最长连续序列的长度
 
-	// 遍历 map
-	for num := range m {
-		// num不应该存在前驱数，如果存在则跳过本次循环
-		// 确保 num 是连续序列的第一个数
-		if m[num-1] {
-			continue // 跳过本次循环
-		}
-		length := 1
-		// 如果 num+1 存在，说明 num+1 已经被遍历过了，计算连续序列的长度
-		for m[num+1] {
-			num++
-			length++
-		}
-		if length > longest {
-			longest = length
-		}
-	}
+    // 遍历 map
+    for num := range m {
+        // num不应该存在前驱数，如果存在则跳过本次循环
+        // 确保 num 是连续序列的第一个数
+        if m[num-1] {
+            continue // 跳过本次循环
+        }
+        length := 1
+        // 如果 num+1 存在，说明 num+1 已经被遍历过了，计算连续序列的长度
+        for m[num+1] {
+            num++
+            length++
+        }
+        if length > longest {
+            longest = length
+        }
+    }
 
-	return longest
+    return longest
 }

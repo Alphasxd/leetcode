@@ -5,24 +5,24 @@
 package leetcode
 
 type ListNode struct {
-	Val  int
-	Next *ListNode
+    Val  int
+    Next *ListNode
 }
 
 func deleteDuplicates(head *ListNode) *ListNode {
-	// 创建虚拟头结点
-	dummy := &ListNode{Next: head}
-	curr := dummy
-	for curr.Next != nil && curr.Next.Next != nil {
-		if curr.Next.Val == curr.Next.Next.Val {
-			x := curr.Next.Val
-			// 删除所有重复的元素
-			for curr.Next != nil && curr.Next.Val == x {
-				curr.Next = curr.Next.Next
-			}
-		} else {
-			curr = curr.Next
-		}
-	}
-	return dummy.Next
+    // 创建虚拟头结点
+    dummy := &ListNode{Next: head}
+    curr := dummy
+    for curr.Next != nil && curr.Next.Next != nil {
+        if curr.Next.Val == curr.Next.Next.Val {
+            x := curr.Next.Val
+            // 删除所有重复的元素
+            for curr.Next != nil && curr.Next.Val == x {
+                curr.Next = curr.Next.Next
+            }
+        } else {
+            curr = curr.Next
+        }
+    }
+    return dummy.Next
 }

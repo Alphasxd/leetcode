@@ -14,24 +14,24 @@ package leetcode
 
 // 二分查找
 func findPeakElement(nums []int) int {
-	l, r := 0, len(nums)-1
-	for l < r {
-		h := int(uint(l+r) >> 1)
-		if nums[h] > nums[h+1] {
-			r = h
-		} else {
-			l = h + 1
-		}
-	}
-	return l
+    l, r := 0, len(nums)-1
+    for l < r {
+        h := int(uint(l+r) >> 1)
+        if nums[h] > nums[h+1] {
+            r = h
+        } else {
+            l = h + 1
+        }
+    }
+    return l
 }
 
 // func findPeakElement(nums []int) int {
-// 	idx := 0
+//     idx := 0
 //     for i, v := range nums {
-// 		// 如果当前值比前一个值大，则继续向后搜索
+//         // 如果当前值比前一个值大，则继续向后搜索
 //         if v > nums[idx] {
-// 			// 如果 v < nums[idx]，则不会更新 idx
+//             // 如果 v < nums[idx]，则不会更新 idx
 //             idx = i
 //         }
 //     }

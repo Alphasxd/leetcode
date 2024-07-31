@@ -12,24 +12,24 @@
 package leetcode
 
 func partitionLabels(s string) []int {
-	// 记录每个字符最后出现的位置，通过遍历实现更新
-	lastIndex := make(map[byte]int)
-	for i := 0; i < len(s); i++ {
-		lastIndex[s[i]] = i
-	}
+    // 记录每个字符最后出现的位置，通过遍历实现更新
+    lastIndex := make(map[byte]int)
+    for i := 0; i < len(s); i++ {
+        lastIndex[s[i]] = i
+    }
 
-	var ans []int
-	start, end := 0, 0
-	// 遍历字符串，end 记录当前子串的结束位置
-	for i := 0; i < len(s); i++ {
-		// 更新 end 为当前字符的最后出现位置
-		end = max(end, lastIndex[s[i]])
-		// 当前位置等于 end 时，表示当前子串结束，可以划分
-		if i == end {
-			ans = append(ans, end-start+1)
-			// 更新 start 为下一个子串的开始位置
-			start = end + 1
-		}
-	}
-	return ans
+    var ans []int
+    start, end := 0, 0
+    // 遍历字符串，end 记录当前子串的结束位置
+    for i := 0; i < len(s); i++ {
+        // 更新 end 为当前字符的最后出现位置
+        end = max(end, lastIndex[s[i]])
+        // 当前位置等于 end 时，表示当前子串结束，可以划分
+        if i == end {
+            ans = append(ans, end-start+1)
+            // 更新 start 为下一个子串的开始位置
+            start = end + 1
+        }
+    }
+    return ans
 }

@@ -13,16 +13,16 @@
 package leetcode
 
 func subarraySum(nums []int, k int) int {
-	cnt, preSum := 0, 0
-	// 定义一个map，key为前缀和，value为前缀和出现的次数
-	m := make(map[int]int)
-	m[0] = 1 // 前缀和初始化
-	for i := 0; i < len(nums); i++ {
-		preSum += nums[i]
-		if _, ok := m[preSum-k]; ok {
-			cnt += m[preSum-k] // 将前缀和为preSum-k的个数，加到cnt中
-		}
-		m[preSum]++ // 更新前缀和个数
-	}
-	return cnt
+    cnt, preSum := 0, 0
+    // 定义一个map，key为前缀和，value为前缀和出现的次数
+    m := make(map[int]int)
+    m[0] = 1 // 前缀和初始化
+    for i := 0; i < len(nums); i++ {
+        preSum += nums[i]
+        if _, ok := m[preSum-k]; ok {
+            cnt += m[preSum-k] // 将前缀和为preSum-k的个数，加到cnt中
+        }
+        m[preSum]++ // 更新前缀和个数
+    }
+    return cnt
 }

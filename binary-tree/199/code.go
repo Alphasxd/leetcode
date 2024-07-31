@@ -17,29 +17,29 @@
 package leetcode
 
 type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
+    Val   int
+    Left  *TreeNode
+    Right *TreeNode
 }
 
 // 使用dfs，深度优先搜索，并记录深度，先遍历右子树，再遍历左子树
 func rightSideView(root *TreeNode) []int {
-	var res []int
-	var dfs func(*TreeNode, int)
-	dfs = func(tn *TreeNode, depth int) {
-		if tn == nil {
-			return
-		}
-		// 如果深度 = 结果切片的长度，就将遍历到的节点添加到切片中
-		// 因为是先遍历右子树，所以右子树的节点会先添加到切片中
-		// 因为二叉树的 depth 是从 0 开始的，所以当 depth = len(res) 时，说明是第一个遍历到的节点
-		if depth == len(res) {
-			res = append(res, tn.Val)
-		}
-		// 递归右子树，深度+1，递归左子树，深度+1
-		dfs(tn.Right, depth+1)
-		dfs(tn.Left, depth+1)
-	}
-	dfs(root, 0)
-	return res
+    var res []int
+    var dfs func(*TreeNode, int)
+    dfs = func(tn *TreeNode, depth int) {
+        if tn == nil {
+            return
+        }
+        // 如果深度 = 结果切片的长度，就将遍历到的节点添加到切片中
+        // 因为是先遍历右子树，所以右子树的节点会先添加到切片中
+        // 因为二叉树的 depth 是从 0 开始的，所以当 depth = len(res) 时，说明是第一个遍历到的节点
+        if depth == len(res) {
+            res = append(res, tn.Val)
+        }
+        // 递归右子树，深度+1，递归左子树，深度+1
+        dfs(tn.Right, depth+1)
+        dfs(tn.Left, depth+1)
+    }
+    dfs(root, 0)
+    return res
 }

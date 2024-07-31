@@ -17,50 +17,50 @@
 package leetcode
 
 type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
+    Val   int
+    Left  *TreeNode
+    Right *TreeNode
 }
 
 // 递归判断
 // func isValidBST(root *TreeNode) bool {
-// 	var dfs func(*TreeNode, int, int) bool
-// 	dfs = func(root *TreeNode, min, max int) bool {
-// 		// 如果当前节点为空，则返回true，符合二叉搜索树的定义
-// 		if root == nil {
-// 			return true
-// 		}
-// 		// 如果当前节点的值不在[min, max]的范围内，则返回false
-// 		if root.Val <= min || root.Val >= max {
-// 			return false
-// 		}
-// 		return dfs(root.Left, min, root.Val) && dfs(root.Right, root.Val, max)
-// 	}
-// 	// 由于题目中给出的二叉树的值域为[-2^31, 2^31-1]，所以这里使用int的最大值和最小值作为初始值
-// 	return dfs(root, -1<<63, 1<<63-1)
+//     var dfs func(*TreeNode, int, int) bool
+//     dfs = func(root *TreeNode, min, max int) bool {
+//         // 如果当前节点为空，则返回true，符合二叉搜索树的定义
+//         if root == nil {
+//             return true
+//         }
+//         // 如果当前节点的值不在[min, max]的范围内，则返回false
+//         if root.Val <= min || root.Val >= max {
+//             return false
+//         }
+//         return dfs(root.Left, min, root.Val) && dfs(root.Right, root.Val, max)
+//     }
+//     // 由于题目中给出的二叉树的值域为[-2^31, 2^31-1]，所以这里使用int的最大值和最小值作为初始值
+//     return dfs(root, -1<<63, 1<<63-1)
 // }
 
 // 非递归中序遍历
 func isValidBST(root *TreeNode) bool {
-	var stack []*TreeNode
-	var pre *TreeNode
-	for len(stack) > 0 || root != nil {
-		// 将当前节点的所有左子节点入栈
-		for root != nil {
-			stack = append(stack, root)
-			root = root.Left
-		}
-		// 弹出栈顶元素
-		root = stack[len(stack)-1]
-		stack = stack[:len(stack)-1]
-		// 如果当前节点的值小于等于pre节点的值，则不是二叉搜索树
-		if pre != nil && root.Val <= pre.Val {
-			return false
-		}
-		// 更新pre节点
-		pre = root
-		// 处理右子节点
-		root = root.Right
-	}
-	return true
+    var stack []*TreeNode
+    var pre *TreeNode
+    for len(stack) > 0 || root != nil {
+        // 将当前节点的所有左子节点入栈
+        for root != nil {
+            stack = append(stack, root)
+            root = root.Left
+        }
+        // 弹出栈顶元素
+        root = stack[len(stack)-1]
+        stack = stack[:len(stack)-1]
+        // 如果当前节点的值小于等于pre节点的值，则不是二叉搜索树
+        if pre != nil && root.Val <= pre.Val {
+            return false
+        }
+        // 更新pre节点
+        pre = root
+        // 处理右子节点
+        root = root.Right
+    }
+    return true
 }

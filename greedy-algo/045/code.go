@@ -15,17 +15,17 @@
 package leetcode
 
 func jump(nums []int) int {
-	// 定义一个变量steps，表示跳跃的次数，position表示当前能够到达的最远位置
-	steps, position := 0, len(nums)-1
-	for position > 0 {
-		for i := 0; i < position; i++ {
-			// 如果当前位置能够到达的最远位置大于等于position，说明从当前位置可以一步跳到最后一个位置
-			if i+nums[i] >= position {
-				position = i
-				steps++
-				break
-			}
-		}
-	}
-	return steps
+    // 定义一个变量steps，表示跳跃的次数，position表示当前能够到达的最远位置
+    steps, position := 0, len(nums)-1
+    for position > 0 {
+        for i := 0; i < position; i++ {
+            // 如果当前位置能够到达的最远位置大于等于position，说明从当前位置可以一步跳到最后一个位置
+            if i+nums[i] >= position {
+                position = i
+                steps++
+                break
+            }
+        }
+    }
+    return steps
 }

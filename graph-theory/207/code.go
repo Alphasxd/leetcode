@@ -16,40 +16,40 @@
 package leetcode
 
 func canFinish(numCourses int, prerequisites [][]int) bool {
-	// 记录每个节点的后继节点，即邻接表，等同于将 prerequisites 转换为邻接表
-	edges := make([][]int, numCourses)
-	// 记录每个节点的入度
-	inDegree := make([]int, numCourses)
-	for _, info := range prerequisites {
-		// 以 info[1] 为起点，info[0] 为终点，info[1] -> info[0]
-		edges[info[1]] = append(edges[info[1]], info[0])
-		inDegree[info[0]]++
-	}
+    // 记录每个节点的后继节点，即邻接表，等同于将 prerequisites 转换为邻接表
+    edges := make([][]int, numCourses)
+    // 记录每个节点的入度
+    inDegree := make([]int, numCourses)
+    for _, info := range prerequisites {
+        // 以 info[1] 为起点，info[0] 为终点，info[1] -> info[0]
+        edges[info[1]] = append(edges[info[1]], info[0])
+        inDegree[info[0]]++
+    }
 
-	// 将入度为 0 的节点加入队列
-	queue := []int{}
-	for i := 0; i < numCourses; i++ {
-		if inDegree[i] == 0 {
-			queue = append(queue, i)
-		}
-	}
+    // 将入度为 0 的节点加入队列
+    queue := []int{}
+    for i := 0; i < numCourses; i++ {
+        if inDegree[i] == 0 {
+            queue = append(queue, i)
+        }
+    }
 
-	// BFS
-	for len(queue) > 0 {
-		// 出队
-		node := queue[0]
-		queue = queue[1:]
-		// 课程数减一
-		numCourses--
-		// 遍历当前节点的所有后继节点
-		for _, next := range edges[node] {
-			// 将后继节点的入度减一
-			inDegree[next]--
-			// 如果入度为 0，加入队列
-			if inDegree[next] == 0 {
-				queue = append(queue, next)
-			}
-		}
-	}
-	return numCourses == 0
+    // BFS
+    for len(queue) > 0 {
+        // 出队
+        node := queue[0]
+        queue = queue[1:]
+        // 课程数减一
+        numCourses--
+        // 遍历当前节点的所有后继节点
+        for _, next := range edges[node] {
+            // 将后继节点的入度减一
+            inDegree[next]--
+            // 如果入度为 0，加入队列
+            if inDegree[next] == 0 {
+                queue = append(queue, next)
+            }
+        }
+    }
+    return numCourses == 0
 }

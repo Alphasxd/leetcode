@@ -6,18 +6,18 @@
 package leetcode
 
 type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
+    Val   int
+    Left  *TreeNode
+    Right *TreeNode
 }
 
 func isSameTree(p *TreeNode, q *TreeNode) bool {
-	switch {
-	case p == nil || q == nil: // 如果 p 和 q 中有一个是 nil，则返回 p == q
-		return p == q
-	case p.Val != q.Val: // 如果 p 和 q 的值不相等，则返回 false
-		return false
-	}
-	// 递归判断 p 和 q 的左右子树是否相同
-	return isSameTree(p.Left, q.Left) && isSameTree(p.Right, q.Right)
+    switch {
+    case p == nil || q == nil: // 如果 p 和 q 中有一个是 nil，则返回 p == q
+        return p == q
+    case p.Val != q.Val: // 如果 p 和 q 的值不相等，则返回 false
+        return false
+    }
+    // 递归判断 p 和 q 的左右子树是否相同
+    return isSameTree(p.Left, q.Left) && isSameTree(p.Right, q.Right)
 }

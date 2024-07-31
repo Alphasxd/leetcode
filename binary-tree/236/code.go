@@ -16,25 +16,25 @@
 package leetcode
 
 type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
+    Val   int
+    Left  *TreeNode
+    Right *TreeNode
 }
 
 func lowestCommonAncestor(root, p, q *TreeNode) *TreeNode {
-	// 若 root 为空，或者 root 等于 p 或者 q，则返回 root
-	if root == nil || root == p || root == q {
-		return root
-	}
-	left := lowestCommonAncestor(root.Left, p, q)   // 递归左子树
-	right := lowestCommonAncestor(root.Right, p, q) // 递归右子树
+    // 若 root 为空，或者 root 等于 p 或者 q，则返回 root
+    if root == nil || root == p || root == q {
+        return root
+    }
+    left := lowestCommonAncestor(root.Left, p, q)   // 递归左子树
+    right := lowestCommonAncestor(root.Right, p, q) // 递归右子树
 
-	if left != nil && right != nil { // 若左子树和右子树都不为空，则返回 root
-		return root
-	}
+    if left != nil && right != nil { // 若左子树和右子树都不为空，则返回 root
+        return root
+    }
 
-	if left != nil {
-		return left // 若左子树不为空，则返回左子树
-	}
-	return right // 若右子树不为空，则返回右子树
+    if left != nil {
+        return left // 若左子树不为空，则返回左子树
+    }
+    return right // 若右子树不为空，则返回右子树
 }

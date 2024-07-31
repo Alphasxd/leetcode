@@ -17,38 +17,38 @@
 package leetcode
 
 type ListNode struct {
-	Val  int
-	Next *ListNode
+    Val  int
+    Next *ListNode
 }
 
 // 时间复杂度：O(n+m)，空间复杂度：O(1)
 func mergeTwoLists(l1, l2 *ListNode) *ListNode {
 
-	// 创建一个虚拟头节点，在合并后的链表前面，用于返回合并后的链表
-	dummy := new(ListNode)
-	// 创建一个游标
-	cur := dummy
-	// 循环比较两个链表的值，将较小的值放入新链表中
-	for l1 != nil && l2 != nil {
-		if l1.Val <= l2.Val {
-			cur.Next = l1
-			cur = cur.Next
-			l1 = l1.Next
-		} else {
-			cur.Next = l2
-			cur = cur.Next
-			l2 = l2.Next
-		}
-	}
+    // 创建一个虚拟头节点，在合并后的链表前面，用于返回合并后的链表
+    dummy := new(ListNode)
+    // 创建一个游标
+    cur := dummy
+    // 循环比较两个链表的值，将较小的值放入新链表中
+    for l1 != nil && l2 != nil {
+        if l1.Val <= l2.Val {
+            cur.Next = l1
+            cur = cur.Next
+            l1 = l1.Next
+        } else {
+            cur.Next = l2
+            cur = cur.Next
+            l2 = l2.Next
+        }
+    }
 
-	// 有一个链表为空时，将另一个链表剩余的值放入新链表中
-	switch {
-	case l1 != nil:
-		cur.Next = l1
-	case l2 != nil:
-		cur.Next = l2
-	}
+    // 有一个链表为空时，将另一个链表剩余的值放入新链表中
+    switch {
+    case l1 != nil:
+        cur.Next = l1
+    case l2 != nil:
+        cur.Next = l2
+    }
 
-	// 返回辅助节点的下一个节点，即合并后的链表
-	return dummy.Next
+    // 返回辅助节点的下一个节点，即合并后的链表
+    return dummy.Next
 }

@@ -8,18 +8,18 @@ package leetcode
 import "strconv"
 
 func summaryRanges(nums []int) []string {
-	var res []string
-	for i, n := 0, len(nums); i < n; {
-		left := i
-		// 从 i 开始，找到第一个不连续的位置，此时 i-1 为连续区间的最后一个位置
-		for i++; i < n && nums[i-1]+1 == nums[i]; i++ {
-		}
-		s := strconv.Itoa(nums[left])
-		// 如果 left < i-1，格式化为 "left->right"，否则只有一个数
-		if left < i-1 {
-			s += "->" + strconv.Itoa(nums[i-1])
-		}
-		res = append(res, s)
-	}
-	return res
+    var res []string
+    for i, n := 0, len(nums); i < n; {
+        left := i
+        // 从 i 开始，找到第一个不连续的位置，此时 i-1 为连续区间的最后一个位置
+        for i++; i < n && nums[i-1]+1 == nums[i]; i++ {
+        }
+        s := strconv.Itoa(nums[left])
+        // 如果 left < i-1，格式化为 "left->right"，否则只有一个数
+        if left < i-1 {
+            s += "->" + strconv.Itoa(nums[i-1])
+        }
+        res = append(res, s)
+    }
+    return res
 }

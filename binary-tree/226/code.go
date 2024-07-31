@@ -17,20 +17,20 @@
 package leetcode
 
 type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
+    Val   int
+    Left  *TreeNode
+    Right *TreeNode
 }
 
 // 递归，时间复杂度O(n)，空间复杂度O(n)
 func invertTree(root *TreeNode) *TreeNode {
-	
-	if root == nil {
-		return nil
-	}
 
-	// 递归翻转左右子树
-	root.Left, root.Right = invertTree(root.Right), invertTree(root.Left)
+    if root == nil {
+        return nil
+    }
 
-	return root
+    // 递归翻转左右子树
+    root.Left, root.Right = invertTree(root.Right), invertTree(root.Left)
+
+    return root
 }

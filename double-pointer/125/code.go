@@ -6,35 +6,35 @@
 package leetcode
 
 import (
-	"strings"
-	"unicode"
+    "strings"
+    "unicode"
 )
 
 func isPalindrome(s string) bool {
-	s = strings.ToLower(s)
-	// 双指针
-	i, j := 0, len(s)-1
+    s = strings.ToLower(s)
+    // 双指针
+    i, j := 0, len(s)-1
 
-	for i < j {
-		// 非字母数字，跳过
-		if !isAlphanumeric(rune(s[i])) {
-			i++
-			continue
-		}
-		if !isAlphanumeric(rune(s[j])) {
-			j--
-			continue
-		}
-		// 不相等，返回 false
-		if s[i] != s[j] {
-			return false
-		}
-		i++
-		j--
-	}
-	return true
+    for i < j {
+        // 非字母数字，跳过
+        if !isAlphanumeric(rune(s[i])) {
+            i++
+            continue
+        }
+        if !isAlphanumeric(rune(s[j])) {
+            j--
+            continue
+        }
+        // 不相等，返回 false
+        if s[i] != s[j] {
+            return false
+        }
+        i++
+        j--
+    }
+    return true
 }
 
 func isAlphanumeric(c rune) bool {
-	return unicode.IsLetter(c) || unicode.IsDigit(c)
+    return unicode.IsLetter(c) || unicode.IsDigit(c)
 }

@@ -12,38 +12,38 @@
 package leetcode
 
 type Node struct {
-	Val    int
-	Next   *Node
-	Random *Node
+    Val    int
+    Next   *Node
+    Random *Node
 }
 
 // 利用 map 存储原链表的节点和新链表的节点，然后再遍历一次，将新链表的 next 和 random 指针指向正确的节点
 // 时间复杂度：O(n)，空间复杂度：O(n)
 func copyRandomList(head *Node) *Node {
-	// 链表为空，直接返回
-	if head == nil {
-		return head
-	}
-	// 用map存储原链表的节点和新链表的节点
-	m := make(map[*Node]*Node)
+    // 链表为空，直接返回
+    if head == nil {
+        return head
+    }
+    // 用map存储原链表的节点和新链表的节点
+    m := make(map[*Node]*Node)
 
-	curr := head
-	// 遍历原链表，将原链表的节点和新链表的节点存储到map中，此时新链表的 next 和 random 指针都为空
-	for curr != nil {
-		node := &Node{Val: curr.Val}
-		m[curr] = node
-		curr = curr.Next
-	}
+    curr := head
+    // 遍历原链表，将原链表的节点和新链表的节点存储到map中，此时新链表的 next 和 random 指针都为空
+    for curr != nil {
+        node := &Node{Val: curr.Val}
+        m[curr] = node
+        curr = curr.Next
+    }
 
-	curr = head
-	// 再次遍历原链表，将新链表的 next 和 random 指针指向正确的节点
-	for curr != nil {
-		node := m[curr]
-		// 将新链表的 next 和 random 指针指向正确的节点
-		node.Next = m[curr.Next]
-		node.Random = m[curr.Random]
-		curr = curr.Next
-	}
-	// 最后直接返回map中的头节点，对应的值就是新链表的头节点
-	return m[head]
+    curr = head
+    // 再次遍历原链表，将新链表的 next 和 random 指针指向正确的节点
+    for curr != nil {
+        node := m[curr]
+        // 将新链表的 next 和 random 指针指向正确的节点
+        node.Next = m[curr.Next]
+        node.Random = m[curr.Random]
+        curr = curr.Next
+    }
+    // 最后直接返回map中的头节点，对应的值就是新链表的头节点
+    return m[head]
 }

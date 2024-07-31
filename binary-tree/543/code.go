@@ -20,36 +20,36 @@
 package leetcode
 
 type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
+    Val   int
+    Left  *TreeNode
+    Right *TreeNode
 }
 
 // 递归 时间复杂度O(n) 空间复杂度O(n)
 func diameterOfBinaryTree(root *TreeNode) int {
-	var res int
-	var diameter func(*TreeNode) int
+    var res int
+    var diameter func(*TreeNode) int
 
-	diameter = func(root *TreeNode) int {
-		if root == nil {
-			return 0
-		}
-		// 递归计算左右子树的深度
-		left := diameter(root.Left)
-		right := diameter(root.Right)
-		// 计算当前节点的最大直径
-		if left+right > res {
-			res = left + right
-		}
+    diameter = func(root *TreeNode) int {
+        if root == nil {
+            return 0
+        }
+        // 递归计算左右子树的深度
+        left := diameter(root.Left)
+        right := diameter(root.Right)
+        // 计算当前节点的最大直径
+        if left+right > res {
+            res = left + right
+        }
 
-		// 返回当前节点的深度
-		depth := left
-		if right > depth {
-			depth = right
-		}
-		return depth + 1
-	}
-	// 计算二叉树的直径
-	diameter(root)
-	return res
+        // 返回当前节点的深度
+        depth := left
+        if right > depth {
+            depth = right
+        }
+        return depth + 1
+    }
+    // 计算二叉树的直径
+    diameter(root)
+    return res
 }

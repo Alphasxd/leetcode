@@ -25,25 +25,25 @@
 package leetcode
 
 type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
+    Val   int
+    Left  *TreeNode
+    Right *TreeNode
 }
 
 // 中序遍历，时间复杂度O(n)，空间复杂度O(n)
 func kthSmallest(root *TreeNode, k int) int {
-	// 存储中序遍历结果
-	res := []int{}
-	var inorder func(*TreeNode)
-	inorder = func(tn *TreeNode) {
-		if tn == nil {
-			return
-		}
-		inorder(tn.Left)
-		res = append(res, tn.Val)
-		inorder(tn.Right)
-	}
-	inorder(root)
-	// 返回第k个最小元素
-	return res[k-1]
+    // 存储中序遍历结果
+    res := []int{}
+    var inorder func(*TreeNode)
+    inorder = func(tn *TreeNode) {
+        if tn == nil {
+            return
+        }
+        inorder(tn.Left)
+        res = append(res, tn.Val)
+        inorder(tn.Right)
+    }
+    inorder(root)
+    // 返回第k个最小元素
+    return res[k-1]
 }

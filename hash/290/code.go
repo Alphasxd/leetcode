@@ -21,18 +21,18 @@ import "strings"
 
 // 与205题类似，只是这里的s是单词，而不是单个字符，只需要将 s 中的每个单词当作一个字符即可
 func wordPattern(pattern, s string) bool {
-	words := strings.Fields(s)
-	if len(pattern) != len(words) {
-		return false
-	}
-	m1, m2 := make(map[byte]string), make(map[string]byte)
-	for i := range pattern {
-		x, y := pattern[i], words[i]
-		if m1[x] != "" && m1[x] != y || m2[y] > 0 && m2[y] != x {
-			return false
-		}
-		m1[x] = y
-		m2[y] = x
-	}
-	return true
+    words := strings.Fields(s)
+    if len(pattern) != len(words) {
+        return false
+    }
+    m1, m2 := make(map[byte]string), make(map[string]byte)
+    for i := range pattern {
+        x, y := pattern[i], words[i]
+        if m1[x] != "" && m1[x] != y || m2[y] > 0 && m2[y] != x {
+            return false
+        }
+        m1[x] = y
+        m2[y] = x
+    }
+    return true
 }

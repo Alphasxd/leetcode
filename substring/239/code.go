@@ -14,24 +14,24 @@
 package leetcode
 
 func maxSlidingWindow(nums []int, k int) []int {
-	if len(nums) == 0 {
-		return nums
-	}
-	var res []int
-	// len(nums)-(k-1) 为滑动窗口的移动次数
-	for i := 0; i < len(nums)-k+1; i++ {
-		// nums[i:i+k] 为滑动窗口切片
-		res = append(res, max(nums[i:i+k]))
-	}
-	return res
+    if len(nums) == 0 {
+        return nums
+    }
+    var res []int
+    // len(nums)-(k-1) 为滑动窗口的移动次数
+    for i := 0; i < len(nums)-k+1; i++ {
+        // nums[i:i+k] 为滑动窗口切片
+        res = append(res, max(nums[i:i+k]))
+    }
+    return res
 }
 
 func max(nums []int) int {
-	max := nums[0]
-	for _, v := range nums {
-		if v > max {
-			max = v
-		}
-	}
-	return max
+    max := nums[0]
+    for _, v := range nums {
+        if v > max {
+            max = v
+        }
+    }
+    return max
 }

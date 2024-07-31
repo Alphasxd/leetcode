@@ -6,18 +6,18 @@
 package leetcode
 
 func removeDuplicates(nums []int) int {
-	n := len(nums)
-	// 当数组中的元素数量≤2时，直接返回len即可
-	if n <= 2 {
-		return n
-	}
-	// 定义双指针，初始都指向第三个元素，即下标2
-	slow := 2
-	for fast := 2; fast < n; fast++ {
-		if nums[slow-2] != nums[fast] {
-			nums[slow] = nums[fast]
-			slow++
-		}
-	}
-	return slow
+    n := len(nums)
+    // 当数组中的元素数量≤2时，直接返回len即可
+    if n <= 2 {
+        return n
+    }
+    // 定义双指针，初始都指向第三个元素，即下标2
+    slow := 2
+    for fast := 2; fast < n; fast++ {
+        if nums[slow-2] != nums[fast] {
+            nums[slow] = nums[fast]
+            slow++
+        }
+    }
+    return slow
 }

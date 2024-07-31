@@ -8,25 +8,25 @@
 package leetcode
 
 type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
+    Val   int
+    Left  *TreeNode
+    Right *TreeNode
 }
 
 // DFS
 func sumNumbers(root *TreeNode) int {
-	return dfs(root, 0)
+    return dfs(root, 0)
 }
 
 func dfs(root *TreeNode, prevNum int) int {
-	if root == nil {
-		return 0
-	}
-	sum := prevNum*10 + root.Val
-	// 如果当前节点是叶子节点，直接返回sum
-	if root.Left == nil && root.Right == nil {
-		return sum
-	}
-	// 如果当前节点不是叶子节点，返回左右子树的和，传入的参数是sum作为下次递归的prevNum
-	return dfs(root.Left, sum) + dfs(root.Right, sum)
+    if root == nil {
+        return 0
+    }
+    sum := prevNum*10 + root.Val
+    // 如果当前节点是叶子节点，直接返回sum
+    if root.Left == nil && root.Right == nil {
+        return sum
+    }
+    // 如果当前节点不是叶子节点，返回左右子树的和，传入的参数是sum作为下次递归的prevNum
+    return dfs(root.Left, sum) + dfs(root.Right, sum)
 }

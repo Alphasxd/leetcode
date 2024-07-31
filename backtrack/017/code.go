@@ -14,38 +14,37 @@
 package leetcode
 
 func letterCombinations(digits string) []string {
-	// 如果字符串为空，直接返回空
-	if len(digits) == 0 {
-		return nil
-	}
+    // 如果字符串为空，直接返回空
+    if len(digits) == 0 {
+        return nil
+    }
 
-	buttons := []string{"abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"}
+    buttons := []string{"abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"}
 
+    var results []string
+    // 因为有几个数字，组合就有几位，所以直接初始化
+    temp := make([]byte, len(digits))
 
-	var results []string
-	// 因为有几个数字，组合就有几位，所以直接初始化
-	temp := make([]byte, len(digits))
+    var dfs func(int)
+    dfs = func(i int) {
+        // 如果已经遍历完最后一位，此时i+1=digits，把结果加入到结果集中
+        if i == len(digits) {
+            results = append(results, string(temp))
+            return
+        }
 
-	var dfs func(int)
-	dfs = func(i int) {
-		// 如果已经遍历完最后一位，此时i+1=digits，把结果加入到结果集中
-		if i == len(digits) {
-			results = append(results, string(temp))
-			return
-		}
+        // 获取当前数字对应字母的 byte 数组，因为数字9键的字母是从2开始的，所以要减去2
+        letters := buttons[digits[i]-'2']
 
-		// 获取当前数字对应字母的 byte 数组，因为数字9键的字母是从2开始的，所以要减去2
-		letters := buttons[digits[i]-'2']
+        // 遍历字母数组，把每个字母加入到临时数组中
+        for j := 0; j < len(letters); j++ {
+            temp[i] = letters[j]
+            dfs(i + 1)
+        }
+    }
 
-		// 遍历字母数组，把每个字母加入到临时数组中
-		for j := 0; j < len(letters); j++ {
-			temp[i] = letters[j]
-			dfs(i + 1)
-		}
-	}
+    // 从参数 digits 的第一位开始遍历
+    dfs(0)
 
-	// 从参数 digits 的第一位开始遍历
-	dfs(0)
-
-	return results
+    return results
 }

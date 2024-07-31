@@ -16,27 +16,27 @@
 package leetcode
 
 type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
+    Val   int
+    Left  *TreeNode
+    Right *TreeNode
 }
 
 func flatten(root *TreeNode) {
-	curr := root
-	// 通过右指针遍历
-	for curr != nil {
-		// 提前记录当前节点的右子树
-		right := curr.Right
-		// 将当前节点的左子树插入到右子树的地方
-		curr.Left, curr.Right = nil, curr.Left
-		// 将原来的右子树接到当前右子树的最右边节点
-		prev := curr
-		for prev.Right != nil {
-			prev = prev.Right
-		}
-		// 将原来的右子树接到当前右子树的最右边节点
-		prev.Right = right
-		// 考虑下一个节点
-		curr = curr.Right
-	}
+    curr := root
+    // 通过右指针遍历
+    for curr != nil {
+        // 提前记录当前节点的右子树
+        right := curr.Right
+        // 将当前节点的左子树插入到右子树的地方
+        curr.Left, curr.Right = nil, curr.Left
+        // 将原来的右子树接到当前右子树的最右边节点
+        prev := curr
+        for prev.Right != nil {
+            prev = prev.Right
+        }
+        // 将原来的右子树接到当前右子树的最右边节点
+        prev.Right = right
+        // 考虑下一个节点
+        curr = curr.Right
+    }
 }

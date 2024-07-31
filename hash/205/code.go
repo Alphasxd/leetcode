@@ -16,15 +16,15 @@ package leetcode
 
 // 双向映射，与290题单词规律类似
 func isIsomorphic(s, t string) bool {
-	m1 := map[byte]byte{}
-	m2 := map[byte]byte{}
-	for i := range s {
-		x, y := s[i], t[i]
-		if m1[x] > 0 && m1[x] != y || m2[y] > 0 && m2[y] != x {
-			return false
-		}
-		m1[x] = y
-		m2[y] = x
-	}
-	return true
+    m1 := map[byte]byte{}
+    m2 := map[byte]byte{}
+    for i := range s {
+        x, y := s[i], t[i]
+        if m1[x] > 0 && m1[x] != y || m2[y] > 0 && m2[y] != x {
+            return false
+        }
+        m1[x] = y
+        m2[y] = x
+    }
+    return true
 }

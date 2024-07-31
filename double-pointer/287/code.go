@@ -15,19 +15,19 @@ package leetcode
 
 // 因为 nums 中的数字范围在 [1, n] 之间，所以可以将 nums 中的每个数字看作一个指针，指向 nums 中的一个位置
 func findDuplicate(nums []int) int {
-	// slow, fast 分别指向 nums[0] 和 nums[nums[0]]
-	slow := nums[nums[0]]
-	fast := nums[nums[nums[0]]]
-	// slow 一次走一步，fast 一次走两步，直到相遇
-	for slow != fast {
-		slow = nums[slow]
-		fast = nums[nums[fast]]
-	}
-	// slow 从 nums[0] 开始，fast 从相遇点开始，再次相遇时即为重复元素
-	duplicate := nums[0]
-	for duplicate != slow {
-		duplicate = nums[duplicate]
-		slow = nums[slow]
-	}
-	return duplicate
+    // slow, fast 分别指向 nums[0] 和 nums[nums[0]]
+    slow := nums[nums[0]]
+    fast := nums[nums[nums[0]]]
+    // slow 一次走一步，fast 一次走两步，直到相遇
+    for slow != fast {
+        slow = nums[slow]
+        fast = nums[nums[fast]]
+    }
+    // slow 从 nums[0] 开始，fast 从相遇点开始，再次相遇时即为重复元素
+    duplicate := nums[0]
+    for duplicate != slow {
+        duplicate = nums[duplicate]
+        slow = nums[slow]
+    }
+    return duplicate
 }

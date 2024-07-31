@@ -11,21 +11,21 @@ package leetcode
 
 // 双指针，zero 指向 0 的最右边界，two 指向 2 的最左边界
 func sortColors(nums []int) {
-	zero, two := 0, len(nums)-1
-	// one 从左往右遍历，遇到 0 则与 zero 交换，遇到 2 则与 two 交换
-	for one := 0; one <= two; {
-		switch nums[one] {
-		case 0:
-			nums[zero], nums[one] = nums[one], nums[zero]
-			// zero 和 one 同步右移
-			zero++
-			one++
-		case 1:
-			one++
-		case 2:
-			nums[one], nums[two] = nums[two], nums[one]
-			// two 左移，one 不动
-			two--
-		}
-	}
+    zero, two := 0, len(nums)-1
+    // one 从左往右遍历，遇到 0 则与 zero 交换，遇到 2 则与 two 交换
+    for one := 0; one <= two; {
+        switch nums[one] {
+        case 0:
+            nums[zero], nums[one] = nums[one], nums[zero]
+            // zero 和 one 同步右移
+            zero++
+            one++
+        case 1:
+            one++
+        case 2:
+            nums[one], nums[two] = nums[two], nums[one]
+            // two 左移，one 不动
+            two--
+        }
+    }
 }

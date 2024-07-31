@@ -10,27 +10,27 @@ package leetcode
 
 // 位运算
 func singleNumber(nums []int) int {
-	var single int
-	for _, num := range nums {
-		// 异或运算，相同的数异或结果为0，0和任何数异或结果为任何数
-		single ^= num
-	}
-	return single
+    var single int
+    for _, num := range nums {
+        // 异或运算，相同的数异或结果为0，0和任何数异或结果为任何数
+        single ^= num
+    }
+    return single
 }
 
 // 字典
 func singleNumber1(nums []int) int {
-	dict := make(map[int]struct{})
-	for _, v := range nums {
-		// 如果字典中存在该元素，则删除，否则添加
-		if _, ok := dict[v]; ok {
-			delete(dict, v)
-		} else {
-			dict[v] = struct{}{}
-		}
-	}
-	for k := range dict {
-		return k
-	}
-	return -1
+    dict := make(map[int]struct{})
+    for _, v := range nums {
+        // 如果字典中存在该元素，则删除，否则添加
+        if _, ok := dict[v]; ok {
+            delete(dict, v)
+        } else {
+            dict[v] = struct{}{}
+        }
+    }
+    for k := range dict {
+        return k
+    }
+    return -1
 }

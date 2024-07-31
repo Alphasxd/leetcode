@@ -14,24 +14,24 @@
 package leetcode
 
 func maxProduct(nums []int) int {
-	product, res := 1, nums[0]
-	for i := range len(nums) {
-		product *= nums[i]
-		res = max(res, product)
-		if nums[i] == 0 {
-			// 重置 product，即当前子数组的乘积
-			product = 1
-		}
-	}
-	// 两次遍历，第一次从左到右，第二次从右到左
-	// 主要是应对数组中有奇数个负数的情况
-	product = 1
-	for i := len(nums) - 1; i >= 0; i-- {
-		product *= nums[i]
-		res = max(res, product)
-		if nums[i] == 0 {
-			product = 1
-		}
-	}
-	return res
+    product, res := 1, nums[0]
+    for i := range len(nums) {
+        product *= nums[i]
+        res = max(res, product)
+        if nums[i] == 0 {
+            // 重置 product，即当前子数组的乘积
+            product = 1
+        }
+    }
+    // 两次遍历，第一次从左到右，第二次从右到左
+    // 主要是应对数组中有奇数个负数的情况
+    product = 1
+    for i := len(nums) - 1; i >= 0; i-- {
+        product *= nums[i]
+        res = max(res, product)
+        if nums[i] == 0 {
+            product = 1
+        }
+    }
+    return res
 }

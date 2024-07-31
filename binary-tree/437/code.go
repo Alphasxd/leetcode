@@ -18,38 +18,38 @@
 package leetcode
 
 type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
+    Val   int
+    Left  *TreeNode
+    Right *TreeNode
 }
 
 func pathSum(root *TreeNode, targetSum int) int {
-	// 使用字面量方式初始化map，key为前缀和，value为前缀和出现的次数
-	preSumMap := map[int]int{0: 1}
-	// 声明一个用于递归的函数变量
-	var f func(*TreeNode, int) int
-	f = func(root *TreeNode, curSum int) int {
-		var ans int
-		if root == nil {
-			return 0
-		}
-		// 当前路径上的和
-		curSum += root.Val
-		// 如果前缀和中存在curSum-targetSum，说明存在一条路径和为targetSum
-		// 这条路径即为curSum-(curSum-targetSum)=targetSum
-		if cnt, ok := preSumMap[curSum-targetSum]; ok {
-			ans += cnt
-		}
-		// 更新前缀和curSum的次数
-		preSumMap[curSum]++
+    // 使用字面量方式初始化map，key为前缀和，value为前缀和出现的次数
+    preSumMap := map[int]int{0: 1}
+    // 声明一个用于递归的函数变量
+    var f func(*TreeNode, int) int
+    f = func(root *TreeNode, curSum int) int {
+        var ans int
+        if root == nil {
+            return 0
+        }
+        // 当前路径上的和
+        curSum += root.Val
+        // 如果前缀和中存在curSum-targetSum，说明存在一条路径和为targetSum
+        // 这条路径即为curSum-(curSum-targetSum)=targetSum
+        if cnt, ok := preSumMap[curSum-targetSum]; ok {
+            ans += cnt
+        }
+        // 更新前缀和curSum的次数
+        preSumMap[curSum]++
 
-		// 递归左右子树
-		ans += f(root.Left, curSum)
-		ans += f(root.Right, curSum)
+        // 递归左右子树
+        ans += f(root.Left, curSum)
+        ans += f(root.Right, curSum)
 
-		// 回溯，恢复状态
-		preSumMap[curSum]--
-		return ans
-	}
-	return f(root, 0)
+        // 回溯，恢复状态
+        preSumMap[curSum]--
+        return ans
+    }
+    return f(root, 0)
 }

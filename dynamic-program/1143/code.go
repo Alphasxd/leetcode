@@ -14,24 +14,24 @@
 package leetcode
 
 func longestCommonSubsequence(text1, text2 string) int {
-	m, n := len(text1), len(text2)
-	// dp[i][j] 表示 text1[0:i] 和 text2[0:j] 的最长公共子序列长度
-	dp := make([][]int, m+1)
-	for i := range dp {
-		dp[i] = make([]int, n+1)
-	}
+    m, n := len(text1), len(text2)
+    // dp[i][j] 表示 text1[0:i] 和 text2[0:j] 的最长公共子序列长度
+    dp := make([][]int, m+1)
+    for i := range dp {
+        dp[i] = make([]int, n+1)
+    }
 
-	// 初始化
-	for i := 1; i <= m; i++ {
-		for j := 1; j <= n; j++ {
-			if text1[i-1] == text2[j-1] {
-				// 如果 text1[i-1] == text2[j-1]，则 text1[i-1] 和 text2[j-1] 必然在最长公共子序列中
-				dp[i][j] = dp[i-1][j-1] + 1
-			} else {
-				// 否则，text1[i-1] 和 text2[j-1] 至少有一个不在最长公共子序列中
-				dp[i][j] = max(dp[i-1][j], dp[i][j-1])
-			}
-		}
-	}
-	return dp[m][n]
+    // 初始化
+    for i := 1; i <= m; i++ {
+        for j := 1; j <= n; j++ {
+            if text1[i-1] == text2[j-1] {
+                // 如果 text1[i-1] == text2[j-1]，则 text1[i-1] 和 text2[j-1] 必然在最长公共子序列中
+                dp[i][j] = dp[i-1][j-1] + 1
+            } else {
+                // 否则，text1[i-1] 和 text2[j-1] 至少有一个不在最长公共子序列中
+                dp[i][j] = max(dp[i-1][j], dp[i][j-1])
+            }
+        }
+    }
+    return dp[m][n]
 }

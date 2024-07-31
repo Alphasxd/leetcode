@@ -21,44 +21,44 @@
 package leetcode
 
 type ListNode struct {
-	Val  int
-	Next *ListNode
+    Val  int
+    Next *ListNode
 }
 
 func addTwoNumbers(l1, l2 *ListNode) *ListNode {
-	// 创建一个辅助节点，指向首元节点之前的节点，模拟头结点
-	dummy := new(ListNode)
-	// 创建一个游标
-	cur := dummy
+    // 创建一个辅助节点，指向首元节点之前的节点，模拟头结点
+    dummy := new(ListNode)
+    // 创建一个游标
+    cur := dummy
 
-	// 存放进位值
-	var carry int
+    // 存放进位值
+    var carry int
 
-	// 遍历两个链表，有一个不为空就继续遍历
-	for l1 != nil || l2 != nil {
-		// 创建新节点用于存放相加后的值，因为返回一个新链表，所以每次都要创建一个新节点
-		cur.Next = new(ListNode)
-		cur = cur.Next
+    // 遍历两个链表，有一个不为空就继续遍历
+    for l1 != nil || l2 != nil {
+        // 创建新节点用于存放相加后的值，因为返回一个新链表，所以每次都要创建一个新节点
+        cur.Next = new(ListNode)
+        cur = cur.Next
 
-		if l1 != nil {
-			carry += l1.Val
-			l1 = l1.Next
-		}
-		if l2 != nil {
-			carry += l2.Val
-			l2 = l2.Next
-		}
+        if l1 != nil {
+            carry += l1.Val
+            l1 = l1.Next
+        }
+        if l2 != nil {
+            carry += l2.Val
+            l2 = l2.Next
+        }
 
-		// 将相加后的值存入新节点
-		cur.Val = carry % 10
-		// 计算进位值
-		carry /= 10
-	}
+        // 将相加后的值存入新节点
+        cur.Val = carry % 10
+        // 计算进位值
+        carry /= 10
+    }
 
-	// 如果最后还有进位值，就再创建一个新节点，此时carry不需要再除以10
-	if carry > 0 {
-		cur.Next = &ListNode{Val: carry}
-	}
+    // 如果最后还有进位值，就再创建一个新节点，此时carry不需要再除以10
+    if carry > 0 {
+        cur.Next = &ListNode{Val: carry}
+    }
 
-	return dummy.Next
+    return dummy.Next
 }

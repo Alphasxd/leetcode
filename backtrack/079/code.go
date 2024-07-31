@@ -12,49 +12,49 @@
 package leetcode
 
 func exist(board [][]byte, word string) bool {
-	m, n := len(board), len(board[0])
-	// 用于标记是否已经访问过
-	used := make([][]bool, m)
-	for i := range used {
-		used[i] = make([]bool, n)
-	}
+    m, n := len(board), len(board[0])
+    // 用于标记是否已经访问过
+    used := make([][]bool, m)
+    for i := range used {
+        used[i] = make([]bool, n)
+    }
 
-	var canFind func(r, c, i int) bool
-	canFind = func(r, c, i int) bool {
-		// i == len(word) 说明已经找到了
-		if i == len(word) {
-			return true
-		}
+    var canFind func(r, c, i int) bool
+    canFind = func(r, c, i int) bool {
+        // i == len(word) 说明已经找到了
+        if i == len(word) {
+            return true
+        }
 
-		// 越界
-		if r < 0 || r >= m || c < 0 || c >= n {
-			return false
-		}
+        // 越界
+        if r < 0 || r >= m || c < 0 || c >= n {
+            return false
+        }
 
-		// 已经访问过或者不符合当前字符
-		if used[r][c] || board[r][c] != word[i] {
-			return false
-		}
+        // 已经访问过或者不符合当前字符
+        if used[r][c] || board[r][c] != word[i] {
+            return false
+        }
 
-		// 标记为已访问
-		used[r][c] = true
+        // 标记为已访问
+        used[r][c] = true
 
-		// 间接实现了回溯和剪枝
-		if canFind(r-1, c, i+1) || canFind(r+1, c, i+1) || canFind(r, c-1, i+1) || canFind(r, c+1, i+1) {
-			return true
-		} else {
-			used[r][c] = false // 重新标记为未访问, 因为下一次可能会访问到
-			return false
-		}
-	}
+        // 间接实现了回溯和剪枝
+        if canFind(r-1, c, i+1) || canFind(r+1, c, i+1) || canFind(r, c-1, i+1) || canFind(r, c+1, i+1) {
+            return true
+        } else {
+            used[r][c] = false // 重新标记为未访问, 因为下一次可能会访问到
+            return false
+        }
+    }
 
-	// 遍历所有的起点
-	for i := range board {
-		for j := range board[i] {
-			if canFind(i, j, 0) {
-				return true
-			}
-		}
-	}
-	return false
+    // 遍历所有的起点
+    for i := range board {
+        for j := range board[i] {
+            if canFind(i, j, 0) {
+                return true
+            }
+        }
+    }
+    return false
 }

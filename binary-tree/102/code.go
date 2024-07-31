@@ -22,39 +22,39 @@
 package leetcode
 
 type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
+    Val   int
+    Left  *TreeNode
+    Right *TreeNode
 }
 
 // BFS 队列实现 时间复杂度O(n) 空间复杂度O(n)
 func levelOrder(root *TreeNode) [][]int {
-	if root == nil {
-		return nil
-	}
-	var res [][]int
-	// 用切片模拟队列
-	queue := []*TreeNode{root}
-	// 遍历队列
-	for len(queue) > 0 {
-		var level []int
-		// 遍历当前层的节点
-		for range queue  {
-			// 队首出队
-			node := queue[0]
-			queue = queue[1:]
-			// 将出队元素的值存入level，记录当前层的值
-			level = append(level, node.Val)
-			// 将出队元素的左右子节点入队
-			if node.Left != nil {
-				queue = append(queue, node.Left)
-			}
-			if node.Right != nil {
-				queue = append(queue, node.Right)
-			}
-		}
-		// 将当前层的值存入res
-		res = append(res, level)
-	}
-	return res
+    if root == nil {
+        return nil
+    }
+    var res [][]int
+    // 用切片模拟队列
+    queue := []*TreeNode{root}
+    // 遍历队列
+    for len(queue) > 0 {
+        var level []int
+        // 遍历当前层的节点
+        for range queue {
+            // 队首出队
+            node := queue[0]
+            queue = queue[1:]
+            // 将出队元素的值存入level，记录当前层的值
+            level = append(level, node.Val)
+            // 将出队元素的左右子节点入队
+            if node.Left != nil {
+                queue = append(queue, node.Left)
+            }
+            if node.Right != nil {
+                queue = append(queue, node.Right)
+            }
+        }
+        // 将当前层的值存入res
+        res = append(res, level)
+    }
+    return res
 }

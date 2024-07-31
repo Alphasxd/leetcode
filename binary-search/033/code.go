@@ -23,26 +23,26 @@
 package leetcode
 
 func search(nums []int, target int) int {
-	// 左闭右开
-	lo, hi := 0, len(nums)
-	for lo < hi {
-		mid := int(uint(lo+hi) >> 1)
-		if nums[mid] == target {
-			return mid
-		}
-		if nums[0] <= nums[mid] {
-			if nums[0] <= target && target < nums[mid] {
-				hi = mid
-			} else {
-				lo = mid + 1
-			}
-		} else {
-			if nums[mid] < target && target <= nums[len(nums)-1] {
-				lo = mid + 1
-			} else {
-				hi = mid
-			}
-		}
-	}
-	return -1
+    // 左闭右开
+    lo, hi := 0, len(nums)
+    for lo < hi {
+        mid := int(uint(lo+hi) >> 1)
+        if nums[mid] == target {
+            return mid
+        }
+        if nums[0] <= nums[mid] {
+            if nums[0] <= target && target < nums[mid] {
+                hi = mid
+            } else {
+                lo = mid + 1
+            }
+        } else {
+            if nums[mid] < target && target <= nums[len(nums)-1] {
+                lo = mid + 1
+            } else {
+                hi = mid
+            }
+        }
+    }
+    return -1
 }

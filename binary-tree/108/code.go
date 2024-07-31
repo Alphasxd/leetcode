@@ -15,24 +15,24 @@
 package leetcode
 
 type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
+    Val   int
+    Left  *TreeNode
+    Right *TreeNode
 }
 
 // 中序遍历，总是选择中间位置左边的数字作为根节点，时间复杂度O(n)，空间复杂度O(logn)
 func sortedArrayToBTS(nums []int) *TreeNode {
-	// 如果数组为空，返回nil
-	if len(nums) == 0 {
-		return nil
-	}
-	// mid为数组中间的元素
-	mid := len(nums) / 2
-	return &TreeNode{
-		// 中间元素作为根节点
-		Val:   nums[mid],
-		// 递归调用，将数组左边的元素构造左子树，右边的元素构造右子树
-		Left:  sortedArrayToBTS(nums[:mid]),
-		Right: sortedArrayToBTS(nums[mid+1:]),
-	}
+    // 如果数组为空，返回nil
+    if len(nums) == 0 {
+        return nil
+    }
+    // mid为数组中间的元素
+    mid := len(nums) / 2
+    return &TreeNode{
+        // 中间元素作为根节点
+        Val: nums[mid],
+        // 递归调用，将数组左边的元素构造左子树，右边的元素构造右子树
+        Left:  sortedArrayToBTS(nums[:mid]),
+        Right: sortedArrayToBTS(nums[mid+1:]),
+    }
 }

@@ -16,24 +16,24 @@ package leetcode
 import "sort"
 
 func groupAnagrams(strs []string) [][]string {
-	m := map[string][]string{}
-	for _, str := range strs {
-		// 将字符串转换为字节切片，因为字符串是不可变的，而字节切片是可变的
-		// 字符串是一个只读的 byte 类型切片
-		s := []byte(str)
-		// 对字节切片进行排序, 按字母顺序排序
-		sort.Slice(s, func(i, j int) bool {
-			return s[i] < s[j]
-		})
-		sortedStr := string(s)
-		m[sortedStr] = append(m[sortedStr], str)
-	}
+    m := map[string][]string{}
+    for _, str := range strs {
+        // 将字符串转换为字节切片，因为字符串是不可变的，而字节切片是可变的
+        // 字符串是一个只读的 byte 类型切片
+        s := []byte(str)
+        // 对字节切片进行排序, 按字母顺序排序
+        sort.Slice(s, func(i, j int) bool {
+            return s[i] < s[j]
+        })
+        sortedStr := string(s)
+        m[sortedStr] = append(m[sortedStr], str)
+    }
 
-	// 将 map 中的值转换为二维切片
-	ans := make([][]string, 0, len(m))
-	for _, v := range m {
-		ans = append(ans, v)
-	}
+    // 将 map 中的值转换为二维切片
+    ans := make([][]string, 0, len(m))
+    for _, v := range m {
+        ans = append(ans, v)
+    }
 
-	return ans
+    return ans
 }

@@ -10,17 +10,17 @@
 package leetcode
 
 func findMin(nums []int) int {
-	lo, hi := 0, len(nums)-1
+    lo, hi := 0, len(nums)-1
 
-	for lo < hi {
-		mid := int(uint(lo+hi) >> 1)
-		// 如果中间值大于最右边的值，说明最小值在右边
-		if nums[mid] > nums[hi] {
-			lo = mid + 1
-		} else {
-			// 包含 nums[mid] == nums[hi] 的情况，所以不能用 hi = mid - 1
-			hi = mid
-		}
-	}
-	return nums[lo]
+    for lo < hi {
+        mid := int(uint(lo+hi) >> 1)
+        // 如果中间值大于最右边的值，说明最小值在右边
+        if nums[mid] > nums[hi] {
+            lo = mid + 1
+        } else {
+            // 包含 nums[mid] == nums[hi] 的情况，所以不能用 hi = mid - 1
+            hi = mid
+        }
+    }
+    return nums[lo]
 }

@@ -15,18 +15,18 @@ package leetcode
 
 // 时间复杂度：O(n*2^n)
 func subsets(nums []int) [][]int {
-	// 创建一个 length 为 1，capicity 为 2^len(nums) 的二维数组，用于存储子集
-	// length 为 1，正好将空集存储进去， 初始化后的 sets 为 [[]]
-	sets := make([][]int, 1, 1<<uint(len(nums)))
-	for _, num := range nums {
-		for _, set := range sets {
-			// 创建一个长度为 len(set)，capicity 为 len(set)+1 的切片
-			s := make([]int, len(set), len(set)+1)
-			// 将 set 中的元素复制到 s 中
-			copy(s, set)
-			// 首先将 num 添加到 s 中，然后将 s 添加到 sets 中
-			sets = append(sets, append(s, num))
-		}
-	}
-	return sets
+    // 创建一个 length 为 1，capicity 为 2^len(nums) 的二维数组，用于存储子集
+    // length 为 1，正好将空集存储进去， 初始化后的 sets 为 [[]]
+    sets := make([][]int, 1, 1<<uint(len(nums)))
+    for _, num := range nums {
+        for _, set := range sets {
+            // 创建一个长度为 len(set)，capicity 为 len(set)+1 的切片
+            s := make([]int, len(set), len(set)+1)
+            // 将 set 中的元素复制到 s 中
+            copy(s, set)
+            // 首先将 num 添加到 s 中，然后将 s 添加到 sets 中
+            sets = append(sets, append(s, num))
+        }
+    }
+    return sets
 }

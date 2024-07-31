@@ -15,18 +15,18 @@ package leetcode
 
 // 考虑 rune，虽然题目要求是小写字母，但是可以扩展到unicode字符
 func isAnagram(s, t string) bool {
-	if len(s) != len(t) {
-		return false
-	}
-	cnt := make(map[rune]int)
-	for _, ch := range s {
-		cnt[ch]++
-	}
-	for _, ch := range t {
-		cnt[ch]--
-		if cnt[ch] < 0 {
-			return false
-		}
-	}
-	return true
+    if len(s) != len(t) {
+        return false
+    }
+    cnt := make(map[rune]int)
+    for _, ch := range s {
+        cnt[ch]++
+    }
+    for _, ch := range t {
+        cnt[ch]--
+        if cnt[ch] < 0 {
+            return false
+        }
+    }
+    return true
 }

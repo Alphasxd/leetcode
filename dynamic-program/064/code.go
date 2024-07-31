@@ -14,20 +14,20 @@ package leetcode
 
 // 和第 62 题类似，不过是格子加了权重，求最小路径和
 func minPathSum(grid [][]int) int {
-	m, n := len(grid), len(grid[0])
-	dp := make([]int, n)
-	// 初始化第一行
-	dp[0] = grid[0][0]
-	// 第一行中除了第一个元素外，每个元素的路径和等于左边的路径和加上当前格子的权重
-	for i := 1; i < n; i++ {
-		dp[i] = dp[i-1] + grid[0][i]
-	}
-	// 从第二行开始，每个元素的路径和等于上边元素的路径和(dp[j])和左边元素的路径和(dp[j-1])的较小值加上当前格子的权重
-	for i := 1; i < m; i++ {
-		dp[0] += grid[i][0]
-		for j := 1; j < n; j++ {
-			dp[j] = min(dp[j-1], dp[j]) + grid[i][j]
-		}
-	}
-	return dp[n-1]
+    m, n := len(grid), len(grid[0])
+    dp := make([]int, n)
+    // 初始化第一行
+    dp[0] = grid[0][0]
+    // 第一行中除了第一个元素外，每个元素的路径和等于左边的路径和加上当前格子的权重
+    for i := 1; i < n; i++ {
+        dp[i] = dp[i-1] + grid[0][i]
+    }
+    // 从第二行开始，每个元素的路径和等于上边元素的路径和(dp[j])和左边元素的路径和(dp[j-1])的较小值加上当前格子的权重
+    for i := 1; i < m; i++ {
+        dp[0] += grid[i][0]
+        for j := 1; j < n; j++ {
+            dp[j] = min(dp[j-1], dp[j]) + grid[i][j]
+        }
+    }
+    return dp[n-1]
 }

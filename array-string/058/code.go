@@ -6,15 +6,15 @@
 package leetcode
 
 func lengthOfLastWord(s string) int {
-	cnt := 0
-	length := len(s)
-	// 从后往前遍历字符串，如果当前字符不是空格，则计数器加一，否则如果计数器不为零，则跳出循环
-	for i := length - 1; i >= 0; i-- {
-		if s[i] != ' ' {
-			cnt++
-		} else if cnt != 0 {
-			break
-		}
-	}
-	return cnt
+    cnt := 0
+    length := len(s)
+    // 从后往前遍历字符串，如果当前字符不是空格，则计数器加一，否则如果计数器不为零，则跳出循环
+    for i := length - 1; i >= 0; i-- {
+        if s[i] != ' ' {
+            cnt++
+        } else if cnt != 0 {
+            break
+        }
+    }
+    return cnt
 }

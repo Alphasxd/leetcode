@@ -15,23 +15,23 @@ package leetcode
 
 // hash + dp
 func wordBreak(s string, wordDict []string) bool {
-	// 使用 map 存储 wordDict，方便查找
-	dict := make(map[string]struct{})
-	for _, word := range wordDict {
-		dict[word] = struct{}{}
-	}
-	// ans[i] 表示 s[:i] 是否可以拆分成 wordDict 中的单词
-	ans := make([]bool, len(s)+1)
-	// 初始化 ans[0] 为 true
-	ans[0] = true
-	for i := 1; i <= len(s); i++ {
-		for j := 0; j < i; j++ {
-			// 如果 ans[j] 为 true 且 s[j:i] 在 wordDict 中，则 ans[i] 为 true
-			if _, ok := dict[s[j:i]]; ok && ans[j] {
-				ans[i] = true
-				break
-			}
-		}
-	}
-	return ans[len(s)]
+    // 使用 map 存储 wordDict，方便查找
+    dict := make(map[string]struct{})
+    for _, word := range wordDict {
+        dict[word] = struct{}{}
+    }
+    // ans[i] 表示 s[:i] 是否可以拆分成 wordDict 中的单词
+    ans := make([]bool, len(s)+1)
+    // 初始化 ans[0] 为 true
+    ans[0] = true
+    for i := 1; i <= len(s); i++ {
+        for j := 0; j < i; j++ {
+            // 如果 ans[j] 为 true 且 s[j:i] 在 wordDict 中，则 ans[i] 为 true
+            if _, ok := dict[s[j:i]]; ok && ans[j] {
+                ans[i] = true
+                break
+            }
+        }
+    }
+    return ans[len(s)]
 }

@@ -17,19 +17,19 @@ package leetcode
 // 顺时针旋转90度 == 转置 + 水平翻转
 // 逆时针旋转90度 == 转置 + 垂直翻转
 func rotate(matrix [][]int) {
-	n := len(matrix)
+    n := len(matrix)
 
-	// 水平翻转
-	for i := 0; i < n/2; i++ {
-		// i 行和 n-i-1 行交换
-		matrix[i], matrix[n-i-1] = matrix[n-i-1], matrix[i]
-	}
+    // 水平翻转
+    for i := 0; i < n/2; i++ {
+        // i 行和 n-i-1 行交换
+        matrix[i], matrix[n-i-1] = matrix[n-i-1], matrix[i]
+    }
 
-	// 主对角线翻转
-	for i := 0; i < n; i++ {
-		for j := 0; j < i; j++ { // 只需要遍历对角线上半部分
-			// matrix[i][j] 和 matrix[j][i] 交换
-			matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
-		}
-	}
+    // 主对角线翻转
+    for i := 0; i < n; i++ {
+        for j := 0; j < i; j++ { // 只需要遍历对角线上半部分
+            // matrix[i][j] 和 matrix[j][i] 交换
+            matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
+        }
+    }
 }

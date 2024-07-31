@@ -13,25 +13,25 @@
 package leetcode
 
 type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
+    Val   int
+    Left  *TreeNode
+    Right *TreeNode
 }
 
 // 递归 时间复杂度O(n) 空间复杂度O(n)
 func isSymmetric(root *TreeNode) bool {
-	if root == nil {
-		return true
-	}
-	return symmetric(root.Left, root.Right)
+    if root == nil {
+        return true
+    }
+    return symmetric(root.Left, root.Right)
 }
 
 func symmetric(p, q *TreeNode) bool {
-	switch {
-	case p == nil || q == nil:
-		return p == q
-	case p.Val != q.Val:
-		return false
-	}
-	return symmetric(p.Left, q.Right) && symmetric(p.Right, q.Left)
+    switch {
+    case p == nil || q == nil:
+        return p == q
+    case p.Val != q.Val:
+        return false
+    }
+    return symmetric(p.Left, q.Right) && symmetric(p.Right, q.Left)
 }

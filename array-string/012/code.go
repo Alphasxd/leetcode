@@ -9,28 +9,28 @@
 package leetcode
 
 func intToRoman(num int) string {
-	// 罗马数字中小的数字在大的数字的右边，从大到小排列
-	romanTable := []struct {
-		value int
-		str   string
-	}{
-		{1000, "M"}, {900, "CM"}, {500, "D"}, {400, "CD"},
-		{100, "C"}, {90, "XC"}, {50, "L"}, {40, "XL"},
-		{10, "X"}, {9, "IX"}, {5, "V"}, {4, "IV"}, {1, "I"},
-	}
-	// 存储结果
-	var ans []byte
-	// 遍历罗马数字表
-	for _, v := range romanTable {
-		// 如果当前数值比 num 小，则将 num 减去当前数值，同时将当前数值对应的罗马数字添加到结果中
-		for num >= v.value {
-			num -= v.value
-			ans = append(ans, v.str...)
-		}
-		// 如果 num 为 0，则跳出循环
-		if num == 0 {
-			break
-		}
-	}
-	return string(ans)
+    // 罗马数字中小的数字在大的数字的右边，从大到小排列
+    romanTable := []struct {
+        value int
+        str   string
+    }{
+        {1000, "M"}, {900, "CM"}, {500, "D"}, {400, "CD"},
+        {100, "C"}, {90, "XC"}, {50, "L"}, {40, "XL"},
+        {10, "X"}, {9, "IX"}, {5, "V"}, {4, "IV"}, {1, "I"},
+    }
+    // 存储结果
+    var ans []byte
+    // 遍历罗马数字表
+    for _, v := range romanTable {
+        // 如果当前数值比 num 小，则将 num 减去当前数值，同时将当前数值对应的罗马数字添加到结果中
+        for num >= v.value {
+            num -= v.value
+            ans = append(ans, v.str...)
+        }
+        // 如果 num 为 0，则跳出循环
+        if num == 0 {
+            break
+        }
+    }
+    return string(ans)
 }

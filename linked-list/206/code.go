@@ -17,35 +17,35 @@
 package leetcode
 
 type ListNode struct {
-	Val  int
-	Next *ListNode
+    Val  int
+    Next *ListNode
 }
 
 // 直接调转指针，时间复杂度O(n)，空间复杂度O(1)
 // func reverseList(head *ListNode) *ListNode {
 //     var prev *ListNode
-// 	for head != nil {
-// 		next := head.Next // next 指向 curr 的下一个节点
-// 		head.Next = prev  // 反转 curr 的指针
-// 		prev = head       // prev 指向 curr
-// 		head = next       // curr 指向 next
-// 	}
+//     for head != nil {
+//         next := head.Next // next 指向 curr 的下一个节点
+//         head.Next = prev  // 反转 curr 的指针
+//         prev = head       // prev 指向 curr
+//         head = next       // curr 指向 next
+//     }
 //     // prev 指向反转后的链表的头节点
 //     return prev
 // }
 
 // 头插法，时间复杂度O(n)，空间复杂度O(1)
 func reverseList(head *ListNode) *ListNode {
-	// 创建哑节点
-	dummy := &ListNode{}
-	// 依次遍历原链表，头插法插入到 dummy 后面，最后返回 dummy.Next 即可
-	for head != nil {
-		// 辅助节点，防止断链
-		next := head.Next
-		// 头插法
-		head.Next = dummy.Next
-		dummy.Next = head
-		head = next
-	}
-	return dummy.Next
+    // 创建哑节点
+    dummy := &ListNode{}
+    // 依次遍历原链表，头插法插入到 dummy 后面，最后返回 dummy.Next 即可
+    for head != nil {
+        // 辅助节点，防止断链
+        next := head.Next
+        // 头插法
+        head.Next = dummy.Next
+        dummy.Next = head
+        head = next
+    }
+    return dummy.Next
 }

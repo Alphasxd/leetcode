@@ -19,21 +19,21 @@ package main
 import "fmt"
 
 func main() {
-	var t int
-	fmt.Scan(&t)
-	for i := 0; i < t; i++ {
-		var n int
-		fmt.Scan(&n)
-		if n == 0 {
-			fmt.Println(0)
-			continue
-		}
-		var ans int
-		for j := 0; j < n; j++ {
-			var num int
-			fmt.Scan(&num)
-			ans += num
-		}
-		fmt.Println(ans)
-	}
+    var t int
+    fmt.Scan(&t)
+    for i := 0; i < t; i++ {
+        var n int
+        fmt.Scan(&n)
+        if n == 0 {
+            fmt.Println(0)
+            continue
+        }
+        var ans int
+        for j := 0; j < n; j++ {
+            var num int
+            fmt.Scan(&num)
+            ans += num
+        }
+        fmt.Println(ans)
+    }
 }

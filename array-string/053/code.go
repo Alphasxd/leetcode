@@ -19,19 +19,19 @@ package leetcode
 
 // 贪心算法
 func maxSubArray(nums []int) int {
-	var max, sum int
-	for i, num := range nums {
-		// sum 为当前遍历到的元素和
-		sum += num
-		// 如果 sum 大于 max 或者是第一次遍历时，将 sum 赋值给 max
-		if sum > max || i == 0 {
-			max = sum
-		}
-		// 如果 sum 小于 0，将 sum 置为 0，因为 0 > 负数
-		// 舍弃过去，从新开始，贪心的思想
-		if sum < 0 {
-			sum = 0
-		}
-	}
-	return max
+    var max, sum int
+    for i, num := range nums {
+        // sum 为当前遍历到的元素和
+        sum += num
+        // 如果 sum 大于 max 或者是第一次遍历时，将 sum 赋值给 max
+        if sum > max || i == 0 {
+            max = sum
+        }
+        // 如果 sum 小于 0，将 sum 置为 0，因为 0 > 负数
+        // 舍弃过去，从新开始，贪心的思想
+        if sum < 0 {
+            sum = 0
+        }
+    }
+    return max
 }

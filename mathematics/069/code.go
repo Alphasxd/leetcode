@@ -6,18 +6,18 @@
 package leetcode
 
 func mySqrt(x int) int {
-	lo, hi := 0, x
-	for lo < hi {
-		mid := hi - (hi-lo)/2
-		temp := mid * mid
-		switch {
-		case temp > x:
-			hi = mid - 1
-		case temp < x:
-			lo = mid
-		default:
-			return mid
-		}
-	}
-	return lo
+    lo, hi := 0, x
+    for lo < hi {
+        mid := hi - (hi-lo)/2
+        temp := mid * mid
+        switch {
+        case temp > x:
+            hi = mid - 1
+        case temp < x:
+            lo = mid
+        default:
+            return mid
+        }
+    }
+    return lo
 }

@@ -6,21 +6,21 @@
 
 // 示例 1：
 // 输入：matrix = [
-// 	[1,4,7,11,15],
-// 	[2,5,8,12,19],
-// 	[3,6,9,16,22],
-// 	[10,13,14,17,24],
-// 	[18,21,23,26,30]
+//     [1,4,7,11,15],
+//     [2,5,8,12,19],
+//     [3,6,9,16,22],
+//     [10,13,14,17,24],
+//     [18,21,23,26,30]
 // ], target = 5
 // 输出：true
 
 // 示例 2：
 // 输入：matrix = [
-// 	[1,4,7,11,15],
-// 	[2,5,8,12,19],
-// 	[3,6,9,16,22],
-// 	[10,13,14,17,24],
-// 	[18,21,23,26,30]
+//     [1,4,7,11,15],
+//     [2,5,8,12,19],
+//     [3,6,9,16,22],
+//     [10,13,14,17,24],
+//     [18,21,23,26,30]
 // ], target = 20
 // 输出：false
 
@@ -58,15 +58,15 @@ import "sort"
 
 // 二分查找 时间复杂度 O(mlogn) 空间复杂度 O(1)
 func searchMatrix(matrix [][]int, target int) bool {
-	for _, r := range matrix {
-		// SearchInts 函数调用了 sort.Search 函数
-		// sort.Search 函数使用二分查找算法
-		// 如果找到了目标值，返回目标值的索引，否则返回大于目标值的最小索引即len(r)
-		i := sort.SearchInts(r, target)
-		// 如果 i < len(r) 说明找到了目标值
-		if i < len(r) && r[i] == target {
-			return true
-		}
-	}
-	return false
+    for _, r := range matrix {
+        // SearchInts 函数调用了 sort.Search 函数
+        // sort.Search 函数使用二分查找算法
+        // 如果找到了目标值，返回目标值的索引，否则返回大于目标值的最小索引即len(r)
+        i := sort.SearchInts(r, target)
+        // 如果 i < len(r) 说明找到了目标值
+        if i < len(r) && r[i] == target {
+            return true
+        }
+    }
+    return false
 }

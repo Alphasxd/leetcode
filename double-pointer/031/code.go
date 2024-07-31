@@ -14,32 +14,32 @@ package leetcode
 
 // 可以直接将字典排序理解为一个整数比较大小的问题，找到下一个比当前大的最小的整数即可
 func nextPermutation(nums []int) {
-	if len(nums) < 2 {
-		return
-	}
-	i, j, k := len(nums)-2, len(nums)-1, len(nums)-1
+    if len(nums) < 2 {
+        return
+    }
+    i, j, k := len(nums)-2, len(nums)-1, len(nums)-1
 
-	// 找到 i < j
-	for i >= 0 && nums[i] >= nums[j] {
-		i--
-		j--
-	}
-	if i >= 0 {
-		// 找到 i < k
-		for nums[i] >= nums[k] {
-			k--
-		}
-		// 交换 i 和 k
-		nums[i], nums[k] = nums[k], nums[i]
-	}
-	// reverse [j:end]
-	reverse(nums, j, len(nums)-1)
+    // 找到 i < j
+    for i >= 0 && nums[i] >= nums[j] {
+        i--
+        j--
+    }
+    if i >= 0 {
+        // 找到 i < k
+        for nums[i] >= nums[k] {
+            k--
+        }
+        // 交换 i 和 k
+        nums[i], nums[k] = nums[k], nums[i]
+    }
+    // reverse [j:end]
+    reverse(nums, j, len(nums)-1)
 }
 
 func reverse(nums []int, start, end int) {
-	for start < end {
-		nums[start], nums[end] = nums[end], nums[start]
-		start++
-		end--
-	}
+    for start < end {
+        nums[start], nums[end] = nums[end], nums[start]
+        start++
+        end--
+    }
 }

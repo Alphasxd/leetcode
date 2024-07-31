@@ -10,14 +10,14 @@
 package leetcode
 
 func canJump(nums []int) bool {
-	// 定义一个变量cover，表示当前能够覆盖的最远位置，index表示数组的最后一个下标
-	cover, index := 0, len(nums)-1
-	for i := 0; i <= cover; i++ {
-		cover = max(cover, i+nums[i])
-		// 如果cover大于等于index，说明可以到达最后一个下标，返回true
-		if cover >= index {
-			return true
-		}
-	}
-	return false
+    // 定义一个变量cover，表示当前能够覆盖的最远位置，index表示数组的最后一个下标
+    cover, index := 0, len(nums)-1
+    for i := 0; i <= cover; i++ {
+        cover = max(cover, i+nums[i])
+        // 如果cover大于等于index，说明可以到达最后一个下标，返回true
+        if cover >= index {
+            return true
+        }
+    }
+    return false
 }

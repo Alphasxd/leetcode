@@ -19,15 +19,15 @@ package leetcode
 
 // 思路：使用单调栈解决，栈中存储的是数组的下标，栈中的元素从栈底到栈顶对应的温度依次递减。
 func dailyTemperatures(temperatures []int) []int {
-	res := make([]int, len(temperatures)) // 结果切片
-	stack := []int{}                      // 单调栈
-	for i, v := range temperatures {
-		for len(stack) > 0 && v > temperatures[stack[len(stack)-1]] {
-			// 当前温度大于栈顶元素对应的温度时，栈顶元素出栈，计算结果
-			res[stack[len(stack)-1]] = i - stack[len(stack)-1]
-			stack = stack[:len(stack)-1]
-		}
-		stack = append(stack, i) // 当前元素下标入栈
-	}
-	return res
+    res := make([]int, len(temperatures)) // 结果切片
+    stack := []int{}                      // 单调栈
+    for i, v := range temperatures {
+        for len(stack) > 0 && v > temperatures[stack[len(stack)-1]] {
+            // 当前温度大于栈顶元素对应的温度时，栈顶元素出栈，计算结果
+            res[stack[len(stack)-1]] = i - stack[len(stack)-1]
+            stack = stack[:len(stack)-1]
+        }
+        stack = append(stack, i) // 当前元素下标入栈
+    }
+    return res
 }

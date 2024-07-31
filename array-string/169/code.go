@@ -15,31 +15,31 @@ package leetcode
 
 // Boyer-Moore 投票算法
 func majorityElement(nums []int) int {
-	// 定义 众数 和 统计数
-	var major, cnt int
-	for _, num := range nums {
-		// 如果计数清零则重新选定当前num为major
-		if cnt == 0 {
-			major = num
-		}
-		// 如果当前num等于major则计数加一，否则减一
-		if num == major {
-			cnt++
-		} else {
-			cnt--
-		}
-	}
-	return major
+    // 定义 众数 和 统计数
+    var major, cnt int
+    for _, num := range nums {
+        // 如果计数清零则重新选定当前num为major
+        if cnt == 0 {
+            major = num
+        }
+        // 如果当前num等于major则计数加一，否则减一
+        if num == major {
+            cnt++
+        } else {
+            cnt--
+        }
+    }
+    return major
 }
 
 // map 计数
 func majorityElement1(nums []int) int {
-	m := make(map[int]int)
-	for _, num := range nums {
-		m[num]++
-		if m[num] > len(nums)/2 {
-			return num
-		}
-	}
-	return -1
+    m := make(map[int]int)
+    for _, num := range nums {
+        m[num]++
+        if m[num] > len(nums)/2 {
+            return num
+        }
+    }
+    return -1
 }

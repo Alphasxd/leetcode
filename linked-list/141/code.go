@@ -20,33 +20,33 @@
 package leetcode
 
 type ListNode struct {
-	Val  int
-	Next *ListNode
+    Val  int
+    Next *ListNode
 }
 
 // 字典，时间复杂度 O(n)，空间复杂度 O(n)
 func hasCycle1(head *ListNode) bool {
-	dict := make(map[*ListNode]struct{})
-	for head != nil {
-		if _, ok := dict[head]; ok {
-			return true
-		}
-		dict[head] = struct{}{}
-		head = head.Next
-	}
-	return false
+    dict := make(map[*ListNode]struct{})
+    for head != nil {
+        if _, ok := dict[head]; ok {
+            return true
+        }
+        dict[head] = struct{}{}
+        head = head.Next
+    }
+    return false
 }
 
 // 快慢指针，时间复杂度 O(n)，空间复杂度 O(1)
 func hasCycle(head *ListNode) bool {
-	slow, fast := head, head
+    slow, fast := head, head
 
-	for fast != nil && fast.Next != nil {
-		slow = slow.Next
-		fast = fast.Next.Next
-		if slow == fast {
-			return true
-		}
-	}
-	return false
+    for fast != nil && fast.Next != nil {
+        slow = slow.Next
+        fast = fast.Next.Next
+        if slow == fast {
+            return true
+        }
+    }
+    return false
 }

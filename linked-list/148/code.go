@@ -17,68 +17,68 @@
 package leetcode
 
 type ListNode struct {
-	Val  int
-	Next *ListNode
+    Val  int
+    Next *ListNode
 }
 
 // 归并排序 时间复杂度O(nlogn) 空间复杂度O(logn)
 func sortList(head *ListNode) *ListNode {
-	// 链表为空或者只有一个节点时，直接返回
-	if head == nil || head.Next == nil {
-		return head
-	}
+    // 链表为空或者只有一个节点时，直接返回
+    if head == nil || head.Next == nil {
+        return head
+    }
 
-	middle := findMiddle(head)
+    middle := findMiddle(head)
 
-	// 右侧链表
-	r := sortList(middle.Next)
-	// 将链表断开
-	middle.Next = nil
+    // 右侧链表
+    r := sortList(middle.Next)
+    // 将链表断开
+    middle.Next = nil
 
-	// 左侧链表
-	l := sortList(head)
+    // 左侧链表
+    l := sortList(head)
 
-	// 递归排序左右两侧链表
-	return mergeTwoLists(l, r)
+    // 递归排序左右两侧链表
+    return mergeTwoLists(l, r)
 
 }
 
 // 快慢指针找中间节点
 func findMiddle(head *ListNode) *ListNode {
-	slow, fast := head, head.Next
-	for fast != nil && fast.Next != nil {
-		slow, fast = slow.Next, fast.Next.Next
-	}
-	return slow
+    slow, fast := head, head.Next
+    for fast != nil && fast.Next != nil {
+        slow, fast = slow.Next, fast.Next.Next
+    }
+    return slow
 }
 
 func mergeTwoLists(l1, l2 *ListNode) *ListNode {
 
-	// 创建一个虚拟头节点，在合并后的链表前面，用于返回合并后的链表
-	dummy := new(ListNode)
-	// 创建一个游标
-	curr := dummy
-	// 循环比较两个链表的值，将较小的值放入新链表中
-	for l1 != nil && l2 != nil {
-		if l1.Val <= l2.Val {
-			curr.Next = l1
-			curr = curr.Next
-			l1 = l1.Next
-		} else {
-			curr.Next = l2
-			curr = curr.Next
-			l2 = l2.Next
-		}
-	}
+    // 创建一个虚拟头节点，在合并后的链表前面，用于返回合并后的链表
+    dummy := new(ListNode)
+    // 创建一个游标
+    curr := dummy
+    // 循环比较两个链表的值，将较小的值放入新链表中
+    for l1 != nil && l2 != nil {
+        if l1.Val <= l2.Val {
+            curr.Next = l1
+            curr = curr.Next
+            l1 = l1.Next
+        } else {
+            curr.Next = l2
+            curr = curr.Next
+            l2 = l2.Next
+        }
+    }
 
-	// 有一个链表为空时，将另一个链表剩余的值放入新链表中
-	switch {
-	case l1 != nil:
-		curr.Next = l1
-	case l2 != nil:
-		curr.Next = l2
-	}
+    // 有一个链表为空时，将另一个链表剩余的值放入新链表中
+    switch {
+    case l1 != nil:
+        curr.Next = l1
+    case l2 != nil:
+        curr.Next = l2
+    }
 
-	// 返回辅助节点的下一个节点，即合并后的链表
-	return dummy.Next
+    // 返回辅助节点的下一个节点，即合并后的链表
+    return dummy.Next
 }

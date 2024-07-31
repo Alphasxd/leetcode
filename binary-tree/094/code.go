@@ -22,41 +22,41 @@
 package leetcode
 
 type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
+    Val   int
+    Left  *TreeNode
+    Right *TreeNode
 }
 
 // 递归 时间复杂度O(n) 空间复杂度O(n)
 // func inorderTraversal(root *TreeNode) []int {
-// 	if root == nil {
-// 		return nil
-// 	}
-// 	var res []int
-// 	res = append(res, inorderTraversal(root.Left)...)
-// 	res = append(res, root.Val)
-// 	res = append(res, inorderTraversal(root.Right)...)
-// 	return res
+//     if root == nil {
+//         return nil
+//     }
+//     var res []int
+//     res = append(res, inorderTraversal(root.Left)...)
+//     res = append(res, root.Val)
+//     res = append(res, inorderTraversal(root.Right)...)
+//     return res
 // }
 
 // 迭代 时间复杂度O(n) 空间复杂度O(n)
 func inorderTraversal(root *TreeNode) []int {
-	var res []int
-	var stack []*TreeNode
+    var res []int
+    var stack []*TreeNode
 
-	for curr := root; curr != nil || len(stack) > 0; {
-		// 沿着左子树一直往下走，直到走到叶子节点
-		for curr != nil {
-			stack = append(stack, curr)
-			curr = curr.Left
-		}
-		// 栈顶元素出栈，并访问该节点
-		curr = stack[len(stack)-1]
-		stack = stack[:len(stack)-1]
-		res = append(res, curr.Val)
-		// 访问右子树
-		curr = curr.Right
-	}
+    for curr := root; curr != nil || len(stack) > 0; {
+        // 沿着左子树一直往下走，直到走到叶子节点
+        for curr != nil {
+            stack = append(stack, curr)
+            curr = curr.Left
+        }
+        // 栈顶元素出栈，并访问该节点
+        curr = stack[len(stack)-1]
+        stack = stack[:len(stack)-1]
+        res = append(res, curr.Val)
+        // 访问右子树
+        curr = curr.Right
+    }
 
-	return res
+    return res
 }

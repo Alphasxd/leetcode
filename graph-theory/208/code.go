@@ -11,49 +11,49 @@
 package leetcode
 
 type Trie struct {
-	child [26]*Trie // 指向子节点的指针数组
-	isEnd bool      // 是否为字符串的结尾
+    child [26]*Trie // 指向子节点的指针数组
+    isEnd bool      // 是否为字符串的结尾
 }
 
 func Constructor() Trie {
-	return Trie{}
+    return Trie{}
 }
 
 func (t *Trie) Insert(word string) {
-	node := t
-	for _, ch := range word {
-		ch -= 'a'
-		if node.child[ch] == nil {
-			node.child[ch] = &Trie{}
-		}
-		// 指向子节点，继续遍历
-		node = node.child[ch]
-	}
-	// 遍历完，将当前节点标记为字符串的结尾
-	node.isEnd = true
+    node := t
+    for _, ch := range word {
+        ch -= 'a'
+        if node.child[ch] == nil {
+            node.child[ch] = &Trie{}
+        }
+        // 指向子节点，继续遍历
+        node = node.child[ch]
+    }
+    // 遍历完，将当前节点标记为字符串的结尾
+    node.isEnd = true
 }
 
 func (t *Trie) SearchPrefix(prefix string) *Trie {
-	node := t
-	for _, ch := range prefix {
-		ch -= 'a'
-		// 如果不存在，说明前缀 prefix 不存在
-		if node.child[ch] == nil {
-			return nil
-		}
-		// 指向子节点，继续遍历
-		node = node.child[ch]
-	}
-	// 返回最后一个节点，即前缀的最后一个字符
-	return node
+    node := t
+    for _, ch := range prefix {
+        ch -= 'a'
+        // 如果不存在，说明前缀 prefix 不存在
+        if node.child[ch] == nil {
+            return nil
+        }
+        // 指向子节点，继续遍历
+        node = node.child[ch]
+    }
+    // 返回最后一个节点，即前缀的最后一个字符
+    return node
 }
 
 func (t *Trie) Search(word string) bool {
-	node := t.SearchPrefix(word)
-	// node != nil 说明 word 的所有前缀都存在, 且最后一个前缀的 isEnd 为 true
-	return node != nil && node.isEnd
+    node := t.SearchPrefix(word)
+    // node != nil 说明 word 的所有前缀都存在, 且最后一个前缀的 isEnd 为 true
+    return node != nil && node.isEnd
 }
 
 func (t *Trie) StartsWith(prefix string) bool {
-	return t.SearchPrefix(prefix) != nil
+    return t.SearchPrefix(prefix) != nil
 }
