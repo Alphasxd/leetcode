@@ -18,18 +18,18 @@ func singleNumber(nums []int) int {
     return single
 }
 
-// 字典
+// 集合
 func singleNumber1(nums []int) int {
-    dict := make(map[int]struct{})
+    set := make(map[int]struct{})
     for _, v := range nums {
         // 如果字典中存在该元素，则删除，否则添加
-        if _, ok := dict[v]; ok {
-            delete(dict, v)
+        if _, ok := set[v]; ok {
+            delete(set, v)
         } else {
-            dict[v] = struct{}{}
+            set[v] = struct{}{}
         }
     }
-    for k := range dict {
+    for k := range set {
         return k
     }
     return -1

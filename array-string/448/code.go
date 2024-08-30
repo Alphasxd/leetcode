@@ -10,15 +10,15 @@
 package leetcode
 
 // leetcode 41. 缺失的第一个正数，类似题目
-// 字典，时间复杂度：O(n)，空间复杂度：O(n)
+// 集合，时间复杂度：O(n)，空间复杂度：O(n)
 func findDisappearedNumbers(nums []int) []int {
     res := make([]int, 0)
-    dict := make(map[int]struct{}, len(nums))
+    set := make(map[int]struct{}, len(nums))
     for _, v := range nums {
-        dict[v] = struct{}{}
+        set[v] = struct{}{}
     }
     for i := 1; i <= len(nums); i++ {
-        if _, ok := dict[i]; !ok {
+        if _, ok := set[i]; !ok {
             res = append(res, i)
         }
     }

@@ -17,16 +17,16 @@
 
 package leetcode
 
-// 字典，时间复杂度：O(n)，空间复杂度：O(n)
+// 集合，时间复杂度：O(n)，空间复杂度：O(n)
 func firstMissingPositive1(nums []int) int {
-    dict := make(map[int]struct{}, len(nums))
+    set := make(map[int]struct{}, len(nums))
     for _, v := range nums {
         if v > 0 {
-            dict[v] = struct{}{}
+            set[v] = struct{}{}
         }
     }
     for i := 1; i <= len(nums); i++ {
-        if _, ok := dict[i]; !ok {
+        if _, ok := set[i]; !ok {
             return i
         }
     }

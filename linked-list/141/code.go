@@ -24,14 +24,14 @@ type ListNode struct {
     Next *ListNode
 }
 
-// 字典，时间复杂度 O(n)，空间复杂度 O(n)
+// 集合，时间复杂度 O(n)，空间复杂度 O(n)
 func hasCycle1(head *ListNode) bool {
-    dict := make(map[*ListNode]struct{})
+    set := make(map[*ListNode]struct{})
     for head != nil {
-        if _, ok := dict[head]; ok {
+        if _, ok := set[head]; ok {
             return true
         }
-        dict[head] = struct{}{}
+        set[head] = struct{}{}
         head = head.Next
     }
     return false
