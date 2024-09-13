@@ -23,8 +23,8 @@ func threeSum(nums []int) [][]int {
     // 排序之后，可以使用双指针
     sort.Ints(nums)
 
-    //var solution [][]int
-    solution := make([][]int, 0)
+    //var ans [][]int
+    ans := make([][]int, 0)
 
     for i := 0; i < len(nums)-2; i++ {
         // 去重，如果当前元素和上一个元素相同，跳过，从第二个元素开始（index为1）
@@ -44,7 +44,7 @@ func threeSum(nums []int) [][]int {
                 lo++
             //    如果 sum == 0，说明找到了一组解，lo++，hi--
             default:
-                solution = append(solution, []int{nums[i], nums[lo], nums[hi]})
+                ans = append(ans, []int{nums[i], nums[lo], nums[hi]})
                 lo++
                 hi--
                 // 去重，题目要求不能有重复的三元组，所以需要跳过重复的元素
@@ -57,5 +57,5 @@ func threeSum(nums []int) [][]int {
             }
         }
     }
-    return solution
+    return ans
 }
