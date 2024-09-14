@@ -26,17 +26,17 @@ type ListNode struct {
 }
 
 // 哈希表，时间复杂度 O(n)，空间复杂度 O(n)
-// func detectCycle(head *ListNode) *ListNode {
-//     seen := map[*ListNode]bool{}
-//     for head != nil {
-//         if seen[head] {
-//             return head
-//         }
-//         seen[head] = true
-//         head = head.Next
-//     }
-//     return nil
-// }
+func detectCycle1(head *ListNode) *ListNode {
+    seen := map[*ListNode]bool{}
+    for head != nil {
+        if seen[head] {
+            return head
+        }
+        seen[head] = true
+        head = head.Next
+    }
+    return nil
+}
 
 // 快慢指针，时间复杂度 O(n)，空间复杂度 O(1)
 // 设链表中环外部分的长度为 a，slow 指针进入环后，又走了 x 的距离与 fast 相遇，环长为 r

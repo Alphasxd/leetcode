@@ -23,22 +23,22 @@ type TreeNode struct {
 }
 
 // 递归判断
-// func isValidBST(root *TreeNode) bool {
-//     var dfs func(*TreeNode, int, int) bool
-//     dfs = func(root *TreeNode, min, max int) bool {
-//         // 如果当前节点为空，则返回true，符合二叉搜索树的定义
-//         if root == nil {
-//             return true
-//         }
-//         // 如果当前节点的值不在[min, max]的范围内，则返回false
-//         if root.Val <= min || root.Val >= max {
-//             return false
-//         }
-//         return dfs(root.Left, min, root.Val) && dfs(root.Right, root.Val, max)
-//     }
-//     // 由于题目中给出的二叉树的值域为[-2^31, 2^31-1]，所以这里使用int的最大值和最小值作为初始值
-//     return dfs(root, -1<<63, 1<<63-1)
-// }
+func isValidBST1(root *TreeNode) bool {
+    var dfs func(*TreeNode, int, int) bool
+    dfs = func(root *TreeNode, min, max int) bool {
+        // 如果当前节点为空，则返回true，符合二叉搜索树的定义
+        if root == nil {
+            return true
+        }
+        // 如果当前节点的值不在[min, max]的范围内，则返回false
+        if root.Val <= min || root.Val >= max {
+            return false
+        }
+        return dfs(root.Left, min, root.Val) && dfs(root.Right, root.Val, max)
+    }
+    // 由于题目中给出的二叉树的值域为[-2^31, 2^31-1]，所以这里使用int的最大值和最小值作为初始值
+    return dfs(root, -1<<63, 1<<63-1)
+}
 
 // 非递归中序遍历
 func isValidBST(root *TreeNode) bool {

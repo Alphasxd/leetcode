@@ -22,23 +22,23 @@ type ListNode struct {
 }
 
 // 递归，时间复杂度O(n)，空间复杂度O(n)
-// func swapPairs(head *ListNode) *ListNode {
-//     // 如果链表为空或者只有一个节点，直接返回
-//     if head == nil || head.Next == nil {
-//         return head
-//     }
+func swapPairs1(head *ListNode) *ListNode {
+    // 如果链表为空或者只有一个节点，直接返回
+    if head == nil || head.Next == nil {
+        return head
+    }
 
-//     // 最后返回的新链表的头节点
-//     newHead := head.Next
+    // 最后返回的新链表的头节点
+    newHead := head.Next
 
-//     // 递归调用，传入的参数是下一次递归的头节点，head指向下一次递归的头节点
-//     head.Next = swapPairs(newHead.Next)
-//     // newHead指向head
-//     newHead.Next = head
+    // 递归调用，传入的参数是下一次递归的头节点，head指向下一次递归的头节点
+    head.Next = swapPairs(newHead.Next)
+    // newHead指向head
+    newHead.Next = head
 
-//     // 返回新链表的头节点
-//     return newHead
-// }
+    // 返回新链表的头节点
+    return newHead
+}
 
 // 迭代，时间复杂度O(n)，空间复杂度O(1)
 func swapPairs(head *ListNode) *ListNode {

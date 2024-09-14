@@ -28,16 +28,16 @@ type TreeNode struct {
 }
 
 // 递归 时间复杂度O(n) 空间复杂度O(n)
-// func inorderTraversal(root *TreeNode) []int {
-//     if root == nil {
-//         return nil
-//     }
-//     var res []int
-//     res = append(res, inorderTraversal(root.Left)...)
-//     res = append(res, root.Val)
-//     res = append(res, inorderTraversal(root.Right)...)
-//     return res
-// }
+func inorderTraversal1(root *TreeNode) []int {
+    if root == nil {
+        return nil
+    }
+    var res []int
+    res = append(res, inorderTraversal(root.Left)...)
+    res = append(res, root.Val)
+    res = append(res, inorderTraversal(root.Right)...)
+    return res
+}
 
 // 迭代 时间复杂度O(n) 空间复杂度O(n)
 func inorderTraversal(root *TreeNode) []int {
