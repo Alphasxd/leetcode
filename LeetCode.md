@@ -1,4 +1,3 @@
-
 # Based on the Top 100 Liked Questions
 
 ### 哈希
@@ -484,6 +483,46 @@ func intsToString(ints []int) string {
 
 </details>
 
+<details markdown="1">
+<summary>93. 复原 IP 地址（Medium）</summary>
+
+> 给定一个只包含数字的字符串 s ，用以表示一个 IP 地址，返回所有可能的有效 IP 地址，这些地址可以通过在 s 中插入 '.' 来形成。你 不能 重新排序或删除 s 中的任何数字。你可以按 任何 顺序返回答案。
+
+```golang
+func restoreIpAddresses(s string) []string {
+	bytes := make([]string, 0, 4)
+	return dfs(nil, bytes, s)
+}
+func dfs(IPs, bytes []string, s string) []string {
+	// bytes 存储构建 IP 地址的每一段
+	if len(bytes) == 4 {
+		// bytes 中已经有 4 段，且 s 为空，说明找到了一个合法的 IP 地址
+		if len(s) == 0 {
+			IPs = append(IPs, strings.Join(bytes, "."))
+		}
+		return IPs
+	}
+	// 检查 s 是否以字符 '0' 开头，如果是，则只能将 '0' 作为一段加入 bytes
+	if len(s) > 0 && s[0] == '0' {
+		return dfs(IPs, append(bytes, "0"), s[1:])
+	}
+	// 遍历 s 的每一位，将其作为一段加入 bytes
+	var num int
+	for i := 0; i < len(s); i++ {
+		num = num*10 + int(s[i]-'0')
+		if num > 255 {
+			break
+		}
+		IPs = dfs(IPs, append(bytes, s[:i+1]), s[i+1:])
+	}
+	return IPs
+}
+```
+
+> dfs 遍历 s 的每一位，将其作为一段加入 bytes，如果 bytes 中已经有 4 段，且 s 为空，说明找到了一个合法的 IP 地址
+
+</details>
+
 ### 普通数组
 
 <details markdown="1">
@@ -828,6 +867,38 @@ func reorderList(head *ListNode) {
         p.Next = q
         p = next
     }
+}
+```
+</details>
+
+<details markdown="1">
+<summary>86. 分隔链表（Medium）</summary>
+
+> 给你一个链表的头节点 head 和一个特定值 x ，请你对链表进行分隔，使得所有 小于 x 的节点都出现在 大于或等于 x 的节点之前。保留原始相对位置。
+
+
+```golang
+func partition(head *ListNode, x int) *ListNode {
+    // 新建两个链表，一个存储小于 x 的节点，一个存储大于等于 x 的节点
+    less, greater := new(ListNode), new(ListNode)
+    // 两个游标指向两个链表的头节点
+    lessPtr, greaterPtr := less, greater
+    for head != nil {
+        if head.Val < x {
+            lessPtr.Next = head
+            lessPtr = lessPtr.Next
+        } else {
+            greaterPtr.Next = head
+            greaterPtr = greaterPtr.Next
+        }
+        head = head.Next
+    }
+    // 将大于等于 x 的链表的尾节点指向 nil
+    greaterPtr.Next = nil
+    // 将小于 x 的链表的尾节点指向大于等于 x 的链表的头节点
+    lessPtr.Next = greater.Next
+    // 返回小于 x 的链表的头节点
+    return less.Next
 }
 ```
 </details>
@@ -1664,6 +1735,65 @@ func buildTree(preorder, inorder []int) *TreeNode {
     }
 }
 ```
+</details>
+
+<details markdown="1">
+<summary>112. 路径总和（Easy）</summary>
+
+> 给你二叉树的根节点 root 和一个表示目标和的整数 targetSum 。判断该树中是否存在 根节点到叶子节点 的路径，这条路径上所有节点值相加等于目标和 targetSum 。如果存在，返回 true ；否则，返回 false 。
+
+```golang
+func hasPathSum(root *TreeNode, sum int) bool {
+    // 空树，直接返回false
+    if root == nil {
+        return false
+    }
+    // 只存在根节点，判断根节点的值是否等于sum
+    if root.Left == nil && root.Right == nil {
+        return sum == root.Val
+    }
+    // 递归判断左右子树
+    sum -= root.Val
+    return hasPathSum(root.Left, sum) || hasPathSum(root.Right, sum)
+}
+```
+</details>
+
+<details markdown="1">
+<summary>113. 路径总和 II（Medium）</summary>
+
+> 给你二叉树的根节点 root 和一个整数目标和 targetSum ，找出所有 从根节点到叶子节点 路径总和等于给定目标和的路径。叶子节点 是指没有子节点的节点。
+
+```golang
+func pathSum(root *TreeNode, targetSum int) [][]int {
+    if root == nil {
+        return nil
+    }
+	// 只存在根节点，判断根节点的值是否等于 targetSum
+    if root.Left == nil && root.Right == nil {
+        if root.Val != targetSum {
+            return nil
+        }
+        return [][]int{{root.Val}}
+    }
+    var res [][]int
+    targetSum -= root.Val
+    // 辅助函数，用于处理子树
+    process := func(subtree *TreeNode) {
+        for _, path := range pathSum(subtree, targetSum) {
+            path = append([]int{root.Val}, path...)
+            res = append(res, path)
+        }
+    }
+    // 处理左子树和右子树
+    process(root.Left)
+    process(root.Right)
+    return res
+}
+```
+
+> 递归调用，处理左右子树，将根节点的值加入路径中 
+
 </details>
 
 <details markdown="1">
