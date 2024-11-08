@@ -41,8 +41,8 @@ func buildTree(preorder, inorder []int) *TreeNode {
     // 前序遍历的左子树为 preorder[1:i+1], 中序遍历的左子树为 inorder[:i]
     // 前序遍历的右子树为 preorder[i+1:], 中序遍历的右子树为 inorder[i+1:]
     return &TreeNode{
-        Val:   preorder[0],
-        Left:  buildTree(preorder[1:i+1], inorder[:i]),
-        Right: buildTree(preorder[i+1:], inorder[i+1:]),
+        preorder[0],
+        buildTree(preorder[1:i+1], inorder[:i]),
+        buildTree(preorder[i+1:], inorder[i+1:]),
     }
 }
